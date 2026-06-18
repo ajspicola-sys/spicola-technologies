@@ -41,8 +41,27 @@ add_action( 'after_setup_theme', 'spicola_setup' );
  * Enqueue the theme stylesheet.
  */
 function spicola_assets() {
-	wp_enqueue_style( 'spicola-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+	// Google Fonts: Space Grotesk (display) + Inter (body/UI).
+	wp_enqueue_style(
+		'spicola-fonts',
+		'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap',
+		array(),
+		null
+	);
+
+	wp_enqueue_style( 'spicola-style', get_stylesheet_uri(), array( 'spicola-fonts' ), wp_get_theme()->get( 'Version' ) );
 }
+
+/**
+ * Preconnect to Google Fonts for faster font loading.
+ */
+function spicola_resource_hints( $hints, $relation_type ) {
+	if ( 'preconnect' === $relation_type ) {
+		$hints[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
+	}
+	return $hints;
+}
+add_filter( 'wp_resource_hints', 'spicola_resource_hints', 10, 2 );
 add_action( 'wp_enqueue_scripts', 'spicola_assets' );
 
 /**

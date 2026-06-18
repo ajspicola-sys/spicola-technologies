@@ -12,7 +12,7 @@
 		<div class="footer-grid">
 			<div class="footer-brand">
 				<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" style="margin-bottom:14px;">
-					<span class="mark">S</span>
+					<span class="mark"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.4 4.6 2.4 6.6 7 7-4.6.4-6.6 2.4-7 7-.4-4.6-2.4-6.6-7-7 4.6-.4 6.6-2.4 7-7z"/></svg></span>
 					<span><?php bloginfo( 'name' ); ?></span>
 				</a>
 				<p><?php bloginfo( 'description' ); ?></p>
