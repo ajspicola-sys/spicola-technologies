@@ -1,0 +1,201 @@
+/*
+Theme Name: Spicola Technologies
+Theme URI: https://spicolatechnologies.com
+Author: Spicola Technologies
+Author URI: https://spicolatechnologies.com
+Description: Custom corporate theme for Spicola Technologies — a software studio building tools for modern businesses. Includes a marketing landing page and a blog.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: spicola
+*/
+
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root {
+  --brand:        #6d5dfc;
+  --brand-dark:   #4c3fd6;
+  --brand-soft:   #efeefe;
+  --ink:          #14132a;
+  --body:         #4a4a63;
+  --muted:        #8a8aa0;
+  --line:         #e7e7f0;
+  --bg:           #ffffff;
+  --bg-soft:      #f7f7fb;
+  --radius:       16px;
+  --shadow:       0 10px 40px rgba(20,19,42,0.08);
+  --maxw:         1120px;
+  --font:         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--body);
+  background: var(--bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0 0 0.5em; font-weight: 800; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.25rem; }
+p  { margin: 0 0 1rem; }
+a  { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-dark); }
+img { max-width: 100%; height: auto; }
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.section   { padding: 88px 0; }
+.section--soft { background: var(--bg-soft); }
+.center    { text-align: center; }
+.eyebrow   { color: var(--brand); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.78rem; margin-bottom: 0.75rem; }
+.lead      { font-size: 1.15rem; color: var(--body); max-width: 640px; }
+.center .lead { margin-left: auto; margin-right: auto; }
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-block; padding: 0.85rem 1.6rem; border-radius: 99px;
+  font-weight: 700; font-size: 0.95rem; transition: all 0.18s ease; cursor: pointer; border: none;
+}
+.btn--primary { background: var(--brand); color: #fff; box-shadow: 0 8px 24px rgba(109,93,252,0.35); }
+.btn--primary:hover { background: var(--brand-dark); color: #fff; transform: translateY(-2px); }
+.btn--ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn--ghost:hover { border-color: var(--brand); color: var(--brand); }
+
+/* ============================================================
+   Header / nav
+   ============================================================ */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: var(--ink); letter-spacing: -0.02em; }
+.brand:hover { color: var(--ink); }
+.brand .mark {
+  width: 32px; height: 32px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--brand), #9b6bff);
+  display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 900;
+}
+.nav-menu { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.nav-menu a { color: var(--body); font-weight: 600; font-size: 0.95rem; }
+.nav-menu a:hover { color: var(--ink); }
+.nav-cta { margin-left: 8px; }
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero { padding: 96px 0 64px; background: radial-gradient(1200px 500px at 50% -10%, var(--brand-soft), transparent); }
+.hero h1 { margin-bottom: 1rem; }
+.hero .lead { margin: 0 auto 2rem; }
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ============================================================
+   Cards / grids
+   ============================================================ */
+.grid { display: grid; gap: 24px; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.card {
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 30px; transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.card .icon {
+  width: 46px; height: 46px; border-radius: 12px; background: var(--brand-soft); color: var(--brand);
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 16px;
+}
+.card h3 { margin-bottom: 0.4rem; }
+.card p  { margin: 0; color: var(--body); font-size: 0.95rem; }
+
+/* ============================================================
+   Product feature (Limitless)
+   ============================================================ */
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.feature .badge { display: inline-block; background: var(--brand-soft); color: var(--brand); font-weight: 700; font-size: 0.8rem; padding: 6px 14px; border-radius: 99px; margin-bottom: 14px; }
+.feature ul { list-style: none; padding: 0; margin: 1.2rem 0 1.6rem; }
+.feature li { padding: 7px 0 7px 30px; position: relative; color: var(--body); }
+.feature li::before { content: "✓"; position: absolute; left: 0; color: var(--brand); font-weight: 800; }
+.feature-visual {
+  border-radius: 20px; min-height: 320px;
+  background: linear-gradient(135deg, var(--brand), #9b6bff);
+  display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: var(--shadow);
+  font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; padding: 40px; text-align: center;
+}
+
+/* ============================================================
+   CTA band
+   ============================================================ */
+.cta-band { background: var(--ink); border-radius: 24px; padding: 64px 40px; text-align: center; color: #fff; }
+.cta-band h2 { color: #fff; }
+.cta-band p { color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto 1.8rem; }
+
+/* ============================================================
+   Blog
+   ============================================================ */
+.page-head { padding: 64px 0 32px; }
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.post-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: all 0.18s ease; }
+.post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.post-card .thumb { aspect-ratio: 16/9; background: var(--brand-soft); overflow: hidden; }
+.post-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.post-card .body { padding: 24px; }
+.post-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
+.post-card h3 { margin-bottom: 0.4rem; }
+.post-card h3 a { color: var(--ink); }
+.post-card h3 a:hover { color: var(--brand); }
+
+.single-post { max-width: 760px; margin: 0 auto; padding: 56px 24px; }
+.single-post h1 { margin-bottom: 0.5rem; }
+.single-post .post-meta { margin-bottom: 2rem; font-size: 0.9rem; }
+.single-post img { border-radius: var(--radius); margin: 1.5rem 0; }
+.single-post p, .single-post li { font-size: 1.08rem; }
+
+.pagination { display: flex; gap: 10px; justify-content: center; margin-top: 48px; }
+.pagination .page-numbers { padding: 8px 14px; border: 1px solid var(--line); border-radius: 8px; color: var(--body); }
+.pagination .current { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+/* ============================================================
+   Generic page content
+   ============================================================ */
+.page-content { max-width: 760px; margin: 0 auto; padding: 56px 24px; }
+.page-content h1 { margin-bottom: 1rem; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.site-footer { background: var(--bg-soft); border-top: 1px solid var(--line); padding: 56px 0 32px; margin-top: 40px; }
+.footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; margin-bottom: 32px; }
+.footer-brand { max-width: 320px; }
+.footer-brand p { color: var(--muted); font-size: 0.92rem; }
+.footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col li { margin-bottom: 8px; }
+.footer-col a { color: var(--body); font-size: 0.92rem; }
+.footer-bottom { border-top: 1px solid var(--line); padding-top: 24px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+  .grid-3, .posts { grid-template-columns: 1fr 1fr; }
+  .feature { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .section { padding: 56px 0; }
+  .grid-3, .grid-2, .posts { grid-template-columns: 1fr; }
+  .nav-menu { display: none; } /* simple: hide menu on mobile; brand + CTA remain */
+}
