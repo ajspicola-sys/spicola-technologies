@@ -99,7 +99,7 @@ get_header();
 				</ul>
 				<a class="btn btn--primary" href="#contact">Request a demo</a>
 			</div>
-			<div class="feature-visual">Limitless</div>
+			<div class="feature-visual"><span>Limitless</span></div>
 		</div>
 	</div>
 </section>
