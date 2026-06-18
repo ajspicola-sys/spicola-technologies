@@ -105,7 +105,7 @@ get_header();
 </section>
 
 <!-- ===================== STATS BAND ===================== -->
-<section class="section" id="stats" style="padding-top:0;">
+<section class="section" id="stats">
 	<div class="container">
 		<div class="stats-band">
 			<div class="stat">
