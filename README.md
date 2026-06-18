@@ -53,7 +53,7 @@ section, about, contact) and a blog.
 
 - **Landing copy:** edit `front-page.php` (plain HTML between the PHP tags).
 - **Contact email:** search `front-page.php` and `footer.php` for
-  `hello@spicolatechnologies.com` and replace.
+  `joseph@spicolatechnologies.com` and replace.
 - **Brand color:** change `--brand` in `style.css` (top, under "Design tokens").
 - **Blog posts:** add them normally via **Posts → Add New** (no code needed).
 

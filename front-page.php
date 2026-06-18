@@ -96,7 +96,7 @@ get_header();
 		<div class="cta-band">
 			<h2>Let's build something.</h2>
 			<p>Interested in our products or a custom build? We'd love to hear from you.</p>
-			<a class="btn btn--primary" href="mailto:hello@spicolatechnologies.com">hello@spicolatechnologies.com</a>
+			<a class="btn btn--primary" href="mailto:joseph@spicolatechnologies.com">joseph@spicolatechnologies.com</a>
 		</div>
 	</div>
 </section>
