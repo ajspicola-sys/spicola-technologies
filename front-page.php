@@ -11,32 +11,7 @@ get_header();
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
-	<div class="hero-bg" aria-hidden="true">
-		<svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-			<!-- Spica constellation: thin connecting lines + faint dots -->
-			<line class="spica-line" x1="180" y1="90"  x2="320" y2="150" />
-			<line class="spica-line" x1="320" y1="150" x2="430" y2="80"  />
-			<line class="spica-line" x1="900" y1="120" x2="1010" y2="200" />
-			<line class="spica-line" x1="1010" y1="200" x2="940" y2="300" />
-			<line class="spica-line" x1="600" y1="60"  x2="720" y2="40"  />
-			<circle class="spica-dot" cx="180"  cy="90"  r="2.5" />
-			<circle class="spica-dot" cx="320"  cy="150" r="3" />
-			<circle class="spica-dot" cx="430"  cy="80"  r="2" />
-			<circle class="spica-dot" cx="600"  cy="60"  r="2.5" />
-			<circle class="spica-dot" cx="720"  cy="40"  r="2" />
-			<circle class="spica-dot" cx="900"  cy="120" r="2.5" />
-			<circle class="spica-dot" cx="1010" cy="200" r="3" />
-			<circle class="spica-dot" cx="940"  cy="300" r="2" />
-			<!-- The bright star: gradient 4-point sparkle -->
-			<defs>
-				<linearGradient id="spica-grad" x1="0" y1="0" x2="1" y2="1">
-					<stop offset="0%" stop-color="#9491CD" />
-					<stop offset="100%" stop-color="#88C8D2" />
-				</linearGradient>
-			</defs>
-			<path d="M1010 200c.9 9.5 4.9 13.5 14 14-9.1.9-13.1 4.9-14 14-.9-9.1-4.9-13.1-14-14 9.1-.9 13.1-4.5 14-14z" fill="url(#spica-grad)" />
-		</svg>
-	</div>
+	<div class="hero-bg" aria-hidden="true"></div>
 	<div class="container center">
 		<p class="eyebrow">Software company</p>
 		<h1>Software that helps your business run <span class="grad-word">without limits.</span></h1>
