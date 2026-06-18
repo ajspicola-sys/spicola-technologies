@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.0.0
+Version: 3.1.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -258,6 +258,99 @@ strong { color: var(--heading); font-weight: 600; }
 .feature-visual span {
   background: var(--grad-text); -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
+}
+
+/* ============================================================
+   3D laptop (CSS 3D, rotates on scroll)
+   ============================================================ */
+.laptop-stage {
+  perspective: 1600px;
+  perspective-origin: 50% 36%;
+  min-height: 360px;
+  display: flex; align-items: center; justify-content: center;
+}
+.laptop {
+  position: relative;
+  width: 440px; height: 276px;
+  transform-style: preserve-3d;
+  /* --ry is driven by scroll via JS; default is a pleasant resting angle */
+  transform: rotateX(14deg) rotateY(var(--ry, -24deg));
+  transition: transform 0.08s linear;
+}
+
+/* Lid (the screen panel) */
+.laptop__lid {
+  position: absolute; inset: 0;
+  transform-origin: 50% 100%;
+  transform: rotateX(-6deg);
+  transform-style: preserve-3d;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #1c1c24, #101015);
+  border: 1px solid #2c2c38;
+  padding: 12px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.55);
+}
+.laptop__screen {
+  position: relative; width: 100%; height: 100%;
+  border-radius: 8px; overflow: hidden;
+  background: #0b0c11;
+  border: 1px solid #20212b;
+}
+.laptop__glare {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, rgba(255,255,255,0.10) 0%, transparent 32%, transparent 100%);
+}
+
+/* Deck (keyboard base lying flat) */
+.laptop__deck {
+  position: absolute; top: 100%; left: -4px;
+  width: 448px; height: 300px;
+  transform-origin: top center;
+  transform: rotateX(-90deg);
+  background: linear-gradient(180deg, #202028, #14141a);
+  border: 1px solid #2c2c38;
+  border-radius: 8px 8px 14px 14px;
+  box-shadow: 0 -6px 18px rgba(0,0,0,0.4) inset;
+}
+.laptop__keyboard {
+  position: absolute; top: 26px; left: 50%; transform: translateX(-50%);
+  width: 380px; height: 150px; border-radius: 8px;
+  background:
+    repeating-linear-gradient(90deg, #2a2a34 0 30px, transparent 30px 36px),
+    repeating-linear-gradient(180deg, #2a2a34 0 22px, transparent 22px 28px);
+  opacity: 0.6;
+}
+.laptop__trackpad {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+  width: 150px; height: 92px; border-radius: 10px;
+  background: #1a1a22; border: 1px solid #2c2c38;
+}
+
+/* On-screen Limitless dashboard mockup */
+.ui { position: absolute; inset: 0; display: flex; flex-direction: column; font-family: var(--font-body); }
+.ui__top { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #1c1d27; }
+.ui__dot { width: 10px; height: 10px; border-radius: 3px; background: var(--grad); }
+.ui__brand { font-family: var(--font-head); font-weight: 600; font-size: 12px; color: #eef0f3; }
+.ui__spacer { flex: 1; }
+.ui__pill { width: 46px; height: 12px; border-radius: 6px; background: var(--accent-tint); border: 0.5px solid var(--accent-line); }
+.ui__body { flex: 1; display: flex; }
+.ui__side { width: 64px; border-right: 1px solid #1c1d27; padding: 12px 10px; display: flex; flex-direction: column; gap: 10px; }
+.ui__side span { height: 8px; border-radius: 4px; background: #1f2029; }
+.ui__side span:first-child { background: var(--accent); opacity: 0.85; }
+.ui__main { flex: 1; padding: 14px; display: flex; flex-direction: column; gap: 14px; }
+.ui__cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.ui__card { background: #12131a; border: 1px solid #20212b; border-radius: 8px; padding: 10px; }
+.ui__card b { display: block; font-family: var(--font-head); font-size: 16px; color: #f2f4f7; }
+.ui__card i { font-style: normal; font-size: 9px; color: #7b7d90; }
+.ui__chart { flex: 1; display: flex; align-items: flex-end; gap: 9px; padding-top: 4px; }
+.ui__chart span { flex: 1; border-radius: 4px 4px 0 0; background: var(--grad); opacity: 0.92; }
+
+@media (max-width: 900px) {
+  .laptop { transform: rotateX(12deg) rotateY(-16deg) scale(0.82); }
+  .laptop-stage { min-height: 300px; }
+}
+@media (max-width: 480px) {
+  .laptop { transform: rotateX(12deg) rotateY(-12deg) scale(0.64); }
 }
 
 /* ============================================================

@@ -59,6 +59,15 @@ function spicola_assets() {
 		wp_get_theme()->get( 'Version' ),
 		true
 	);
+
+	// 3D laptop scroll rotation.
+	wp_enqueue_script(
+		'spicola-laptop',
+		get_template_directory_uri() . '/assets/laptop.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
 }
 
 /**

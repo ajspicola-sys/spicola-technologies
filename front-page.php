@@ -99,7 +99,45 @@ get_header();
 				</ul>
 				<a class="btn btn--primary" href="#contact">Request a demo</a>
 			</div>
-			<div class="feature-visual"><span>Limitless</span></div>
+			<div class="laptop-stage" aria-hidden="true">
+				<div class="laptop">
+					<div class="laptop__lid">
+						<div class="laptop__screen">
+							<div class="ui">
+								<div class="ui__top">
+									<span class="ui__dot"></span>
+									<span class="ui__brand">Limitless</span>
+									<span class="ui__spacer"></span>
+									<span class="ui__pill"></span>
+								</div>
+								<div class="ui__body">
+									<div class="ui__side">
+										<span></span><span></span><span></span><span></span><span></span>
+									</div>
+									<div class="ui__main">
+										<div class="ui__cards">
+											<div class="ui__card"><b>248</b><i>Bookings</i></div>
+											<div class="ui__card"><b>$31k</b><i>Revenue</i></div>
+											<div class="ui__card"><b>4.9★</b><i>Reviews</i></div>
+										</div>
+										<div class="ui__chart">
+											<span style="height:38%"></span><span style="height:62%"></span>
+											<span style="height:48%"></span><span style="height:80%"></span>
+											<span style="height:58%"></span><span style="height:92%"></span>
+											<span style="height:70%"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="laptop__glare"></div>
+						</div>
+					</div>
+					<div class="laptop__deck">
+						<div class="laptop__keyboard"></div>
+						<div class="laptop__trackpad"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
