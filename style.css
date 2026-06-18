@@ -101,6 +101,29 @@ strong { color: var(--heading); font-weight: 600; }
 .section   { padding: 96px 0; }
 .section--soft { background: var(--surface); }
 .center    { text-align: center; }
+
+/* ------------------------------------------------------------
+   Light section variant — white panels between the dark ones
+   ------------------------------------------------------------ */
+.section--light {
+  background: #FFFFFF;
+  --heading:  #14141A;
+  --body:     #4A4A5A;
+  --muted:    #6B6B7C;
+  --card:     #FFFFFF;
+  --card-hover: #FBFCFD;
+  --line:     #EAEAF0;
+  --line-2:   #E0E0EA;
+  --line-3:   #D4D4E0;
+  --surface-2:#F5F6F8;
+}
+.section--light h1, .section--light h2, .section--light h3, .section--light h4 { color: #14141A; }
+.section--light p { color: #4A4A5A; }
+.section--light .lead { color: #4A4A5A; }
+.section--light .card p { color: #6B6B7C; }
+.section--light .btn--secondary { color: #14141A; border-color: var(--line-3); }
+.section--light .btn--secondary:hover { color: var(--accent-deep); border-color: var(--accent); }
+.section--light .feature-visual { background: #F5F6F8; border-color: #E0E0EA; }
 .lead      { font-size: 1.0625rem; color: var(--body); max-width: 620px; line-height: 1.65; }
 .center .lead { margin-left: auto; margin-right: auto; }
 

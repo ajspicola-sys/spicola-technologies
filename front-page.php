@@ -49,7 +49,7 @@ get_header();
 </section>
 
 <!-- ===================== WHAT WE DO ===================== -->
-<section class="section" id="services">
+<section class="section section--light" id="services">
 	<div class="container">
 		<div class="center" style="margin-bottom:48px;">
 			<p class="eyebrow">What we do</p>
@@ -125,7 +125,7 @@ get_header();
 </section>
 
 <!-- ===================== ABOUT ===================== -->
-<section class="section section--soft" id="about">
+<section class="section section--light" id="about">
 	<div class="container">
 		<div class="grid grid-2" style="align-items:center; gap:56px;">
 			<div>
