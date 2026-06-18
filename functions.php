@@ -50,6 +50,15 @@ function spicola_assets() {
 	);
 
 	wp_enqueue_style( 'spicola-style', get_stylesheet_uri(), array( 'spicola-fonts' ), wp_get_theme()->get( 'Version' ) );
+
+	// Scroll reveal (blur fade-in). Loaded in the footer, deferred.
+	wp_enqueue_script(
+		'spicola-reveal',
+		get_template_directory_uri() . '/assets/reveal.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
 }
 
 /**
