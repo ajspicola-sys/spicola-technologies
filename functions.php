@@ -100,6 +100,45 @@ function spicola_excerpt_more( $more ) { return '…'; }
 add_filter( 'excerpt_more', 'spicola_excerpt_more' );
 
 /**
+ * Customizer: a setting for the product/Limitless showcase video URL.
+ * Paste a Media Library video URL in Appearance → Customize → Limitless Video.
+ * When set, it replaces the CSS 3D laptop in the product section.
+ */
+function spicola_customize_register( $wp_customize ) {
+	$wp_customize->add_section( 'spicola_media', array(
+		'title'    => __( 'Limitless Video', 'spicola' ),
+		'priority' => 30,
+	) );
+
+	$wp_customize->add_setting( 'spicola_product_video', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( 'spicola_product_video', array(
+		'label'       => __( 'Product video URL (.mp4)', 'spicola' ),
+		'description' => __( 'Upload a video to the Media Library, copy its URL, and paste it here. Replaces the 3D laptop on the front page.', 'spicola' ),
+		'section'     => 'spicola_media',
+		'type'        => 'url',
+	) );
+
+	$wp_customize->add_setting( 'spicola_product_poster', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( 'spicola_product_poster', array(
+		'label'       => __( 'Video poster image URL (optional)', 'spicola' ),
+		'description' => __( 'Shown before the video loads / on reduced-motion.', 'spicola' ),
+		'section'     => 'spicola_media',
+		'type'        => 'url',
+	) );
+}
+add_action( 'customize_register', 'spicola_customize_register' );
+
+/**
  * Fallback menu when no primary menu is assigned, so the nav is never empty.
  */
 function spicola_default_menu() {

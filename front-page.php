@@ -99,7 +99,22 @@ get_header();
 				</ul>
 				<a class="btn btn--primary" href="#contact">Request a demo</a>
 			</div>
-			<div class="laptop-stage" aria-hidden="true">
+			<?php
+			$spicola_video  = get_theme_mod( 'spicola_product_video', '' );
+			$spicola_poster = get_theme_mod( 'spicola_product_poster', '' );
+			if ( $spicola_video ) :
+			?>
+			<div class="product-video">
+				<video
+					class="product-video__el"
+					autoplay muted loop playsinline
+					preload="metadata"
+					<?php if ( $spicola_poster ) : ?>poster="<?php echo esc_url( $spicola_poster ); ?>"<?php endif; ?>>
+					<source src="<?php echo esc_url( $spicola_video ); ?>" type="video/mp4">
+				</video>
+			</div>
+			<?php else : ?>
+			<div class="laptop-stage laptop-stage--fallback" aria-hidden="true">
 				<div class="laptop">
 					<div class="laptop__lid">
 						<div class="laptop__screen">
@@ -138,6 +153,7 @@ get_header();
 					</div>
 				</div>
 			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
