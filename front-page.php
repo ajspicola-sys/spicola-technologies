@@ -27,17 +27,18 @@ get_header();
 <section class="section section--light" id="services">
 	<div class="container">
 		<div class="center" style="margin-bottom:48px;">
+			<div class="section-num" aria-hidden="true">01</div>
 			<p class="eyebrow">What we do</p>
 			<h2>Thoughtful tools, built to last</h2>
 			<p class="lead">We focus on the unglamorous problems that slow businesses down, and turn them into clean, reliable software.</p>
 		</div>
-		<div class="grid grid-3">
-			<div class="card">
+		<div class="bento">
+			<div class="card card--feature">
 				<div class="chip chip--peri">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
 				</div>
 				<h3>Product development</h3>
-				<p>End-to-end web applications — from idea to a deployed, maintainable product your team can rely on every day.</p>
+				<p>End-to-end web applications — from idea to a deployed, maintainable product your team can rely on every day. We sweat the details so the software feels obvious to use and quiet to run.</p>
 			</div>
 			<div class="card">
 				<div class="chip chip--cyan">
@@ -46,7 +47,7 @@ get_header();
 				<h3>Integrations &amp; automation</h3>
 				<p>We connect the tools businesses already use — payments, messaging, scheduling, reviews — into one seamless workflow.</p>
 			</div>
-			<div class="card">
+			<div class="card card--wide">
 				<div class="chip chip--peri">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
 				</div>
@@ -62,6 +63,7 @@ get_header();
 	<div class="container">
 		<div class="feature">
 			<div>
+				<div class="section-num" aria-hidden="true">02</div>
 				<p class="eyebrow">Our flagship product</p>
 				<h2>Limitless</h2>
 				<p class="lead">The all-in-one platform that grows with you — bookings, payments, records, marketing, and reputation in a single dashboard.</p>
@@ -158,6 +160,7 @@ get_header();
 	<div class="container">
 		<div class="grid grid-2" style="align-items:center; gap:56px;">
 			<div>
+				<div class="section-num" aria-hidden="true">03</div>
 				<p class="eyebrow">About us</p>
 				<h2>A focused software company</h2>
 				<p>Spicola Technologies builds tools that remove friction for growing businesses. We believe good software should feel obvious — fast, reliable, and out of the way.</p>

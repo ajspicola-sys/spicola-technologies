@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.2.1
+Version: 3.3.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -55,6 +55,10 @@ Text Domain: spicola
   /* Type */
   --font-head:    "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif:   "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+
+  /* Signature easing — used for every transition/animation (never linear) */
+  --ease:         cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 * { box-sizing: border-box; }
@@ -78,8 +82,10 @@ h1, h2, h3, h4 {
   margin: 0 0 0.5em;
   font-weight: 600;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 h1 { font-size: clamp(2.2rem, 4.5vw, 2.75rem); font-weight: 700; line-height: 1.1; }
+p, .lead { text-wrap: pretty; }
 h2 { font-size: clamp(1.75rem, 3.2vw, 2.05rem); line-height: 1.16; }
 h3 { font-size: 1.0625rem; line-height: 1.35; }
 p  { margin: 0 0 1rem; }
@@ -200,7 +206,12 @@ strong { color: var(--heading); font-weight: 600; }
 }
 .hero-bg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero .container { position: relative; z-index: 1; }
-.hero h1 { margin-bottom: 1.1rem; }
+.hero h1 {
+  margin-bottom: 1.1rem;
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
 .hero .lead { margin: 0 auto 2rem; font-size: 1.125rem; }
 .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
@@ -475,10 +486,111 @@ strong { color: var(--heading); font-weight: 600; }
 }
 
 /* ============================================================
+   Premium pass (v3.3.0) — light, depth, motion & layout
+   ============================================================ */
+
+/* Film grain — a barely-there texture over the whole site.
+   The single biggest "designed, not flat-CSS" signal on a dark site. */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 60;
+  pointer-events: none; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Cursor spotlight — a soft cyan light that follows the pointer and
+   gently lifts whatever it passes over. Created/positioned by premium.js. */
+.cursor-glow {
+  position: fixed; top: 0; left: 0;
+  width: 560px; height: 560px; margin: -280px 0 0 -280px;
+  border-radius: 50%; pointer-events: none;
+  z-index: 35; opacity: 0;
+  background: radial-gradient(circle, rgba(111,201,216,0.10), transparent 60%);
+  mix-blend-mode: screen;
+  transform: translate3d(-1000px, -1000px, 0);
+  transition: opacity 0.35s var(--ease);
+}
+.cursor-glow.is-on { opacity: 1; }
+
+/* Aurora bloom behind the hero headline — two slow-drifting soft blobs. */
+.hero-bg::before, .hero-bg::after {
+  content: ""; position: absolute; border-radius: 50%;
+  filter: blur(64px); pointer-events: none;
+}
+.hero-bg::before {
+  width: 520px; height: 380px; left: 16%; top: -10%;
+  background: radial-gradient(circle, rgba(95,214,232,0.20), transparent 60%);
+  animation: auroraA 16s var(--ease) infinite alternate;
+}
+.hero-bg::after {
+  width: 460px; height: 340px; right: 12%; top: 4%;
+  background: radial-gradient(circle, rgba(47,163,182,0.16), transparent 60%);
+  animation: auroraB 21s var(--ease) infinite alternate;
+}
+@keyframes auroraA { to { transform: translate3d(46px, 28px, 0) scale(1.12); } }
+@keyframes auroraB { to { transform: translate3d(-52px, 22px, 0) scale(1.08); } }
+
+/* Hairline gradient border — light catching the top edge of cards on hover. */
+.card { position: relative; }
+.card::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
+  opacity: 0; transition: opacity 0.3s var(--ease);
+}
+.card:hover::before { opacity: 1; }
+
+/* Animated nav underline — a cyan line that wipes in on hover. */
+.nav-menu a { position: relative; }
+.nav-menu a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1.5px;
+  background: var(--grad); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+.nav-menu a:hover::after { transform: scaleX(1); }
+
+/* Text selection + slim custom scrollbar */
+::selection { background: rgba(111,201,216,0.28); color: var(--heading); }
+html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 8px; border: 3px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--line-3); }
+
+/* Oversized outlined section numbers */
+.section-num {
+  font-family: var(--font-head); font-weight: 700; line-height: 1;
+  font-size: clamp(2.4rem, 6vw, 3.75rem); letter-spacing: -0.02em;
+  color: transparent; -webkit-text-stroke: 1px var(--line-3);
+  opacity: 0.55; margin-bottom: 0.5rem;
+}
+
+/* Bento grid — varied tile sizes for the services section */
+.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.bento .card { display: flex; flex-direction: column; }
+.bento .card--feature { grid-column: span 2; }
+.bento .card--feature h3 { font-size: 1.3rem; }
+.bento .card--wide { grid-column: 1 / -1; }
+
+/* Page-load reveal — content arrives instead of blinking in (JS-gated). */
+.js #content { animation: pageFade 0.55s var(--ease) both; }
+@keyframes pageFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 900px) {
+  .bento { grid-template-columns: 1fr 1fr; }
+  .bento .card--feature { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .bento { grid-template-columns: 1fr; }
+  .bento .card--feature, .bento .card--wide { grid-column: auto; }
+}
+
+/* ============================================================
    Reduced motion
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; filter: none; transform: none; }
+  .cursor-glow { display: none !important; }
+  .hero-bg::before, .hero-bg::after { animation: none !important; }
 }
