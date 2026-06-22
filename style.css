@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.3.0
+Version: 3.4.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -583,6 +583,40 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
   .bento { grid-template-columns: 1fr; }
   .bento .card--feature, .bento .card--wide { grid-column: auto; }
 }
+
+/* ============================================================
+   Footer redesign (v3.4.0) — big CTA + columns over a 3D
+   glass-sphere WebGL canvas (footer-spheres.js)
+   ============================================================ */
+.site-footer { position: relative; overflow: hidden; background: var(--bg); }
+
+/* Base gradient: always present — also the fallback if WebGL is unavailable. */
+.site-footer::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(720px 380px at 80% 118%, rgba(111,201,216,0.16), transparent 70%),
+    radial-gradient(520px 320px at 10% -12%, rgba(47,163,182,0.10), transparent 72%);
+}
+/* The 3D scene sits behind the content; decorative + non-interactive. */
+.footer-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none; display: block;
+}
+.site-footer .container { position: relative; z-index: 1; }
+
+/* Big call-to-action */
+.footer-cta { max-width: 680px; }
+.footer-cta h2 {
+  font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.05;
+  letter-spacing: -0.03em; margin-bottom: 1.6rem;
+}
+.footer-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.footer-cta__actions .btn svg { width: 17px; height: 17px; }
+
+.footer-divider { height: 1px; background: var(--line); margin: 44px 0 40px; }
+.footer-brand p { margin-bottom: 8px; }
+.footer-brand p a { color: var(--accent); }
+.footer-brand p a:hover { color: var(--accent-br); }
 
 /* ============================================================
    Reduced motion
