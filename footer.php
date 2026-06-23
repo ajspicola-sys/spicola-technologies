@@ -23,6 +23,7 @@
 			</div>
 		</div>
 
+		<div class="footer-panel">
 		<div class="footer-grid">
 			<div class="footer-brand">
 				<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -54,6 +55,7 @@
 		<div class="footer-bottom">
 			&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. All rights reserved. &middot; Built without limits.
 		</div>
+		</div><!-- .footer-panel -->
 	</div>
 </footer>
 

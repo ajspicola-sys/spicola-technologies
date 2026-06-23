@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.4.6
+Version: 3.4.7
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -600,20 +600,26 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
   position: absolute; inset: 0; width: 100%; height: 100%;
   z-index: 0; pointer-events: auto; display: block; border: none;
 }
-/* Content sits above the scene in a frosted-glass panel so text stays
-   readable over the gradient. Mouse passes THROUGH to the Spline iframe;
+/* Content sits above the scene. Mouse passes THROUGH to the Spline iframe;
    only real links/buttons re-capture the pointer, so the scene's hover
    effect works across the whole footer. */
 .site-footer .container {
   position: relative; z-index: 1; pointer-events: none;
-  margin: 0 auto 40px; padding: 44px 40px;
+  padding-bottom: 40px;
+}
+.site-footer a,
+.site-footer .btn { pointer-events: auto; }
+
+/* Frosted-glass panel behind ONLY the menu + copyright (the big CTA and
+   its buttons sit directly on the gradient, above/outside this panel).
+   Full content width to match the rest of the site. */
+.footer-panel {
+  margin-top: 44px; padding: 40px;
   background: rgba(8, 10, 12, 0.42);
   -webkit-backdrop-filter: blur(18px) saturate(125%);
   backdrop-filter: blur(18px) saturate(125%);
   border-radius: 22px;
 }
-.site-footer a,
-.site-footer .btn { pointer-events: auto; }
 
 /* Big call-to-action */
 .footer-cta { max-width: 680px; }
