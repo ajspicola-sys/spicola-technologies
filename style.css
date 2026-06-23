@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.7.0
+Version: 3.8.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -197,63 +197,53 @@ strong { color: var(--heading); font-weight: 600; }
 /* ============================================================
    Hero + Spica constellation motif
    ============================================================ */
-/* Tall hero so there's scroll distance to scrub the reveal. */
-.hero { position: relative; height: 220vh; background: #05060a; }
-/* Pinned stage: stays full-screen while you scroll through the hero. */
+/* Tall hero so there's scroll distance to scrub the reveal (hero-scroll.js). */
+.hero { position: relative; height: 140vh; background: #fff; }
+/* Pinned white frame; the dark card sits at the bottom and expands up + out. */
 .hero-stage {
-  position: sticky; top: 0; height: 100vh; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  background: #05060a;
+  position: sticky; top: 0; height: 100vh;
+  display: flex; align-items: flex-end; justify-content: center;
+  background: #fff;
 }
-/* Spline scene fills the stage. pointer-events:none so the wheel scrolls
-   the page (and drives the reveal) instead of being eaten by the iframe. */
-.hero-canvas {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 0; border: none; pointer-events: none;
+.hero-card {
+  position: relative; overflow: hidden;
+  width: 76%; height: 90%; border-radius: 30px 30px 0 0;
+  background: #05060a;
+  box-shadow: 0 50px 120px rgba(8, 20, 30, 0.22);
+  display: flex; align-items: center; justify-content: center;
+  will-change: width, height, border-radius;
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(900px 440px at 50% -6%, rgba(111,201,216,0.22), transparent 68%),
-    radial-gradient(620px 320px at 50% 4%, rgba(47,163,182,0.12), transparent 70%);
+  background: radial-gradient(60% 55% at 50% 62%, rgba(95, 214, 232, 0.12), transparent 72%);
 }
-.hero-bg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-/* Centered headline overlay, pinned in the upper-middle; JS scrubs it up. */
+/* Centered headline overlay; JS scrubs it (blur + fade + rise) on scroll. */
 .hero-content {
-  position: absolute; left: 0; right: 0; top: 18%;
-  z-index: 3; margin: 0 auto; max-width: 720px;
+  position: absolute; left: 0; right: 0; top: 13%;
+  z-index: 3; margin: 0 auto; max-width: 760px; padding: 0 24px;
   text-align: center; pointer-events: none;
-  will-change: transform, opacity;
+  will-change: transform, opacity, filter;
 }
 .hero-content a, .hero-content .btn { pointer-events: auto; }
 
-/* Central placeholder for the product UI — grows + rises on scroll.
-   Initial transform matches the JS progress=0 state to avoid a flash. */
-.hero-reveal {
-  position: relative; z-index: 2;
-  width: min(74vw, 920px); aspect-ratio: 16 / 10;
-  border-radius: 20px;
-  background: rgba(18, 14, 38, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
-  display: flex; align-items: center; justify-content: center;
-  will-change: transform;
-  transform: translateY(210px) scale(0.62);
-}
-.hero-reveal__label {
-  font-size: clamp(4rem, 14vw, 11rem); font-weight: 800;
-  letter-spacing: -0.04em; color: rgba(255, 255, 255, 0.92);
+/* Static "half rectangle" device hugging the bottom of the card (placeholder). */
+.hero-placeholder {
+  position: absolute; left: 50%; bottom: -3%; transform: translateX(-50%);
+  width: 64%; height: 50%; z-index: 2;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(180deg, #15141d, #0c0b12);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 -24px 90px rgba(0, 0, 0, 0.55);
 }
 
 .hero h1 {
   margin-bottom: 1.1rem;
-  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-size: clamp(2.4rem, 5.6vw, 4rem);
   letter-spacing: -0.035em;
   line-height: 1.04;
 }
-.hero .lead { margin: 0 auto 2rem; font-size: 1.125rem; }
+.hero .lead { margin: 0 auto 1.6rem; font-size: 1.125rem; }
 .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 /* Constellation dots/lines */
