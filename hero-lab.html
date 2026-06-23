@@ -77,11 +77,12 @@
      card. Static: it does NOT animate on scroll (the card expands around it).
      Bottom corners bleed past the card's bottom edge (clipped by overflow). */
   .hero-placeholder {
-    position: absolute; left: 50%; bottom: -3%; transform: translateX(-50%);
-    width: 64%; height: 50%; z-index: 2;
-    border-radius: 18px 18px 0 0;
-    background: linear-gradient(180deg, #15141d, #0c0b12);
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    width: 66%; z-index: 2; line-height: 0;
+  }
+  .hero-placeholder img {
+    display: block; width: 100%; height: auto;
+    border-radius: 16px 16px 0 0;
     box-shadow: 0 -24px 90px rgba(0, 0, 0, 0.55);
   }
 
@@ -115,8 +116,8 @@
           </div>
         </div>
 
-        <!-- Static placeholder: a "half rectangle" device hugging the bottom. -->
-        <div class="hero-placeholder" aria-hidden="true"></div>
+        <!-- Mockup image hugging the bottom (static). -->
+        <div class="hero-placeholder" aria-hidden="true"><img src="assets/hero-mockup.png" alt=""></div>
       </div>
     </div>
   </section>

@@ -23,8 +23,8 @@ get_header();
 					<a class="btn btn--secondary" href="#contact">Talk to us</a>
 				</div>
 			</div>
-			<!-- Static placeholder device hugging the bottom (swap for a real screenshot/video later). -->
-			<div class="hero-placeholder" aria-hidden="true"></div>
+			<!-- Product mockup hugging the bottom of the card. -->
+			<div class="hero-placeholder" aria-hidden="true"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/hero-mockup.png' ); ?>" alt=""></div>
 		</div>
 	</div>
 </section>
