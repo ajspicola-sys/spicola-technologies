@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.4.9
+Version: 3.5.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -590,8 +590,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
    ============================================================ */
 .site-footer {
   position: relative; overflow: hidden; background: #000;
-  min-height: 100vh;                /* full-screen Spline scene */
-  display: flex; align-items: flex-end;  /* content rests at the bottom */
+  /* No fixed/viewport height — the footer is as tall as its content, and
+     the Spline iframe (inset:0) fills whatever that height is. */
 }
 
 /* The Spline iframe fills the footer. pointer-events ON so its hover
