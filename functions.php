@@ -77,6 +77,22 @@ function spicola_assets() {
 		wp_get_theme()->get( 'Version' ),
 		true
 	);
+
+	// Lenis smooth/momentum scrolling (CDN global), then our init script.
+	wp_enqueue_script(
+		'lenis',
+		'https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js',
+		array(),
+		'1.1.14',
+		true
+	);
+	wp_enqueue_script(
+		'spicola-smooth-scroll',
+		get_template_directory_uri() . '/assets/smooth-scroll.js',
+		array( 'lenis' ),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
 }
 
 /**
