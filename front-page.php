@@ -23,6 +23,23 @@ get_header();
 	</div>
 </section>
 
+<!-- ===================== SPLINE 3D SHOWCASE ===================== -->
+<section class="spline-section" aria-label="Interactive 3D showcase">
+	<iframe
+		class="spline-section__embed"
+		src="https://my.spline.design/animatedbackgroundgradientforweb-9C8uc7JmAhG62mGhl4Wf2MZv/"
+		frameborder="0"
+		title="Animated 3D background"
+		loading="lazy"></iframe>
+	<div class="container center spline-section__content">
+		<h2>Grow with us.<br><span class="grad-word">Start your journey today.</span></h2>
+		<div class="hero-actions">
+			<a class="btn btn--primary" href="#contact">Get started</a>
+			<a class="btn btn--secondary" href="#products">Learn more</a>
+		</div>
+	</div>
+</section>
+
 <!-- ===================== WHAT WE DO ===================== -->
 <section class="section section--light" id="services">
 	<div class="container">
