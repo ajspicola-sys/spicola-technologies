@@ -12,7 +12,8 @@ get_header();
 <!-- ===================== HERO ===================== -->
 <section class="hero">
 	<div class="hero-bg" aria-hidden="true"></div>
-	<div class="container center">
+	<iframe class="hero-canvas" src="https://my.spline.design/boxeshover-EcuGaViqhLHlCAayBfp4gDFx/" frameborder="0" aria-hidden="true" tabindex="-1"></iframe>
+	<div class="container hero-content">
 		<p class="eyebrow">Software company</p>
 		<h1>Software that helps your business run <span class="grad-word">without limits.</span></h1>
 		<p class="lead">Spicola Technologies builds practical, modern software for growing businesses — including <strong>Limitless</strong>, our all-in-one B2B platform that brings your operations into a single place.</p>
