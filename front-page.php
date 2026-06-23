@@ -23,8 +23,15 @@ get_header();
 					<a class="btn btn--secondary" href="#contact">Talk to us</a>
 				</div>
 			</div>
-			<!-- Product mockup hugging the bottom of the card. -->
-			<div class="hero-placeholder" aria-hidden="true"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/hero-mockup.png' ); ?>" alt=""></div>
+			<!-- Product mockup hugging the bottom of the card. Set via
+			     Appearance → Customize → Front Page Media; bundled PNG fallback. -->
+			<?php
+			$spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', '' );
+			if ( ! $spicola_hero_mockup ) {
+				$spicola_hero_mockup = get_template_directory_uri() . '/assets/hero-mockup.png';
+			}
+			?>
+			<div class="hero-placeholder" aria-hidden="true"><img src="<?php echo esc_url( $spicola_hero_mockup ); ?>" alt="" loading="lazy"></div>
 		</div>
 	</div>
 </section>

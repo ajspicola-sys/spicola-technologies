@@ -199,9 +199,22 @@ add_filter( 'excerpt_more', 'spicola_excerpt_more' );
  */
 function spicola_customize_register( $wp_customize ) {
 	$wp_customize->add_section( 'spicola_media', array(
-		'title'    => __( 'Limitless Video', 'spicola' ),
+		'title'    => __( 'Front Page Media', 'spicola' ),
 		'priority' => 30,
 	) );
+
+	// Hero mockup image — shown hugging the bottom of the hero card.
+	$wp_customize->add_setting( 'spicola_hero_mockup', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'spicola_hero_mockup', array(
+		'label'       => __( 'Hero mockup image', 'spicola' ),
+		'description' => __( 'Upload the product image shown at the bottom of the hero. Falls back to the bundled image if empty.', 'spicola' ),
+		'section'     => 'spicola_media',
+	) ) );
 
 	$wp_customize->add_setting( 'spicola_product_video', array(
 		'default'           => '',
