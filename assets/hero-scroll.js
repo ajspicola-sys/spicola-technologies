@@ -33,7 +33,7 @@
 		var ce = easeInOut(clamp(p / 0.78, 0, 1));
 		if (card) {
 			card.style.width = (76 + ce * 24) + '%';
-			card.style.height = (90 + ce * 10) + '%';
+			card.style.height = (98 + ce * 2) + '%';
 			var r = (30 * (1 - ce));
 			card.style.borderRadius = r + 'px ' + r + 'px 0 0';
 			card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
@@ -56,6 +56,12 @@
 			header.style.filter = 'blur(' + ((1 - hv) * 8) + 'px)';
 			header.style.transform = 'translateY(' + (-(1 - hv) * 22) + 'px)';
 			header.style.pointerEvents = hv < 0.5 ? 'none' : 'auto';
+
+			// First appearance (over the white hero) is see-through with black
+			// text; the second appearance (over the dark full-bleed card) is the
+			// standard dark bar. Swap happens past the midpoint, while the header
+			// is faded out, so there's no visible flash.
+			header.classList.toggle('is-dark', p >= 0.5);
 		}
 	}
 
