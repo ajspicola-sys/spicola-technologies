@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.4.4
+Version: 3.4.5
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -588,14 +588,24 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
    Footer — big CTA + columns over a Spline animated-gradient
    iframe background.
    ============================================================ */
-.site-footer { position: relative; overflow: hidden; background: #000; }
+.site-footer {
+  position: relative; overflow: hidden; background: #000;
+  min-height: 80vh;                 /* give the Spline scene real height */
+  display: flex; align-items: flex-end;  /* content rests at the bottom */
+}
 
-/* The Spline iframe sits behind all content; non-interactive, decorative. */
+/* The Spline iframe fills the footer. pointer-events ON so its hover
+   interaction works; the overlay below disables events except on links. */
 .footer-canvas {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 0; pointer-events: none; display: block; border: none;
+  z-index: 0; pointer-events: auto; display: block; border: none;
 }
-.site-footer .container { position: relative; z-index: 1; }
+/* Content sits above the scene but lets the mouse pass THROUGH to the
+   Spline iframe — only real links/buttons re-capture the pointer, so the
+   scene's hover effect works across the whole footer. */
+.site-footer .container { position: relative; z-index: 1; width: 100%; pointer-events: none; }
+.site-footer a,
+.site-footer .btn { pointer-events: auto; }
 
 /* Big call-to-action */
 .footer-cta { max-width: 680px; }
