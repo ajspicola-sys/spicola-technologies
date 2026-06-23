@@ -11,16 +11,20 @@ get_header();
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
-	<div class="hero-bg" aria-hidden="true"></div>
-	<iframe class="hero-canvas" src="https://my.spline.design/boxeshover-EcuGaViqhLHlCAayBfp4gDFx/" frameborder="0" aria-hidden="true" tabindex="-1"></iframe>
-	<div class="container hero-content">
-		<p class="eyebrow">Software company</p>
-		<h1>Software that helps your business run <span class="grad-word">without limits.</span></h1>
-		<p class="lead">Spicola Technologies builds practical, modern software for growing businesses — including <strong>Limitless</strong>, our all-in-one B2B platform that brings your operations into a single place.</p>
-		<div class="hero-actions">
-			<a class="btn btn--primary" href="#products">Explore Limitless</a>
-			<a class="btn btn--secondary" href="#contact">Talk to us</a>
+	<div class="hero-stage">
+		<iframe class="hero-canvas" src="https://my.spline.design/boxeshover-EcuGaViqhLHlCAayBfp4gDFx/" frameborder="0" aria-hidden="true" tabindex="-1"></iframe>
+		<div class="hero-bg" aria-hidden="true"></div>
+		<div class="container hero-content">
+			<p class="eyebrow">Software company</p>
+			<h1>Software that helps your business run <span class="grad-word">without limits.</span></h1>
+			<p class="lead">Spicola Technologies builds practical, modern software for growing businesses — including <strong>Limitless</strong>, our all-in-one B2B platform that brings your operations into a single place.</p>
+			<div class="hero-actions">
+				<a class="btn btn--primary" href="#products">Explore Limitless</a>
+				<a class="btn btn--secondary" href="#contact">Talk to us</a>
+			</div>
 		</div>
+		<!-- Placeholder for the product UI that grows + rises on scroll. -->
+		<div class="hero-reveal" aria-hidden="true"><span class="hero-reveal__label">L</span></div>
 	</div>
 </section>
 
