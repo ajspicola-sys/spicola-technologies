@@ -23,30 +23,6 @@ get_header();
 	</div>
 </section>
 
-<!-- ===================== SPLINE 3D SHOWCASE ===================== -->
-<section class="spline-section" aria-label="Interactive 3D showcase">
-	<canvas class="spline-section__embed" id="spline-scene" aria-hidden="true"></canvas>
-	<div class="container center spline-section__content">
-		<h2>Grow with us.<br><span class="grad-word">Start your journey today.</span></h2>
-		<div class="hero-actions">
-			<a class="btn btn--primary" href="#contact">Get started</a>
-			<a class="btn btn--secondary" href="#products">Learn more</a>
-		</div>
-	</div>
-</section>
-<script type="module">
-	// Load the Spline scene into the canvas via the vanilla runtime (the
-	// non-React equivalent of @splinetool/react-spline). Swap the .splinecode
-	// URL below for your own from Spline → Export → Code if needed.
-	import { Application } from 'https://cdn.jsdelivr.net/npm/@splinetool/runtime/+esm';
-	var canvas = document.getElementById('spline-scene');
-	if ( canvas ) {
-		var app = new Application( canvas );
-		app.load( 'https://prod.spline.design/5hpAkB5NydnlQO02/scene.splinecode' )
-			.catch( function ( e ) { console.error( 'Spline scene failed to load:', e ); } );
-	}
-</script>
-
 <!-- ===================== WHAT WE DO ===================== -->
 <section class="section section--light" id="services">
 	<div class="container">

@@ -77,15 +77,6 @@ function spicola_assets() {
 		wp_get_theme()->get( 'Version' ),
 		true
 	);
-
-	// Footer 3D glass spheres (lazy-loaded WebGL; imports Three.js on demand).
-	wp_enqueue_script(
-		'spicola-footer-spheres',
-		get_template_directory_uri() . '/assets/footer-spheres.js',
-		array(),
-		wp_get_theme()->get( 'Version' ),
-		true
-	);
 }
 
 /**

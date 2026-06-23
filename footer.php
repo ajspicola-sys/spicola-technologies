@@ -9,7 +9,7 @@
 </main><!-- #content -->
 
 <footer class="site-footer">
-	<canvas class="footer-canvas" aria-hidden="true"></canvas>
+	<iframe class="footer-canvas" src="https://my.spline.design/animatedbackgroundgradientforweb-9C8uc7JmAhG62mGhl4Wf2MZv/" frameborder="0" aria-hidden="true" tabindex="-1"></iframe>
 	<div class="container">
 
 		<div class="footer-cta">

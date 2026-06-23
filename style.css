@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.4.3
+Version: 3.4.4
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -585,52 +585,15 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
 }
 
 /* ============================================================
-   Spline 3D showcase — full-bleed animated scene with overlaid
-   headline. Tall enough that the 3D actually shows (not just the
-   bottom-corner watermark like a short footer would).
+   Footer — big CTA + columns over a Spline animated-gradient
+   iframe background.
    ============================================================ */
-.spline-section {
-  position: relative; overflow: hidden;
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  background: #000;
-}
-/* The scene fills the section; pointer-events off so it never traps
-   page scroll — the gradient animates on its own anyway. */
-.spline-section__embed {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  border: 0; z-index: 0; pointer-events: none;
-}
-/* Headline + buttons sit on top, centered. */
-.spline-section__content {
-  position: relative; z-index: 1;
-}
-.spline-section__content h2 {
-  font-size: clamp(2.4rem, 7vw, 5rem); line-height: 1.02;
-  letter-spacing: -0.03em; margin-bottom: 1.8rem; color: #fff;
-}
-.spline-section__content .hero-actions {
-  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-}
+.site-footer { position: relative; overflow: hidden; background: #000; }
 
-/* ============================================================
-   Footer redesign (v3.4.0) — big CTA + columns over a 3D
-   glass-sphere WebGL canvas (footer-spheres.js)
-   ============================================================ */
-.site-footer { position: relative; overflow: hidden; background: var(--bg); }
-
-/* Base gradient: always present — also the fallback if WebGL is unavailable. */
-.site-footer::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(720px 380px at 80% 118%, rgba(111,201,216,0.16), transparent 70%),
-    radial-gradient(520px 320px at 10% -12%, rgba(47,163,182,0.10), transparent 72%);
-}
-/* The 3D scene sits behind the content; decorative + non-interactive. */
+/* The Spline iframe sits behind all content; non-interactive, decorative. */
 .footer-canvas {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 0; pointer-events: none; display: block;
+  z-index: 0; pointer-events: none; display: block; border: none;
 }
 .site-footer .container { position: relative; z-index: 1; }
 
