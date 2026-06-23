@@ -26,10 +26,8 @@ get_header();
 			<!-- Product mockup hugging the bottom of the card. Set via
 			     Appearance → Customize → Front Page Media; bundled PNG fallback. -->
 			<?php
-			$spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', '' );
-			if ( ! $spicola_hero_mockup ) {
-				$spicola_hero_mockup = get_template_directory_uri() . '/assets/hero-mockup.png';
-			}
+			// Uploaded to the Media Library; override via Appearance → Customize → Front Page Media.
+			$spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', 'https://spicolatechnologies.com/wp-content/uploads/2026/06/hero-mockup-scaled.png' );
 			?>
 			<div class="hero-placeholder" aria-hidden="true"><img src="<?php echo esc_url( $spicola_hero_mockup ); ?>" alt="" loading="lazy"></div>
 		</div>
