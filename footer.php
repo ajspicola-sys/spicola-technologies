@@ -23,8 +23,6 @@
 			</div>
 		</div>
 
-		<div class="footer-divider" aria-hidden="true"></div>
-
 		<div class="footer-grid">
 			<div class="footer-brand">
 				<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">

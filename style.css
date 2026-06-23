@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.4.5
+Version: 3.4.6
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -442,7 +442,7 @@ strong { color: var(--heading); font-weight: 600; }
 /* ============================================================
    Footer
    ============================================================ */
-.site-footer { background: var(--surface); border-top: 0.5px solid var(--line); padding: 56px 0 32px; margin-top: 48px; }
+.site-footer { background: var(--surface); padding: 56px 0 32px; }
 .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; margin-bottom: 32px; }
 .footer-brand { max-width: 320px; }
 .footer-brand .brand { margin-bottom: 14px; }
@@ -452,7 +452,7 @@ strong { color: var(--heading); font-weight: 600; }
 .footer-col li { margin-bottom: 8px; }
 .footer-col a { color: var(--body); font-size: 0.9rem; }
 .footer-col a:hover { color: var(--accent); }
-.footer-bottom { border-top: 0.5px solid var(--line); padding-top: 24px; text-align: center; color: var(--muted); font-size: 0.8125rem; }
+.footer-bottom { padding-top: 24px; text-align: center; color: var(--muted); font-size: 0.8125rem; }
 
 /* ============================================================
    Responsive
@@ -590,7 +590,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
    ============================================================ */
 .site-footer {
   position: relative; overflow: hidden; background: #000;
-  min-height: 80vh;                 /* give the Spline scene real height */
+  min-height: 100vh;                /* full-screen Spline scene */
   display: flex; align-items: flex-end;  /* content rests at the bottom */
 }
 
@@ -600,10 +600,18 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
   position: absolute; inset: 0; width: 100%; height: 100%;
   z-index: 0; pointer-events: auto; display: block; border: none;
 }
-/* Content sits above the scene but lets the mouse pass THROUGH to the
-   Spline iframe — only real links/buttons re-capture the pointer, so the
-   scene's hover effect works across the whole footer. */
-.site-footer .container { position: relative; z-index: 1; width: 100%; pointer-events: none; }
+/* Content sits above the scene in a frosted-glass panel so text stays
+   readable over the gradient. Mouse passes THROUGH to the Spline iframe;
+   only real links/buttons re-capture the pointer, so the scene's hover
+   effect works across the whole footer. */
+.site-footer .container {
+  position: relative; z-index: 1; pointer-events: none;
+  margin: 0 auto 40px; padding: 44px 40px;
+  background: rgba(8, 10, 12, 0.42);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backdrop-filter: blur(18px) saturate(125%);
+  border-radius: 22px;
+}
 .site-footer a,
 .site-footer .btn { pointer-events: auto; }
 
@@ -616,7 +624,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
 .footer-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .footer-cta__actions .btn svg { width: 17px; height: 17px; }
 
-.footer-divider { height: 1px; background: var(--line); margin: 44px 0 40px; }
+.footer-divider { display: none; }
 .footer-brand p { margin-bottom: 8px; }
 .footer-brand p a { color: var(--accent); }
 .footer-brand p a:hover { color: var(--accent-br); }
