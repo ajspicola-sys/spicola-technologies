@@ -32,12 +32,14 @@
 		// scroll before the header returns.
 		var ce = easeInOut(clamp(p / 0.78, 0, 1));
 		if (card) {
-			// Start narrower on desktop (55%) vs mobile (90%) so it looks right
-			// at both breakpoints without a separate media query.
-			var startW = window.innerWidth <= 640 ? 90 : 55;
+			// Three-tier starting width: mobile / tablet / desktop.
+			// Re-read on every apply() so resize works correctly.
+			var vw = window.innerWidth;
+			var startW = vw <= 640 ? 90 : vw <= 1024 ? 72 : 60;
+			var startR = vw <= 640 ? 20 : vw <= 1024 ? 26 : 30;
 			card.style.width = (startW + ce * (100 - startW)) + '%';
 			card.style.height = (90 + ce * 10) + '%';
-			var r = (30 * (1 - ce));
+			var r = startR * (1 - ce);
 			card.style.borderRadius = r + 'px ' + r + 'px 0 0';
 			card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
 		}

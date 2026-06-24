@@ -24,7 +24,7 @@
   }
   .hero-card {
     position: relative; overflow: hidden;
-    width: 55%; height: 90%; border-radius: 30px 30px 0 0;
+    width: 60%; height: 90%; border-radius: 30px 30px 0 0;
     background: #05060a;
     box-shadow: 0 50px 120px rgba(8, 20, 30, 0.22);
     will-change: width, height, border-radius;
@@ -140,12 +140,14 @@
       function apply(p) {
         // Card finishes expanding at 78%, leaving a little scroll before header.
         var ce = easeInOut(clamp(p / 0.78, 0, 1));
-        var startW = window.innerWidth <= 640 ? 90 : 55;
-        card.style.width = (startW + ce * (100 - startW)) + '%';  // 55%/90% -> 100%
-        card.style.height = (90 + ce * 10) + '%';          // 90% -> 100%
-        var r = (30 * (1 - ce));                         // top corners 30 -> 0
+        var vw = window.innerWidth;
+        var startW = vw <= 640 ? 90 : vw <= 1024 ? 72 : 60;
+        var startR = vw <= 640 ? 20 : vw <= 1024 ? 26 : 30;
+        card.style.width = (startW + ce * (100 - startW)) + '%';  // 60%/72%/90% -> 100%
+        var r = startR * (1 - ce);
         card.style.borderRadius = r + 'px ' + r + 'px 0 0';
-        card.style.boxShadow = '0 50px 120px rgba(20,16,60,' + (0.28 * (1 - ce)) + ')';
+        card.style.height = (90 + ce * 10) + '%';          // 90% -> 100%
+        card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
 
         // Headline + buttons: the more you scroll, the more they blur + fade +
         // rise away (and reverse as you scroll back). Scrubbed across [0.02, 0.45].

@@ -225,7 +225,7 @@ strong { color: var(--heading); font-weight: 600; }
 }
 .hero-card {
   position: relative; overflow: hidden;
-  width: 55%; height: 90%; border-radius: 30px 30px 0 0;
+  width: 60%; height: 90%; border-radius: 30px 30px 0 0;
   background: #05060a;
   box-shadow: 0 50px 120px rgba(8, 20, 30, 0.22);
   will-change: width, height, border-radius;
@@ -257,11 +257,11 @@ strong { color: var(--heading); font-weight: 600; }
 
 .hero h1 {
   margin-bottom: 1.1rem;
-  font-size: clamp(2.4rem, 5.6vw, 4rem);
+  font-size: clamp(2rem, 4.8vw, 3.75rem);
   letter-spacing: -0.035em;
-  line-height: 1.04;
+  line-height: 1.06;
 }
-.hero .lead { margin: 0 auto 1.6rem; font-size: 1.125rem; }
+.hero .lead { margin: 0 auto 1.6rem; font-size: clamp(1rem, 1.4vw, 1.125rem); }
 .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 /* Constellation dots/lines */
@@ -506,6 +506,11 @@ strong { color: var(--heading); font-weight: 600; }
 /* ============================================================
    Responsive
    ============================================================ */
+@media (max-width: 1024px) {
+  /* Hero tablet: matches JS tier (72% width, 26px radius). */
+  .hero-card { width: 72%; border-radius: 26px 26px 0 0; }
+  .hero-content { max-width: 600px; }
+}
 @media (max-width: 900px) {
   .grid-3, .posts { grid-template-columns: 1fr 1fr; }
   .feature { grid-template-columns: 1fr; gap: 32px; }
@@ -517,12 +522,12 @@ strong { color: var(--heading); font-weight: 600; }
   .nav-menu { display: none; }
   .stats-band { gap: 32px; padding: 40px 28px; }
 
-  /* Hero: card starts near full-width on mobile (JS also reads window.innerWidth). */
+  /* Hero mobile: matches JS tier (90% width, 20px radius). */
   .hero { height: 160vh; }
-  .hero-card { width: 90%; border-radius: 24px 24px 0 0; }
-  .hero-content { top: 8%; }
-  .hero h1 { font-size: clamp(1.75rem, 7vw, 2.4rem); }
-  .hero .lead { font-size: 0.9375rem; }
+  .hero-card { width: 90%; border-radius: 20px 20px 0 0; }
+  .hero-content { top: 8%; max-width: 92%; }
+  .hero h1 { font-size: clamp(1.6rem, 6.5vw, 2.2rem); }
+  .hero .lead { font-size: 0.9rem; }
   .hero-placeholder { width: 72%; }
 }
 
