@@ -26,7 +26,7 @@
 		<div class="footer-grid">
 			<div class="footer-brand">
 				<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img class="site-logo site-logo--light" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/Spicola-tech-White-scaled.png" alt="<?php bloginfo( 'name' ); ?>" height="40">
+					<img class="site-logo site-logo--light" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/Spicola-tech-White-scaled.png" alt="<?php bloginfo( 'name' ); ?>" height="48">
 				</a>
 				<p><?php bloginfo( 'description' ); ?></p>
 				<p><a href="mailto:joseph@spicolatechnologies.com">joseph@spicolatechnologies.com</a></p>
