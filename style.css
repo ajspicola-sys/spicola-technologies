@@ -225,7 +225,7 @@ strong { color: var(--heading); font-weight: 600; }
 }
 .hero-card {
   position: relative; overflow: hidden;
-  width: 60%; height: 90%; border-radius: 30px 30px 0 0;
+  width: 60%; height: 94%; border-radius: 30px 30px 0 0;
   background: #05060a;
   box-shadow: 0 50px 120px rgba(8, 20, 30, 0.22);
   will-change: width, height, border-radius;

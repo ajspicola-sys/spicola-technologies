@@ -24,7 +24,7 @@
   }
   .hero-card {
     position: relative; overflow: hidden;
-    width: 60%; height: 90%; border-radius: 30px 30px 0 0;
+    width: 60%; height: 94%; border-radius: 30px 30px 0 0;
     background: #05060a;
     box-shadow: 0 50px 120px rgba(8, 20, 30, 0.22);
     will-change: width, height, border-radius;
@@ -146,7 +146,7 @@
         card.style.width = (startW + ce * (100 - startW)) + '%';  // 60%/72%/90% -> 100%
         var r = startR * (1 - ce);
         card.style.borderRadius = r + 'px ' + r + 'px 0 0';
-        card.style.height = (90 + ce * 10) + '%';          // 90% -> 100%
+        card.style.height = (94 + ce * 6) + '%';          // 94% -> 100%
         card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
 
         // Headline + buttons: the more you scroll, the more they blur + fade +

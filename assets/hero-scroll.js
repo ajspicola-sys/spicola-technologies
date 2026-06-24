@@ -38,7 +38,7 @@
 			var startW = vw <= 640 ? 90 : vw <= 1024 ? 72 : 60;
 			var startR = vw <= 640 ? 20 : vw <= 1024 ? 26 : 30;
 			card.style.width = (startW + ce * (100 - startW)) + '%';
-			card.style.height = (90 + ce * 10) + '%';
+			card.style.height = (94 + ce * 6) + '%';
 			var r = startR * (1 - ce);
 			card.style.borderRadius = r + 'px ' + r + 'px 0 0';
 			card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
