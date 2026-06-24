@@ -32,20 +32,24 @@
 		// scroll before the header returns.
 		var ce = easeInOut(clamp(p / 0.78, 0, 1));
 		if (card) {
-			card.style.width = (55 + ce * 45) + '%';
+			// Start narrower on desktop (55%) vs mobile (90%) so it looks right
+			// at both breakpoints without a separate media query.
+			var startW = window.innerWidth <= 640 ? 90 : 55;
+			card.style.width = (startW + ce * (100 - startW)) + '%';
 			card.style.height = (90 + ce * 10) + '%';
 			var r = (30 * (1 - ce));
 			card.style.borderRadius = r + 'px ' + r + 'px 0 0';
 			card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
 		}
 
-		// Headline + buttons: the more you scroll, the more they blur/fade/rise
-		// (reverses as you scroll back). Scrubbed across [0.02, 0.45].
+		// Headline + buttons: blur/fade/rise out on scroll, reverse on scroll back.
+		// Disable pointer events once fully faded so invisible links can't be clicked.
 		if (content) {
 			var co = range(p, 0.02, 0.45);
 			content.style.opacity = String(1 - co);
 			content.style.filter = 'blur(' + (co * 12) + 'px)';
 			content.style.transform = 'translateY(' + (-co * 80) + 'px) scale(' + (1 - co * 0.03) + ')';
+			content.style.pointerEvents = co >= 1 ? 'none' : '';
 		}
 
 		// Site header: visible at top (transparent bg, dark text over white page),

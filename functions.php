@@ -69,14 +69,16 @@ function spicola_assets() {
 		true
 	);
 
-	// Scroll-driven hero reveal (headline rises, central element grows).
-	wp_enqueue_script(
-		'spicola-hero-scroll',
-		get_template_directory_uri() . '/assets/hero-scroll.js',
-		array(),
-		wp_get_theme()->get( 'Version' ),
-		true
-	);
+	// Scroll-driven hero reveal — front page only.
+	if ( is_front_page() ) {
+		wp_enqueue_script(
+			'spicola-hero-scroll',
+			get_template_directory_uri() . '/assets/hero-scroll.js',
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+	}
 
 	// Premium micro-interactions (cursor spotlight + magnetic buttons).
 	wp_enqueue_script(

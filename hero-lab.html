@@ -6,7 +6,7 @@
 <title>Hero Lab</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, -apple-system, sans-serif; background: #ffffff; color: #fff; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #ffffff; color: #14141A; }
 
   /* ============================================================
      HERO — dark card on a white page that expands to full width
@@ -26,8 +26,7 @@
     position: relative; overflow: hidden;
     width: 55%; height: 90%; border-radius: 30px 30px 0 0;
     background: #05060a;
-    box-shadow: 0 50px 120px rgba(20, 16, 60, 0.28);
-    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 50px 120px rgba(8, 20, 30, 0.22);
     will-change: width, height, border-radius;
   }
 
@@ -48,15 +47,11 @@
     border: 1px solid rgba(255, 255, 255, 0.55);
   }
   .hh-logo { font-weight: 800; letter-spacing: 0.02em; }
-  .hh-cta { background: rgba(109, 92, 255, 0.92); color: #fff; border-color: transparent; }
+  .hh-cta { background: linear-gradient(110deg, #5FD6E8 0%, #2FA3B6 100%); color: #06181C; border-color: transparent; }
 
-  /* Glow inside the card (swap for a Spline iframe later) */
   .hero-bg {
     position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(70vw 60vh at 50% 66%, rgba(109,92,255,0.20), transparent 72%),
-      radial-gradient(40vw 40vh at 50% 28%, rgba(150,90,255,0.09), transparent 74%),
-      #030409;
+    background: radial-gradient(60% 55% at 50% 62%, rgba(95,214,232,0.12), transparent 72%);
   }
 
   /* Centered headline overlay inside the card */
@@ -65,13 +60,13 @@
     z-index: 3; margin: 0 auto; max-width: 760px; padding: 0 24px;
     text-align: center; will-change: transform, opacity, filter;
   }
-  .eyebrow { font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #b6b3e4; margin-bottom: 1rem; }
-  h1 { font-size: clamp(2.2rem, 5.4vw, 4rem); line-height: 1.04; letter-spacing: -0.035em; margin: 0 auto 1.1rem; }
-  .lead { color: #c8c6e0; max-width: 46ch; margin: 0 auto 1.6rem; font-size: 1.05rem; }
+  .eyebrow { font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #6FC9D8; margin-bottom: 1rem; }
+  h1 { font-size: clamp(2.2rem, 5.4vw, 4rem); line-height: 1.04; letter-spacing: -0.035em; margin: 0 auto 1.1rem; color: #F6F7F9; }
+  .lead { color: #B7B9C4; max-width: 46ch; margin: 0 auto 1.6rem; font-size: 1.05rem; }
   .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-  .btn { border: 0; border-radius: 999px; padding: 12px 22px; font-size: 0.95rem; cursor: pointer; }
-  .btn--primary { background: #6d5cff; color: #fff; }
-  .btn--ghost { background: rgba(255,255,255,0.10); color: #fff; }
+  .btn { border: 0; border-radius: 11px; padding: 12px 22px; font-size: 0.95rem; cursor: pointer; }
+  .btn--primary { background: linear-gradient(110deg, #5FD6E8 0%, #2FA3B6 100%); color: #06181C; }
+  .btn--ghost { background: transparent; color: #F6F7F9; border: 0.5px solid #383848; }
 
   /* PLACEHOLDER — a "half rectangle" device hugging the bottom-center of the
      card. Static: it does NOT animate on scroll (the card expands around it).
@@ -145,7 +140,8 @@
       function apply(p) {
         // Card finishes expanding at 78%, leaving a little scroll before header.
         var ce = easeInOut(clamp(p / 0.78, 0, 1));
-        card.style.width = (55 + ce * 45) + '%';        // 55% -> 100%
+        var startW = window.innerWidth <= 640 ? 90 : 55;
+        card.style.width = (startW + ce * (100 - startW)) + '%';  // 55%/90% -> 100%
         card.style.height = (90 + ce * 10) + '%';          // 90% -> 100%
         var r = (30 * (1 - ce));                         // top corners 30 -> 0
         card.style.borderRadius = r + 'px ' + r + 'px 0 0';
