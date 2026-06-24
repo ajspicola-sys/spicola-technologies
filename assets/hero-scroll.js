@@ -33,7 +33,7 @@
 		var ce = easeInOut(clamp(p / 0.78, 0, 1));
 		if (card) {
 			card.style.width = (55 + ce * 45) + '%';
-			card.style.height = (98 + ce * 2) + '%';
+			card.style.height = (84 + ce * 16) + '%';
 			var r = (30 * (1 - ce));
 			card.style.borderRadius = r + 'px ' + r + 'px 0 0';
 			card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
@@ -51,7 +51,7 @@
 		// Site header: scrubs out across [0.03, 0.30], then back in across
 		// [0.88, 1] once the card is full-width.
 		if (header) {
-			var hv = clamp(1 - range(p, 0.03, 0.30) + range(p, 0.88, 1), 0, 1);
+			var hv = clamp(1 - range(p, 0, 0.12) + range(p, 0.88, 1), 0, 1);
 			header.style.opacity = String(hv);
 			header.style.filter = 'blur(' + ((1 - hv) * 8) + 'px)';
 			header.style.transform = 'translateY(' + (-(1 - hv) * 22) + 'px)';
