@@ -20,8 +20,8 @@
 	<div class="container nav">
 		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 			<?php if ( has_custom_logo() ) : the_custom_logo(); else : ?>
-				<img class="site-logo site-logo--light" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/Spicola-tech-White-scaled.png" alt="<?php bloginfo( 'name' ); ?>">
-				<img class="site-logo site-logo--dark" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/image_2026-06-24_144638294.png" alt="<?php bloginfo( 'name' ); ?>">
+				<img class="site-logo site-logo--light" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/Spicola-tech-White-scaled.png" alt="<?php bloginfo( 'name' ); ?>" height="40">
+				<img class="site-logo site-logo--dark" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/image_2026-06-24_144638294.png" alt="<?php bloginfo( 'name' ); ?>" height="40">
 			<?php endif; ?>
 		</a>
 
