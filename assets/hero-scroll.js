@@ -48,20 +48,15 @@
 			content.style.transform = 'translateY(' + (-co * 80) + 'px) scale(' + (1 - co * 0.03) + ')';
 		}
 
-		// Site header: scrubs out across [0.03, 0.30], then back in across
-		// [0.88, 1] once the card is full-width.
+		// Site header: hidden during the entire hero expansion; fades in only
+		// once the card is full-bleed [0.88, 1].
 		if (header) {
-			var hv = clamp(1 - range(p, 0, 0.12) + range(p, 0.88, 1), 0, 1);
+			var hv = range(p, 0.88, 1);
 			header.style.opacity = String(hv);
 			header.style.filter = 'blur(' + ((1 - hv) * 8) + 'px)';
 			header.style.transform = 'translateY(' + (-(1 - hv) * 22) + 'px)';
 			header.style.pointerEvents = hv < 0.5 ? 'none' : 'auto';
-
-			// First appearance (over the white hero) is see-through with black
-			// text; the second appearance (over the dark full-bleed card) is the
-			// standard dark bar. Swap happens past the midpoint, while the header
-			// is faded out, so there's no visible flash.
-			header.classList.toggle('is-dark', p >= 0.5);
+			header.classList.toggle('is-dark', true);
 		}
 	}
 
