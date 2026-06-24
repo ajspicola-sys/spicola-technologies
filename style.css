@@ -75,6 +75,9 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+/* Home page has a white hero — prevent the dark body bg bleeding through
+   the transparent header or any gap above the hero section. */
+body.home { background: #fff; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-head);
