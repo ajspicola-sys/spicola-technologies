@@ -158,8 +158,8 @@
         content.style.filter = 'blur(' + (co * 12) + 'px)';
         content.style.transform = 'translateY(' + (-co * 80) + 'px) scale(' + (1 - co * 0.03) + ')';
 
-        // Header: hidden during hero expansion, fades in only once full-bleed [0.88, 1].
-        var hv = range(p, 0.88, 1);
+        // Header: visible at top, fades out fast [0, 0.15], returns at full-bleed [0.88, 1].
+        var hv = clamp(1 - range(p, 0, 0.15) + range(p, 0.88, 1), 0, 1);
         header.style.opacity = String(hv);
         header.style.filter = 'blur(' + ((1 - hv) * 8) + 'px)';
         header.style.transform = 'translateX(-50%) translateY(' + (-(1 - hv) * 22) + 'px)';

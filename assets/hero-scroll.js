@@ -48,15 +48,16 @@
 			content.style.transform = 'translateY(' + (-co * 80) + 'px) scale(' + (1 - co * 0.03) + ')';
 		}
 
-		// Site header: hidden during the entire hero expansion; fades in only
-		// once the card is full-bleed [0.88, 1].
+		// Site header: visible at top (transparent bg, dark text over white page),
+		// fades out fast as scroll starts [0, 0.15], returns as dark bar once
+		// card is full-bleed [0.88, 1]. is-dark swaps at midpoint while invisible.
 		if (header) {
-			var hv = range(p, 0.88, 1);
+			var hv = clamp(1 - range(p, 0, 0.15) + range(p, 0.88, 1), 0, 1);
 			header.style.opacity = String(hv);
 			header.style.filter = 'blur(' + ((1 - hv) * 8) + 'px)';
 			header.style.transform = 'translateY(' + (-(1 - hv) * 22) + 'px)';
 			header.style.pointerEvents = hv < 0.5 ? 'none' : 'auto';
-			header.classList.toggle('is-dark', true);
+			header.classList.toggle('is-dark', p >= 0.5);
 		}
 	}
 
