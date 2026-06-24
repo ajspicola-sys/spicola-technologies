@@ -32,7 +32,7 @@
 		// scroll before the header returns.
 		var ce = easeInOut(clamp(p / 0.78, 0, 1));
 		if (card) {
-			card.style.width = (70 + ce * 30) + '%';
+			card.style.width = (55 + ce * 45) + '%';
 			card.style.height = (98 + ce * 2) + '%';
 			var r = (30 * (1 - ce));
 			card.style.borderRadius = r + 'px ' + r + 'px 0 0';
