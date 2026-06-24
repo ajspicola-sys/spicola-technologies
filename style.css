@@ -181,15 +181,18 @@ strong { color: var(--heading); font-weight: 600; }
   transition: background 0.3s var(--ease), backdrop-filter 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 
-/* Front page only: at the top the header sits over the raised dark card, so
-   its background is fully transparent (text keeps its default light colors).
-   Once scrolled into the full-bleed card, hero-scroll.js adds .is-dark and it
-   returns to the standard dark bar. */
+/* Front page only: header sits over a white page, so text must be dark.
+   Once the card expands full-bleed, hero-scroll.js adds .is-dark and the
+   standard dark frosted bar takes over. */
 .home .site-header:not(.is-dark) {
   background: transparent;
   backdrop-filter: none;
   border-bottom-color: transparent;
 }
+.home .site-header:not(.is-dark) .brand,
+.home .site-header:not(.is-dark) .brand:hover { color: #14141A; }
+.home .site-header:not(.is-dark) .nav-menu a { color: #4A4A5A; }
+.home .site-header:not(.is-dark) .nav-menu a:hover { color: #14141A; }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-head); font-weight: 600; font-size: 1.0625rem; color: var(--heading); letter-spacing: -0.01em; }
 .brand:hover { color: var(--heading); }
