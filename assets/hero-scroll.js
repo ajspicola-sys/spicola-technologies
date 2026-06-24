@@ -33,7 +33,7 @@
 		var ce = easeInOut(clamp(p / 0.78, 0, 1));
 		if (card) {
 			card.style.width = (55 + ce * 45) + '%';
-			card.style.height = (84 + ce * 16) + '%';
+			card.style.height = (90 + ce * 10) + '%';
 			var r = (30 * (1 - ce));
 			card.style.borderRadius = r + 'px ' + r + 'px 0 0';
 			card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
