@@ -26,8 +26,7 @@
 		<div class="footer-grid">
 			<div class="footer-brand">
 				<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<span class="mark"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.4 4.6 2.4 6.6 7 7-4.6.4-6.6 2.4-7 7-.4-4.6-2.4-6.6-7-7 4.6-.4 6.6-2.4 7-7z"/></svg></span>
-					<span><?php bloginfo( 'name' ); ?></span>
+					<img class="site-logo site-logo--light" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/Spicola-tech-White-scaled.png" alt="<?php bloginfo( 'name' ); ?>">
 				</a>
 				<p><?php bloginfo( 'description' ); ?></p>
 				<p><a href="mailto:joseph@spicolatechnologies.com">joseph@spicolatechnologies.com</a></p>

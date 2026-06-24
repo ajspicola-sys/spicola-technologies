@@ -211,6 +211,11 @@ strong { color: var(--heading); font-weight: 600; }
 .nav-menu a { color: var(--muted); font-weight: 500; font-size: 0.9375rem; }
 .nav-menu a:hover { color: var(--heading); }
 .nav-cta { margin-left: 6px; }
+.site-logo { height: 40px; width: auto; display: block; }
+.site-logo--dark { display: none; }
+/* Home: transparent header on white page → show dark logo */
+.home .site-header:not(.is-dark) .site-logo--light { display: none; }
+.home .site-header:not(.is-dark) .site-logo--dark  { display: block; }
 
 /* ============================================================
    Hero + Spica constellation motif
