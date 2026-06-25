@@ -50,19 +50,19 @@ get_header();
 			array(
 				'name'  => 'Owners &amp; Executives',
 				'desc'  => 'Unlock scalability and long-term profitability through the strategic integration of automation, AI, and operational control.',
-				'photo' => 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80',
+				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_365778073-scaled.jpeg',
 				'link'  => '#contact',
 			),
 			array(
 				'name'  => 'Operations &amp; Managers',
 				'desc'  => 'Keep your team aligned and your work on track with clear visibility into tasks, resources, and progress across every part of the business.',
-				'photo' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80',
+				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_603261551-scaled-e1782398539292.jpeg',
 				'link'  => '#contact',
 			),
 			array(
 				'name'  => 'Accountants',
 				'desc'  => 'Close the books faster with accurate, automated financials — job costing, reporting, and reconciliation in one connected system.',
-				'photo' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
+				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_378057687-scaled-e1782398562372.jpeg',
 				'link'  => '#contact',
 			),
 		);
