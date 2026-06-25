@@ -19,7 +19,9 @@ function spicola_blog_enabled() {
 	if ( defined( 'SPICOLA_BLOG_ENABLED' ) ) {
 		return (bool) SPICOLA_BLOG_ENABLED;
 	}
-	return (bool) get_theme_mod( 'spicola_blog_enabled', true );
+	// Off by default: brand-new site with no posts yet. Flip the "Enable blog"
+	// toggle (Customize → Site Features) when there's content to publish.
+	return (bool) get_theme_mod( 'spicola_blog_enabled', false );
 }
 
 /**
@@ -39,6 +41,8 @@ function spicola_legacy_redirects() {
 		'services' => '/#services',
 		'service'  => '/#services',
 		'demo'     => '/#contact',
+		// While the blog is off, send any stray /blog hit home instead of 404.
+		'blog'     => '/',
 	);
 }
 
@@ -80,7 +84,7 @@ function spicola_routing_customize( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'spicola_blog_enabled', array(
-		'default'           => true,
+		'default'           => false,
 		'sanitize_callback' => 'wp_validate_boolean',
 		'transport'         => 'refresh',
 	) );
