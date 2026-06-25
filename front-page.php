@@ -24,10 +24,10 @@ get_header();
 				</div>
 			</div>
 			<!-- Product mockup hugging the bottom of the card.
-			     Default: a real HTML/CSS Limitless dashboard (no image needed).
-			     Owner override: set a screenshot at Appearance → Customize →
-			     Front Page Media → "Hero mockup image" to swap in a real PNG. -->
-			<?php $spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', '' ); ?>
+			     Default: the bundled demo PNG. Override at Appearance → Customize →
+			     Front Page Media → "Hero mockup image". (The HTML/CSS dashboard
+			     fallback below only shows if the image URL is cleared.) -->
+			<?php $spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', 'https://spicolatechnologies.com/wp-content/uploads/2026/06/hero-mockup-scaled.png' ); ?>
 			<?php if ( $spicola_hero_mockup ) : ?>
 			<div class="hero-placeholder is-loading">
 				<img
