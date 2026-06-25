@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.8.9
+Version: 3.9.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -234,16 +234,24 @@ strong { color: var(--heading); font-weight: 600; }
   background: #05060a;
   box-shadow: 0 50px 120px rgba(8, 20, 30, 0.22);
   will-change: width, height, border-radius;
+  /* Flex column: the headline lives in a reserved region above the mockup,
+     which is pinned to the bottom. Guarantees they never collide. */
+  display: flex; flex-direction: column; align-items: center;
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background: radial-gradient(65% 60% at 50% 65%, rgba(95, 214, 232, 0.22), transparent 72%);
 }
 
-/* Centered headline overlay; JS scrubs it (blur + fade + rise) on scroll. */
+/* Headline block: takes the space above the mockup and centers its text in
+   it. Padding (incl. bottom) keeps text off the card edges and the mockup.
+   JS scrubs it (blur + fade + rise) on scroll via transform/opacity/filter. */
 .hero-content {
-  position: absolute; left: 0; right: 0; top: 13%;
-  z-index: 3; margin: 0 auto; max-width: 760px; padding: 0 24px;
+  position: relative; z-index: 3;
+  flex: 1 1 auto; min-height: 0;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  width: 100%; max-width: 760px;
+  padding: clamp(3.5rem, 11vh, 7rem) clamp(20px, 5vw, 40px) clamp(1.75rem, 4vh, 3rem);
   text-align: center; pointer-events: none;
   will-change: transform, opacity, filter;
 }
@@ -251,8 +259,8 @@ strong { color: var(--heading); font-weight: 600; }
 
 /* Product mockup image hugging the bottom of the card (static). */
 .hero-placeholder {
-  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
-  width: 58%; z-index: 2; line-height: 0;
+  flex: 0 0 auto; align-self: center;
+  width: 58%; max-width: 720px; z-index: 2; line-height: 0;
 }
 .hero-placeholder img {
   display: block; width: 100%; height: auto;
@@ -276,11 +284,11 @@ strong { color: var(--heading); font-weight: 600; }
 
 .hero h1 {
   margin-bottom: 1.1rem;
-  font-size: clamp(2rem, 4.8vw, 3.75rem);
+  font-size: clamp(1.7rem, 5vw, 3.75rem);
   letter-spacing: -0.035em;
   line-height: 1.06;
 }
-.hero .lead { margin: 0 auto 1.6rem; font-size: clamp(1rem, 1.4vw, 1.125rem); }
+.hero .lead { margin: 0 auto 1.6rem; font-size: clamp(0.95rem, 1.4vw, 1.125rem); }
 .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 /* Constellation dots/lines */
@@ -544,10 +552,29 @@ strong { color: var(--heading); font-weight: 600; }
   /* Hero mobile: matches JS tier (90% width, 20px radius). */
   .hero { height: 160vh; }
   .hero-card { width: 90%; border-radius: 20px 20px 0 0; }
-  .hero-content { top: 8%; max-width: 92%; }
+  .hero-content { max-width: 92%; }
   .hero h1 { font-size: clamp(1.6rem, 6.5vw, 2.2rem); }
   .hero .lead { font-size: 0.9rem; }
   .hero-placeholder { width: 72%; }
+}
+
+/* ----- Short-viewport guards: keep a comfortable gap between the headline
+   and the mockup when there isn't much vertical room. ----- */
+
+/* Short desktop/tablet heights (e.g. 1366×768 laptops): trim the big
+   headline and shrink the mockup. */
+@media (min-width: 641px) and (max-height: 860px) {
+  .hero-content { padding-top: clamp(3rem, 8vh, 5.5rem); padding-bottom: 1.25rem; }
+  .hero h1 { font-size: clamp(1.9rem, 4.2vw, 3rem); }
+  .hero-placeholder { width: 48%; }
+}
+
+/* Landscape phones: tighten the headline so it never grows into the mockup. */
+@media (max-height: 560px) {
+  .hero-content { padding-top: clamp(1.75rem, 6vh, 3rem); padding-bottom: 0.6rem; }
+  .hero h1 { font-size: clamp(1.35rem, 3.6vw, 2rem); margin-bottom: 0.55rem; }
+  .hero .lead { font-size: 0.82rem; margin-bottom: 0.8rem; }
+  .hero-placeholder { width: 32%; }
 }
 
 /* ============================================================

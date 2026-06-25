@@ -28,6 +28,9 @@
     background: #05060a;
     box-shadow: 0 50px 120px rgba(8, 20, 30, 0.22);
     will-change: width, height, border-radius;
+    /* Flex column: text lives in a reserved region above the mockup, which is
+       pinned to the bottom. Guarantees a gap so the two never collide. */
+    display: flex; flex-direction: column; align-items: center;
   }
 
   /* Mock header: transparent bar, black text, a frosted pill per item.
@@ -54,14 +57,18 @@
     background: radial-gradient(65% 60% at 50% 65%, rgba(95,214,232,0.22), transparent 72%);
   }
 
-  /* Centered headline overlay inside the card */
+  /* Headline block: takes the space above the mockup and centers its text in
+     it. Padding (incl. bottom) keeps text off the card edges and the mockup. */
   .hero-content {
-    position: absolute; left: 0; right: 0; top: 13%;
-    z-index: 3; margin: 0 auto; max-width: 760px; padding: 0 24px;
+    position: relative; z-index: 3;
+    flex: 1 1 auto; min-height: 0;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    width: 100%; max-width: 760px;
+    padding: clamp(3.5rem, 11vh, 7rem) clamp(20px, 5vw, 40px) clamp(1.75rem, 4vh, 3rem);
     text-align: center; will-change: transform, opacity, filter;
   }
-  h1 { font-size: clamp(2.2rem, 5.4vw, 4rem); line-height: 1.04; letter-spacing: -0.035em; margin: 0 auto 1.1rem; color: #F6F7F9; }
-  .lead { color: #B7B9C4; max-width: 46ch; margin: 0 auto 1.6rem; font-size: 1.05rem; }
+  h1 { font-size: clamp(1.7rem, 5.4vw, 4rem); line-height: 1.06; letter-spacing: -0.035em; margin: 0 auto 1.1rem; color: #F6F7F9; }
+  .lead { color: #B7B9C4; max-width: 46ch; margin: 0 auto 1.6rem; font-size: clamp(0.95rem, 1.4vw, 1.05rem); }
   .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
   .btn { border: 0; border-radius: 11px; padding: 12px 22px; font-size: 0.95rem; cursor: pointer; }
   .btn--primary { background: linear-gradient(110deg, #5FD6E8 0%, #2FA3B6 100%); color: #06181C; }
@@ -71,8 +78,8 @@
      card. Static: it does NOT animate on scroll (the card expands around it).
      Bottom corners bleed past the card's bottom edge (clipped by overflow). */
   .hero-placeholder {
-    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
-    width: 58%; z-index: 2; line-height: 0;
+    flex: 0 0 auto; align-self: center;
+    width: 58%; max-width: 720px; z-index: 2; line-height: 0;
   }
   .hero-placeholder img {
     display: block; width: 100%; height: auto;
@@ -91,6 +98,23 @@
     color: #8FD9E8; margin-bottom: 1rem; display: inline-block;
     background: rgba(111,201,216,0.20); border: 0.5px solid rgba(111,201,216,0.50);
     padding: 5px 12px; border-radius: 7px;
+  }
+
+  /* Short desktop/tablet heights (e.g. 1366×768 laptops): trim the big
+     headline and shrink the mockup so they keep a comfortable gap. */
+  @media (min-width: 641px) and (max-height: 860px) {
+    .hero-content { padding-top: clamp(3rem, 8vh, 5.5rem); padding-bottom: 1.25rem; }
+    h1 { font-size: clamp(1.9rem, 4.2vw, 3rem); }
+    .hero-placeholder { width: 48%; }
+  }
+
+  /* Short viewports (landscape phones): tighten the headline and shrink the
+     mockup so the text never grows down into it. */
+  @media (max-height: 560px) {
+    .hero-content { padding-top: clamp(1.75rem, 6vh, 3rem); padding-bottom: 0.6rem; }
+    h1 { font-size: clamp(1.35rem, 3.6vw, 2rem); margin-bottom: 0.55rem; }
+    .lead { font-size: 0.82rem; margin-bottom: 0.8rem; }
+    .hero-placeholder { width: 32%; }
   }
 
   .after { min-height: 100vh; background: #f3f4f8; color: #2a2c3a; display: grid; place-items: center; }
