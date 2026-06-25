@@ -34,85 +34,6 @@ get_header();
 	</div>
 </section>
 
-<!-- ===================== WHO WE SERVE ===================== -->
-<section class="section section--light personas" id="who-we-serve">
-	<div class="container">
-		<div class="center" style="margin-bottom:48px;">
-			<p class="eyebrow">Who we serve</p>
-			<h2>Built for the people who run the business</h2>
-			<p class="lead">Limitless adapts to every role on your team — giving each person exactly the tools and clarity they need.</p>
-		</div>
-
-		<?php
-		// Persona slides. Photos are placeholders — swap via the Media Library
-		// or replace the URLs below.
-		$spicola_personas = array(
-			array(
-				'name'  => 'Owners &amp; Executives',
-				'desc'  => 'Unlock scalability and long-term profitability through the strategic integration of automation, AI, and operational control.',
-				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_365778073-scaled.jpeg',
-				'link'  => '#contact',
-			),
-			array(
-				'name'  => 'Operations &amp; Managers',
-				'desc'  => 'Keep your team aligned and your work on track with clear visibility into tasks, resources, and progress across every part of the business.',
-				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_603261551-scaled-e1782398539292.jpeg',
-				'link'  => '#contact',
-			),
-			array(
-				'name'  => 'Accountants',
-				'desc'  => 'Close the books faster with accurate, automated financials — job costing, reporting, and reconciliation in one connected system.',
-				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_378057687-scaled-e1782398562372.jpeg',
-				'link'  => '#contact',
-			),
-		);
-		?>
-
-		<div class="personas-card" data-personas>
-			<div class="personas-glow" aria-hidden="true"></div>
-
-			<div class="persona-dots" aria-hidden="true">
-				<?php foreach ( $spicola_personas as $j => $unused ) : ?>
-				<span class="<?php echo 0 === $j ? 'is-on' : ''; ?>"></span>
-				<?php endforeach; ?>
-			</div>
-
-			<div class="personas-stage">
-				<?php foreach ( $spicola_personas as $i => $persona ) : ?>
-				<article class="persona<?php echo 0 === $i ? ' is-active' : ''; ?>" id="persona-<?php echo (int) $i; ?>" role="tabpanel" aria-hidden="<?php echo 0 === $i ? 'false' : 'true'; ?>">
-					<div class="persona-info">
-						<h3 class="persona-name"><?php echo wp_kses_post( $persona['name'] ); ?></h3>
-						<p class="persona-desc"><?php echo esc_html( $persona['desc'] ); ?></p>
-						<a class="persona-link" href="<?php echo esc_url( $persona['link'] ); ?>">Learn more
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-						</a>
-					</div>
-					<div class="persona-photo">
-						<img src="<?php echo esc_url( $persona['photo'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $persona['name'] ) ); ?>" loading="lazy">
-					</div>
-				</article>
-				<?php endforeach; ?>
-			</div>
-
-			<div class="personas-foot">
-				<div class="personas-tabs" role="tablist" aria-label="Who we serve">
-					<?php foreach ( $spicola_personas as $i => $persona ) : ?>
-					<button type="button" class="persona-tab<?php echo 0 === $i ? ' is-active' : ''; ?>" data-index="<?php echo (int) $i; ?>" role="tab" aria-controls="persona-<?php echo (int) $i; ?>" aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"><?php echo wp_kses_post( $persona['name'] ); ?></button>
-					<?php endforeach; ?>
-				</div>
-				<div class="personas-nav">
-					<button type="button" class="persona-arrow" data-dir="-1" aria-label="Previous">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-					</button>
-					<button type="button" class="persona-arrow" data-dir="1" aria-label="Next">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
 <!-- ===================== WHAT WE DO ===================== -->
 <section class="section section--light" id="services">
 	<div class="container">
@@ -221,6 +142,83 @@ get_header();
 				</div>
 			</div>
 			<?php endif; ?>
+		</div>
+	</div>
+</section>
+
+<!-- ===================== WHO WE SERVE ===================== -->
+<section class="section section--light personas" id="who-we-serve">
+	<div class="container">
+		<div class="center" style="margin-bottom:48px;">
+			<p class="eyebrow">Who we serve</p>
+			<h2>Built for the people who run the business</h2>
+			<p class="lead">Limitless adapts to every role on your team — giving each person exactly the tools and clarity they need.</p>
+		</div>
+
+		<?php
+		$spicola_personas = array(
+			array(
+				'name'  => 'Owners &amp; Executives',
+				'desc'  => 'Unlock scalability and long-term profitability through the strategic integration of automation, AI, and operational control.',
+				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_365778073-scaled.jpeg',
+				'link'  => '#contact',
+			),
+			array(
+				'name'  => 'Operations &amp; Managers',
+				'desc'  => 'Keep your team aligned and your work on track with clear visibility into tasks, resources, and progress across every part of the business.',
+				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_603261551-scaled-e1782398539292.jpeg',
+				'link'  => '#contact',
+			),
+			array(
+				'name'  => 'Accountants',
+				'desc'  => 'Close the books faster with accurate, automated financials — job costing, reporting, and reconciliation in one connected system.',
+				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_378057687-scaled-e1782398562372.jpeg',
+				'link'  => '#contact',
+			),
+		);
+		?>
+
+		<div class="personas-card" data-personas>
+			<div class="personas-glow" aria-hidden="true"></div>
+
+			<div class="persona-dots" aria-hidden="true">
+				<?php foreach ( $spicola_personas as $j => $unused ) : ?>
+				<span class="<?php echo 0 === $j ? 'is-on' : ''; ?>"></span>
+				<?php endforeach; ?>
+			</div>
+
+			<div class="personas-stage">
+				<?php foreach ( $spicola_personas as $i => $persona ) : ?>
+				<article class="persona<?php echo 0 === $i ? ' is-active' : ''; ?>" id="persona-<?php echo (int) $i; ?>" role="tabpanel" aria-hidden="<?php echo 0 === $i ? 'false' : 'true'; ?>">
+					<div class="persona-info">
+						<h3 class="persona-name"><?php echo wp_kses_post( $persona['name'] ); ?></h3>
+						<p class="persona-desc"><?php echo esc_html( $persona['desc'] ); ?></p>
+						<a class="persona-link" href="<?php echo esc_url( $persona['link'] ); ?>">Learn more
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+						</a>
+					</div>
+					<div class="persona-photo">
+						<img src="<?php echo esc_url( $persona['photo'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $persona['name'] ) ); ?>" loading="lazy">
+					</div>
+				</article>
+				<?php endforeach; ?>
+			</div>
+
+			<div class="personas-foot">
+				<div class="personas-tabs" role="tablist" aria-label="Who we serve">
+					<?php foreach ( $spicola_personas as $i => $persona ) : ?>
+					<button type="button" class="persona-tab<?php echo 0 === $i ? ' is-active' : ''; ?>" data-index="<?php echo (int) $i; ?>" role="tab" aria-controls="persona-<?php echo (int) $i; ?>" aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"><?php echo wp_kses_post( $persona['name'] ); ?></button>
+					<?php endforeach; ?>
+				</div>
+				<div class="personas-nav">
+					<button type="button" class="persona-arrow" data-dir="-1" aria-label="Previous">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+					</button>
+					<button type="button" class="persona-arrow" data-dir="1" aria-label="Next">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
