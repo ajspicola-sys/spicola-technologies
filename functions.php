@@ -7,6 +7,16 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+/**
+ * Load split-out theme modules. Keeps functions.php focused on setup while
+ * editable content (inc/site-data.php) and feature logic live in their own
+ * files. Markup lives in template-parts/.
+ */
+require get_template_directory() . '/inc/site-data.php';
+require get_template_directory() . '/inc/seo.php';
+require get_template_directory() . '/inc/form.php';
+require get_template_directory() . '/inc/routing.php';
+
 if ( ! function_exists( 'spicola_setup' ) ) :
 	function spicola_setup() {
 		// Let WordPress manage the document title.
@@ -85,6 +95,14 @@ function spicola_assets() {
 			wp_get_theme()->get( 'Version' ),
 			true
 		);
+		// Demo request form: progressive enhancement (inline states, no reload).
+		wp_enqueue_script(
+			'spicola-demo-form',
+			get_template_directory_uri() . '/assets/demo-form.js',
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
 	}
 
 	// Premium micro-interactions (cursor spotlight + magnetic buttons).
@@ -126,63 +144,8 @@ add_filter( 'wp_resource_hints', 'spicola_resource_hints', 10, 2 );
 add_action( 'wp_enqueue_scripts', 'spicola_assets' );
 
 /**
- * Open Graph + Twitter Card meta, and an SVG favicon fallback.
- * Makes shared links look polished and gives the tab a branded icon
- * even before a Site Icon is uploaded (Appearance → Customize → Site Identity).
+ * SEO, Open Graph, JSON-LD, favicons and robots live in inc/seo.php.
  */
-function spicola_head_meta() {
-	if ( is_admin() ) {
-		return;
-	}
-
-	if ( is_singular() ) {
-		$post = get_queried_object();
-		$url  = get_permalink( $post );
-		$type = 'article';
-		$desc = $post->post_excerpt
-			? $post->post_excerpt
-			: wp_trim_words( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ), 28, '…' );
-	} else {
-		$url  = home_url( '/' );
-		$type = 'website';
-		$desc = get_bloginfo( 'description', 'display' );
-	}
-
-	$title = wp_get_document_title();
-	$name  = get_bloginfo( 'name', 'display' );
-
-	$image = '';
-	if ( has_custom_logo() ) {
-		$img = wp_get_attachment_image_src( (int) get_theme_mod( 'custom_logo' ), 'full' );
-		if ( $img ) {
-			$image = $img[0];
-		}
-	}
-	if ( ! $image && function_exists( 'get_site_icon_url' ) && has_site_icon() ) {
-		$image = get_site_icon_url( 512 );
-	}
-
-	echo "\n";
-	printf( '<meta property="og:type" content="%s">' . "\n", esc_attr( $type ) );
-	printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( $name ) );
-	printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $title ) );
-	printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $desc ) );
-	printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $url ) );
-	printf( '<meta name="twitter:card" content="%s">' . "\n", $image ? 'summary_large_image' : 'summary' );
-	printf( '<meta name="twitter:title" content="%s">' . "\n", esc_attr( $title ) );
-	printf( '<meta name="twitter:description" content="%s">' . "\n", esc_attr( $desc ) );
-	if ( $image ) {
-		printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $image ) );
-		printf( '<meta name="twitter:image" content="%s">' . "\n", esc_url( $image ) );
-	}
-
-	// Branded SVG favicon fallback (only when no Site Icon is set).
-	if ( ! has_site_icon() ) {
-		$svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#0A0A0D'/><path d='M12 5c.3 3.3 1.7 4.7 5 5-3.3.3-4.7 1.7-5 5-.3-3.3-1.7-4.7-5-5 3.3-.3 4.7-1.7 5-5z' fill='#5FD6E8'/></svg>";
-		echo '<link rel="icon" href="data:image/svg+xml,' . rawurlencode( $svg ) . '">' . "\n";
-	}
-}
-add_action( 'wp_head', 'spicola_head_meta', 5 );
 
 /**
  * Set a sensible content width.
@@ -260,7 +223,9 @@ function spicola_default_menu() {
 	echo '<ul class="nav-menu">';
 	echo '<li><a href="' . esc_url( home_url( '/#products' ) ) . '">Products</a></li>';
 	echo '<li><a href="' . esc_url( home_url( '/#about' ) ) . '">About</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
+	if ( spicola_blog_enabled() ) {
+		echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
+	}
 	echo '<li><a href="' . esc_url( home_url( '/#contact' ) ) . '">Contact</a></li>';
 	echo '</ul>';
 }

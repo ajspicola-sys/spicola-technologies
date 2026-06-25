@@ -14,10 +14,15 @@
 		'.card',
 		'.feature > div',
 		'.feature-visual',
-		'.stats-band .stat',
-		'.cta-band > *',
+		'.cta-inner > *:not(.cta-glow)',
 		'.post-card',
-		'.section .grid-2 > *'
+		'.section .grid-2 > *',
+		'.services-intro > *',
+		'.service-item',
+		'.step',
+		'.testimonial',
+		'.about-layout > *',
+		'.persona-info',
 	];
 
 	var nodes = [];

@@ -23,16 +23,29 @@ get_header();
 					<a class="btn btn--secondary" href="#contact">Talk to us</a>
 				</div>
 			</div>
-			<!-- Product mockup hugging the bottom of the card. Set via
-			     Appearance → Customize → Front Page Media; bundled PNG fallback. -->
+			<!-- Real product-screenshot slot, hugging the bottom of the card.
+			     TODO (owner): replace the source with an actual Limitless
+			     dashboard screenshot via Appearance → Customize → Front Page
+			     Media → "Hero mockup image" (the bundled image is a stand-in).
+			     A shimmer placeholder holds the space while it loads. -->
 			<?php
-			// Uploaded to the Media Library; override via Appearance → Customize → Front Page Media.
 			$spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', 'https://spicolatechnologies.com/wp-content/uploads/2026/06/hero-mockup-scaled.png' );
 			?>
-			<div class="hero-placeholder" aria-hidden="true"><img src="<?php echo esc_url( $spicola_hero_mockup ); ?>" alt="" loading="lazy"></div>
+			<div class="hero-placeholder is-loading">
+				<img
+					src="<?php echo esc_url( $spicola_hero_mockup ); ?>"
+					alt="Limitless dashboard showing bookings, invoicing and reporting"
+					width="1600" height="1000"
+					loading="lazy" decoding="async"
+					onload="this.parentNode.classList.remove('is-loading')">
+			</div>
 		</div>
 	</div>
 </section>
+
+<!-- ===================== SOCIAL PROOF (conditional) =====================
+     Renders only when real logos/stats exist — see template-parts/social-proof.php. -->
+<?php get_template_part( 'template-parts/social-proof' ); ?>
 
 <!-- ===================== WHAT WE DO ===================== -->
 <section class="section section--light" id="services">
@@ -92,30 +105,52 @@ get_header();
 				<p class="eyebrow">Our flagship product</p>
 				<h2>Everything your business needs, <span class="grad-word">in one place.</span></h2>
 				<p class="lead">Limitless is the all-in-one B2B platform built for growing businesses — replacing the patchwork of tools with a single, connected system your whole team can actually use.</p>
+				<!-- Each capability is paired with a concrete benefit line.
+				     TODO (owner): for an even stronger showcase, add a small real
+				     Limitless UI screenshot per capability (a __shot slot) once
+				     screenshots are available. -->
 				<div class="feature-tiles">
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-						<span>Online booking &amp; scheduling</span>
+						<span class="feature-tile__text">
+							<span class="feature-tile__title">Online booking &amp; scheduling</span>
+							<span class="feature-tile__benefit">Clients book themselves around the clock — no phone tag, no double-bookings.</span>
+						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-						<span>Payments, invoices &amp; memberships</span>
+						<span class="feature-tile__text">
+							<span class="feature-tile__title">Payments, invoices &amp; memberships</span>
+							<span class="feature-tile__benefit">Get paid faster with cards, recurring billing and memberships in one flow.</span>
+						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-						<span>Review aggregation &amp; AI replies</span>
+						<span class="feature-tile__text">
+							<span class="feature-tile__title">Review aggregation &amp; AI replies</span>
+							<span class="feature-tile__benefit">See every review in one place and respond in seconds with AI-drafted replies.</span>
+						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-						<span>SMS, email &amp; AI messaging</span>
+						<span class="feature-tile__text">
+							<span class="feature-tile__title">SMS, email &amp; AI messaging</span>
+							<span class="feature-tile__benefit">Reach customers where they are — and let AI handle the routine back-and-forth.</span>
+						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-						<span>Marketing &amp; customer loyalty</span>
+						<span class="feature-tile__text">
+							<span class="feature-tile__title">Marketing &amp; customer loyalty</span>
+							<span class="feature-tile__benefit">Turn one-time buyers into regulars with built-in campaigns and loyalty.</span>
+						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-						<span>Real-time reporting &amp; analytics</span>
+						<span class="feature-tile__text">
+							<span class="feature-tile__title">Real-time reporting &amp; analytics</span>
+							<span class="feature-tile__benefit">Know exactly how the business is doing with live numbers, not month-old guesses.</span>
+						</span>
 					</div>
 				</div>
 				<a class="btn btn--primary" href="#contact">Request a demo</a>
@@ -205,7 +240,12 @@ get_header();
 			</div>
 		</div>
 		<div class="steps-cta">
+			<?php $spicola_calendar = spicola_scheduling_url(); ?>
+			<?php if ( $spicola_calendar ) : ?>
+			<a class="btn btn--primary" href="<?php echo esc_url( $spicola_calendar ); ?>" target="_blank" rel="noopener">Book your free call</a>
+			<?php else : ?>
 			<a class="btn btn--primary" href="#contact">Book your free call</a>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
@@ -223,19 +263,19 @@ get_header();
 		$spicola_personas = array(
 			array(
 				'name'  => 'Owners &amp; Executives',
-				'desc'  => 'Unlock scalability and long-term profitability through the strategic integration of automation, AI, and operational control.',
+				'desc'  => 'See the whole business at a glance: revenue, bookings and reviews on one live dashboard — so you can make the call without chasing five different tools.',
 				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_365778073-scaled.jpeg',
 				'link'  => '#contact',
 			),
 			array(
 				'name'  => 'Operations &amp; Managers',
-				'desc'  => 'Keep your team aligned and your work on track with clear visibility into tasks, resources, and progress across every part of the business.',
+				'desc'  => 'Keep every job, shift and hand-off on track with shared schedules and real-time status — so nothing slips and no one has to ask "who\'s doing what?"',
 				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_603261551-scaled-e1782398539292.jpeg',
 				'link'  => '#contact',
 			),
 			array(
 				'name'  => 'Accountants',
-				'desc'  => 'Close the books faster with accurate, automated financials — job costing, reporting, and reconciliation in one connected system.',
+				'desc'  => 'Close the books faster: payments, invoices and job costing reconcile automatically in one connected ledger — no exports, no end-of-month scramble.',
 				'photo' => 'http://spicolatechnologies.com/wp-content/uploads/2026/06/AdobeStock_378057687-scaled-e1782398562372.jpeg',
 				'link'  => '#contact',
 			),
@@ -318,65 +358,23 @@ get_header();
 	</div>
 </section>
 
-<!-- ===================== TESTIMONIALS ===================== -->
-<section class="section section--gray" id="testimonials">
-	<div class="container">
-		<div class="center" style="margin-bottom:56px;">
-			<p class="eyebrow">Client stories</p>
-			<h2>Trusted by growing businesses</h2>
-		</div>
-		<div class="testimonials">
-			<div class="testimonial">
-				<div class="testimonial__stars" aria-label="5 out of 5 stars">
-					<?php for ( $s = 0; $s < 5; $s++ ) : ?>
-					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-					<?php endfor; ?>
-				</div>
-				<p class="testimonial__quote">Limitless brought everything into one place. We stopped juggling five different tools and our whole team finally knows what's going on.</p>
-				<div class="testimonial__author">
-					<strong class="testimonial__name">— Replace with real name</strong>
-					<span class="testimonial__role">Owner, Your Client Business</span>
-				</div>
-			</div>
-			<div class="testimonial">
-				<div class="testimonial__stars" aria-label="5 out of 5 stars">
-					<?php for ( $s = 0; $s < 5; $s++ ) : ?>
-					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-					<?php endfor; ?>
-				</div>
-				<p class="testimonial__quote">The onboarding was the smoothest we've ever experienced. They had everything set up for our workflow before we even logged in for the first time.</p>
-				<div class="testimonial__author">
-					<strong class="testimonial__name">— Replace with real name</strong>
-					<span class="testimonial__role">Operations Manager, Your Client Business</span>
-				</div>
-			</div>
-			<div class="testimonial">
-				<div class="testimonial__stars" aria-label="5 out of 5 stars">
-					<?php for ( $s = 0; $s < 5; $s++ ) : ?>
-					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-					<?php endfor; ?>
-				</div>
-				<p class="testimonial__quote">We close the books in half the time now. The job costing and reporting alone paid for itself in the first month.</p>
-				<div class="testimonial__author">
-					<strong class="testimonial__name">— Replace with real name</strong>
-					<span class="testimonial__role">Accountant, Your Client Business</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<!-- ===================== TESTIMONIALS (client stories) =====================
+     Data-driven + conditionally rendered: hidden entirely until real quotes
+     exist. See template-parts/testimonials.php and inc/site-data.php. -->
+<?php get_template_part( 'template-parts/testimonials' ); ?>
 
-<!-- ===================== CTA / CONTACT ===================== -->
+<!-- ===================== CTA / CONTACT (demo request form) ===================== -->
 <section class="section cta-section" id="contact">
 	<div class="container">
-		<div class="cta-inner">
+		<div class="cta-inner cta-inner--form">
 			<div class="cta-glow" aria-hidden="true"></div>
-			<p class="eyebrow">Get started</p>
-			<h2>Ready to run your business<br><span class="grad-word">without limits?</span></h2>
-			<p>Whether you're exploring Limitless or need a custom build, we'd love to hear about your business and what's slowing it down.</p>
-			<div class="cta-actions">
-				<a class="btn btn--primary" href="mailto:joseph@spicolatechnologies.com">Request a demo</a>
-				<a class="btn btn--secondary" href="mailto:joseph@spicolatechnologies.com">joseph@spicolatechnologies.com</a>
+			<div class="cta-copy">
+				<p class="eyebrow">Get started</p>
+				<h2>Ready to run your business<br><span class="grad-word">without limits?</span></h2>
+				<p>Whether you're exploring Limitless or need a custom build, tell us a little about your business and we'll be in touch.</p>
+			</div>
+			<div class="cta-form">
+				<?php get_template_part( 'template-parts/demo-form' ); ?>
 			</div>
 		</div>
 	</div>
