@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.9.7
+Version: 3.9.8
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -721,6 +721,12 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
     0 30px 80px rgba(20, 24, 40, 0.20),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   color: rgba(226, 229, 238, 0.82);
+  /* Left dots column + main content */
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "dots stage" "dots foot";
+  column-gap: clamp(18px, 2.8vw, 32px);
 }
 /* Soft cyan light inside the glass for depth (static). */
 .personas-glow {
@@ -731,9 +737,9 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
 }
 .personas-card > *:not(.personas-glow) { position: relative; z-index: 1; }
 
-/* One persona panel: info left, photo right. All panels live in the DOM;
-   inactive ones are absolute + opacity-0 so they crossfade without popping. */
-.personas-stage { position: relative; }
+/* One persona panel: info left, photo right. Inactive panels sit below
+   (translateY +50px) ready to slide up; exiting panels fly out upward. */
+.personas-stage { grid-area: stage; position: relative; }
 .persona {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
@@ -741,21 +747,30 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
   align-items: center;
   position: absolute; top: 0; left: 0; right: 0;
   opacity: 0; pointer-events: none;
-  transform: translateY(8px);
-  transition: opacity 0.36s var(--ease), transform 0.36s var(--ease);
+  transform: translateY(50px);
+  transition: opacity 0.42s var(--ease), transform 0.42s var(--ease);
 }
 .persona.is-active {
   position: relative;
   opacity: 1; pointer-events: auto;
   transform: none;
 }
+.persona.is-exiting {
+  transform: translateY(-50px);
+  opacity: 0;
+}
 
-.persona-dots { display: flex; gap: 7px; margin-bottom: 20px; }
+.persona-dots {
+  grid-area: dots;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px;
+}
 .persona-dots span {
   width: 7px; height: 7px; border-radius: 999px;
   background: rgba(255, 255, 255, 0.22); transition: all 0.35s var(--ease);
 }
-.persona-dots span.is-on { width: 22px; background: var(--accent-br); }
+.persona-dots span.is-on { height: 22px; background: var(--accent-br); }
 
 .personas .persona-name {
   color: #F6F7F9;
@@ -787,6 +802,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
 
 /* Footer row: tabs left, prev/next arrows right. */
 .personas-foot {
+  grid-area: foot;
   display: flex; align-items: center; justify-content: space-between;
   gap: 20px; flex-wrap: wrap;
   margin-top: clamp(26px, 3.4vw, 42px); padding-top: 24px;
@@ -821,6 +837,10 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
 .persona-arrow:active { transform: translateY(0); }
 
 @media (max-width: 760px) {
+  .personas-card {
+    grid-template-columns: 14px 1fr;
+    column-gap: 14px;
+  }
   .persona { grid-template-columns: 1fr; gap: 24px; }
   .persona-photo { order: -1; }            /* photo on top when stacked */
   .personas .persona-desc { max-width: none; }

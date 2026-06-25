@@ -17,11 +17,24 @@
 
 		function show(i) {
 			i = (i + panels.length) % panels.length;
-			panels.forEach(function (p, idx) {
-				var on = idx === i;
-				p.classList.toggle('is-active', on);
-				p.setAttribute('aria-hidden', on ? 'false' : 'true');
-			});
+			if (i === current) { return; }
+
+			// Fly the outgoing panel upward.
+			var outgoing = panels[current];
+			outgoing.classList.remove('is-active');
+			outgoing.classList.add('is-exiting');
+			outgoing.setAttribute('aria-hidden', 'true');
+			outgoing.addEventListener('transitionend', function cleanup() {
+				outgoing.classList.remove('is-exiting');
+				outgoing.removeEventListener('transitionend', cleanup);
+			}, { once: true });
+
+			// Slide the incoming panel up from below.
+			var incoming = panels[i];
+			incoming.classList.remove('is-exiting');
+			incoming.classList.add('is-active');
+			incoming.setAttribute('aria-hidden', 'false');
+
 			tabs.forEach(function (t, idx) {
 				var on = idx === i;
 				t.classList.toggle('is-active', on);
