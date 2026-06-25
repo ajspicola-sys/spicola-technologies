@@ -79,7 +79,7 @@
      Bottom corners bleed past the card's bottom edge (clipped by overflow). */
   .hero-placeholder {
     flex: 0 0 auto; align-self: center;
-    width: 58%; max-width: 720px; z-index: 2; line-height: 0;
+    width: 58%; z-index: 2; line-height: 0;
   }
   .hero-placeholder img {
     display: block; width: 100%; height: auto;
@@ -161,6 +161,7 @@
       var card = document.querySelector('.hero-card');
       var header = document.querySelector('.hero-header');
       var content = document.querySelector('.hero-content');
+      var placeholder = document.querySelector('.hero-placeholder');
 
       function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
       function easeInOut(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
@@ -184,6 +185,13 @@
         card.style.borderRadius = r + 'px ' + r + 'px 0 0';
         card.style.height = (94 + ce * 6) + '%';          // 94% -> 100%
         card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
+
+        // Mockup grows from its resting size out toward the card edges as the
+        // headline fades. Start mirrors the CSS tiers; end fills the card.
+        var pvh = window.innerHeight;
+        var startPh = pvh <= 560 ? 32 : (vw >= 641 && pvh <= 860) ? 48 : vw <= 640 ? 72 : 58;
+        var endPh = vw <= 640 ? 82 : 64;
+        placeholder.style.width = (startPh + ce * (endPh - startPh)) + '%';
 
         // Headline + buttons: the more you scroll, the more they blur + fade +
         // rise away (and reverse as you scroll back). Scrubbed across [0.02, 0.45].

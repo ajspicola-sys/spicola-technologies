@@ -15,6 +15,7 @@
 	if (!hero) { return; }
 	var card = hero.querySelector('.hero-card');
 	var content = hero.querySelector('.hero-content');
+	var placeholder = hero.querySelector('.hero-placeholder');
 	var header = document.querySelector('.site-header');
 
 	function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
@@ -42,6 +43,16 @@
 			var r = startR * (1 - ce);
 			card.style.borderRadius = r + 'px ' + r + 'px 0 0';
 			card.style.boxShadow = '0 50px 120px rgba(8,20,30,' + (0.22 * (1 - ce)) + ')';
+		}
+
+		// Mockup grows from its resting size (which leaves room for the headline)
+		// out toward the card edges as the headline fades away. Start size mirrors
+		// the CSS tiers; end size fills the now-full-bleed card.
+		if (placeholder) {
+			var pvw = window.innerWidth, pvh = window.innerHeight;
+			var startPh = pvh <= 560 ? 32 : (pvw >= 641 && pvh <= 860) ? 48 : pvw <= 640 ? 72 : 58;
+			var endPh = pvw <= 640 ? 82 : 64;
+			placeholder.style.width = (startPh + ce * (endPh - startPh)) + '%';
 		}
 
 		// Headline + buttons: blur/fade/rise out on scroll, reverse on scroll back.
