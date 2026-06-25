@@ -87,43 +87,6 @@ get_header();
 	</div>
 </section>
 
-<!-- ===================== TRUST STRIP (honest, no social proof) =====================
-     Qualitative trust points we can legitimately claim as a new company — no
-     testimonials, logos, or stats. Edit copy freely; keep it truthful. -->
-<section class="section section--soft trust-strip" aria-label="Why work with us">
-	<div class="container">
-		<ul class="trust-points">
-			<li class="trust-point">
-				<span class="chip chip--cyan" aria-hidden="true">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/></svg>
-				</span>
-				<div>
-					<h3>Built &amp; supported directly by us</h3>
-					<p>You work with the people who build the software — not an outsourced support desk.</p>
-				</div>
-			</li>
-			<li class="trust-point">
-				<span class="chip chip--cyan" aria-hidden="true">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-				</span>
-				<div>
-					<h3>Live in days, not months</h3>
-					<p>We configure Limitless around your workflow before you ever log in.</p>
-				</div>
-			</li>
-			<li class="trust-point">
-				<span class="chip chip--cyan" aria-hidden="true">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
-				</span>
-				<div>
-					<h3>One connected system</h3>
-					<p>Bookings, payments, reviews and messaging in a single place — no patchwork.</p>
-				</div>
-			</li>
-		</ul>
-	</div>
-</section>
-
 <!-- ===================== SOCIAL PROOF (conditional) =====================
      Renders only when real logos/stats exist — see template-parts/social-proof.php. -->
 <?php get_template_part( 'template-parts/social-proof' ); ?>
