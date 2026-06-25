@@ -282,6 +282,21 @@ strong { color: var(--heading); font-weight: 600; }
   display: block; width: 100%; height: auto;
   border-radius: 16px 16px 0 0;
   box-shadow: 0 -24px 90px rgba(0, 0, 0, 0.55);
+  transition: opacity 0.5s var(--ease);
+}
+/* Loading state: shimmer placeholder holds the space + a subtle fade-in. */
+.hero-placeholder.is-loading {
+  border-radius: 16px 16px 0 0;
+  background:
+    linear-gradient(100deg, rgba(255,255,255,0.03) 30%, rgba(95,214,232,0.08) 50%, rgba(255,255,255,0.03) 70%)
+    0 0 / 200% 100%;
+  animation: spicola-shimmer 1.4s ease-in-out infinite;
+}
+.hero-placeholder.is-loading img { opacity: 0; }
+@keyframes spicola-shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-placeholder.is-loading { animation: none; }
+  .hero-placeholder img { transition: none; }
 }
 
 /* Fades the bottom edge of the card to dark, masking any placeholder watermarks. */

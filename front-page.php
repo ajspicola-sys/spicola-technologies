@@ -23,13 +23,22 @@ get_header();
 					<a class="btn btn--secondary" href="#contact">Talk to us</a>
 				</div>
 			</div>
-			<!-- Product mockup hugging the bottom of the card. Set via
-			     Appearance → Customize → Front Page Media; bundled PNG fallback. -->
+			<!-- Real product-screenshot slot, hugging the bottom of the card.
+			     TODO (owner): replace the source with an actual Limitless
+			     dashboard screenshot via Appearance → Customize → Front Page
+			     Media → "Hero mockup image" (the bundled image is a stand-in).
+			     A shimmer placeholder holds the space while it loads. -->
 			<?php
-			// Uploaded to the Media Library; override via Appearance → Customize → Front Page Media.
 			$spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', 'https://spicolatechnologies.com/wp-content/uploads/2026/06/hero-mockup-scaled.png' );
 			?>
-			<div class="hero-placeholder" aria-hidden="true"><img src="<?php echo esc_url( $spicola_hero_mockup ); ?>" alt="" loading="lazy"></div>
+			<div class="hero-placeholder is-loading">
+				<img
+					src="<?php echo esc_url( $spicola_hero_mockup ); ?>"
+					alt="Limitless dashboard showing bookings, invoicing and reporting"
+					width="1600" height="1000"
+					loading="lazy" decoding="async"
+					onload="this.parentNode.classList.remove('is-loading')">
+			</div>
 		</div>
 	</div>
 </section>
