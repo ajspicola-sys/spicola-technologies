@@ -37,33 +37,47 @@ get_header();
 <!-- ===================== WHAT WE DO ===================== -->
 <section class="section section--light" id="services">
 	<div class="container">
-		<div class="center" style="margin-bottom:48px;">
-			<div class="section-num" aria-hidden="true">01</div>
-			<p class="eyebrow">What we do</p>
-			<h2>Thoughtful tools, built to last</h2>
-			<p class="lead">We focus on the unglamorous problems that slow businesses down, and turn them into clean, reliable software.</p>
+		<div class="services-intro">
+			<div>
+				<div class="section-num" aria-hidden="true">01</div>
+				<p class="eyebrow">What we do</p>
+				<h2>Thoughtful tools,<br>built to last</h2>
+			</div>
+			<p class="lead">We tackle the unglamorous problems that slow businesses down — and turn them into clean, reliable software your team can depend on every single day.</p>
 		</div>
-		<div class="bento">
-			<div class="card card--feature">
-				<div class="chip chip--peri">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+		<div class="services-list">
+			<div class="service-item">
+				<span class="service-item__num" aria-hidden="true">01</span>
+				<div class="chip chip--peri" aria-hidden="true">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
 				</div>
-				<h3>Product development</h3>
-				<p>End-to-end web applications — from idea to a deployed, maintainable product your team can rely on every day. We sweat the details so the software feels obvious to use and quiet to run.</p>
+				<div class="service-item__body">
+					<h3>Product development</h3>
+					<p>End-to-end web applications — from idea to a deployed, maintainable product your team can rely on every day. We sweat the details so the software feels obvious to use and quiet to run.</p>
+				</div>
+				<span class="service-item__tag">End-to-end builds</span>
 			</div>
-			<div class="card">
-				<div class="chip chip--cyan">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+			<div class="service-item">
+				<span class="service-item__num" aria-hidden="true">02</span>
+				<div class="chip chip--cyan" aria-hidden="true">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
 				</div>
-				<h3>Integrations &amp; automation</h3>
-				<p>We connect the tools businesses already use — payments, messaging, scheduling, reviews — into one seamless workflow.</p>
+				<div class="service-item__body">
+					<h3>Integrations &amp; automation</h3>
+					<p>We connect the tools businesses already use — payments, messaging, scheduling, reviews — into one seamless workflow that eliminates manual hand-offs and keeps everything in sync.</p>
+				</div>
+				<span class="service-item__tag">Connected workflows</span>
 			</div>
-			<div class="card card--wide">
-				<div class="chip chip--peri">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+			<div class="service-item">
+				<span class="service-item__num" aria-hidden="true">03</span>
+				<div class="chip chip--peri" aria-hidden="true">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
 				</div>
-				<h3>AI-powered features</h3>
-				<p>Practical AI that does real work: answering customers, drafting content, and surfacing the insights that matter.</p>
+				<div class="service-item__body">
+					<h3>AI-powered features</h3>
+					<p>Practical AI that does real work: answering customers, drafting content, and surfacing the insights that matter — built into the product, not bolted on as an afterthought.</p>
+				</div>
+				<span class="service-item__tag">Intelligent tools</span>
 			</div>
 		</div>
 	</div>
@@ -76,15 +90,34 @@ get_header();
 			<div>
 				<div class="section-num" aria-hidden="true">02</div>
 				<p class="eyebrow">Our flagship product</p>
-				<h2>Limitless</h2>
-				<p class="lead">The all-in-one platform that grows with you — bookings, payments, records, marketing, and reputation in a single dashboard.</p>
-				<ul>
-					<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Online booking &amp; calendar management</li>
-					<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Payments, invoices &amp; memberships</li>
-					<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Review aggregation &amp; AI replies</li>
-					<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SMS, email &amp; AI-assisted messaging</li>
-					<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Marketing, loyalty &amp; customer reactivation</li>
-				</ul>
+				<h2>Everything your business needs, <span class="grad-word">in one place.</span></h2>
+				<p class="lead">Limitless is the all-in-one B2B platform built for growing businesses — replacing the patchwork of tools with a single, connected system your whole team can actually use.</p>
+				<div class="feature-tiles">
+					<div class="feature-tile">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+						<span>Online booking &amp; scheduling</span>
+					</div>
+					<div class="feature-tile">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+						<span>Payments, invoices &amp; memberships</span>
+					</div>
+					<div class="feature-tile">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+						<span>Review aggregation &amp; AI replies</span>
+					</div>
+					<div class="feature-tile">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+						<span>SMS, email &amp; AI messaging</span>
+					</div>
+					<div class="feature-tile">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+						<span>Marketing &amp; customer loyalty</span>
+					</div>
+					<div class="feature-tile">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+						<span>Real-time reporting &amp; analytics</span>
+					</div>
+				</div>
 				<a class="btn btn--primary" href="#contact">Request a demo</a>
 			</div>
 			<?php
@@ -226,32 +259,46 @@ get_header();
 <!-- ===================== ABOUT ===================== -->
 <section class="section section--soft" id="about">
 	<div class="container">
-		<div class="grid grid-2" style="align-items:center; gap:56px;">
-			<div>
+		<div class="about-layout">
+			<div class="about-text">
 				<div class="section-num" aria-hidden="true">03</div>
 				<p class="eyebrow">About us</p>
 				<h2>A focused software company</h2>
-				<p>Spicola Technologies builds tools that remove friction for growing businesses. We believe good software should feel obvious — fast, reliable, and out of the way.</p>
-				<p>We build our own products, like Limitless, and partner with businesses who want software that actually fits how they work.</p>
+				<p>Spicola Technologies builds tools that remove friction for growing businesses. We believe good software should feel obvious — fast, reliable, and completely out of the way.</p>
+				<p>We build our own products, like Limitless, and partner with businesses who want software that actually fits how they work — not the other way around.</p>
 			</div>
-			<div class="card">
-				<div class="chip chip--cyan">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c.4 4.6 2.4 6.6 7 7-4.6.4-6.6 2.4-7 7-.4-4.6-2.4-6.6-7-7 4.6-.4 6.6-2.4 7-7z"/></svg>
+			<div class="about-cards">
+				<div class="card">
+					<div class="chip chip--cyan">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c.4 4.6 2.4 6.6 7 7-4.6.4-6.6 2.4-7 7-.4-4.6-2.4-6.6-7-7 4.6-.4 6.6-2.4 7-7z"/></svg>
+					</div>
+					<h3>Why we exist</h3>
+					<p>Too many businesses are held back by clunky, disconnected tools. We bring those pieces together so owners can spend less time fighting their software and more time growing.</p>
 				</div>
-				<h3>Why we exist</h3>
-				<p>Too many businesses are held back by clunky, disconnected tools. We bring those pieces together so owners can spend less time fighting their software and more time growing.</p>
+				<div class="card">
+					<div class="chip chip--peri">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+					</div>
+					<h3>How we build</h3>
+					<p>Every decision is deliberate. Good software should feel invisible — fast when you need it, quiet when you don't, and built to last as your business scales.</p>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
 <!-- ===================== CTA / CONTACT ===================== -->
-<section class="section" id="contact">
+<section class="section cta-section" id="contact">
 	<div class="container">
-		<div class="cta-band">
-			<h2>Let's build something.</h2>
-			<p>Interested in Limitless or a custom build? We'd love to hear from you.</p>
-			<a class="btn btn--secondary" href="mailto:joseph@spicolatechnologies.com">joseph@spicolatechnologies.com</a>
+		<div class="cta-inner">
+			<div class="cta-glow" aria-hidden="true"></div>
+			<p class="eyebrow">Get started</p>
+			<h2>Ready to run your business<br><span class="grad-word">without limits?</span></h2>
+			<p>Whether you're exploring Limitless or need a custom build, we'd love to hear about your business and what's slowing it down.</p>
+			<div class="cta-actions">
+				<a class="btn btn--primary" href="mailto:joseph@spicolatechnologies.com">Request a demo</a>
+				<a class="btn btn--secondary" href="mailto:joseph@spicolatechnologies.com">joseph@spicolatechnologies.com</a>
+			</div>
 		</div>
 	</div>
 </section>

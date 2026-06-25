@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.9.8
+Version: 3.9.9
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -460,6 +460,120 @@ strong { color: var(--heading); font-weight: 600; }
 }
 
 /* ============================================================
+   What We Do — horizontal numbered service rows
+   ============================================================ */
+.services-intro {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 56px;
+}
+.services-intro .section-num { margin-bottom: 6px; }
+
+.service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+}
+.service-item:last-child { border-bottom: 1px solid var(--line); }
+.service-item__num {
+  font-family: var(--font-head);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--muted); padding-top: 3px; flex-shrink: 0; width: 28px;
+}
+.service-item .chip { flex-shrink: 0; margin-bottom: 0; }
+.service-item__body { flex: 1; min-width: 0; }
+.service-item__body h3 { font-size: 1.125rem; margin-bottom: 0.35rem; }
+.service-item__body p  { margin: 0; font-size: 0.9375rem; }
+.service-item__tag {
+  flex-shrink: 0;
+  align-self: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8125rem; font-weight: 500;
+  white-space: nowrap;
+  background: var(--accent-tint);
+  color: var(--accent-deep);
+  border: 0.5px solid var(--accent-line);
+}
+/* Light-section overrides */
+.section--light .service-item { border-color: var(--line); }
+.section--light .service-item__num { color: var(--muted); }
+.section--light .service-item__body h3 { color: #14141A; }
+.section--light .service-item__body p  { color: #6B6B7C; }
+.section--light .service-item__tag {
+  background: rgba(47,163,182,0.08);
+  color: #1a7a8a;
+  border-color: rgba(47,163,182,0.22);
+}
+
+/* ============================================================
+   Limitless — feature tiles grid
+   ============================================================ */
+.feature-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 1.4rem 0 2rem;
+}
+.feature-tile {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 16px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 0.5px solid var(--line-2);
+  font-size: 0.875rem; color: var(--body);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.feature-tile:hover { border-color: var(--accent-line); background: var(--card-hover); }
+.feature-tile svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+
+/* ============================================================
+   About layout
+   ============================================================ */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.about-cards { display: flex; flex-direction: column; gap: 16px; }
+
+/* ============================================================
+   CTA section — dark card with glow
+   ============================================================ */
+.cta-section { background: var(--bg); }
+.cta-inner {
+  position: relative; overflow: hidden; text-align: center;
+  padding: clamp(56px, 8vw, 96px) clamp(32px, 6vw, 80px);
+  border-radius: 20px;
+  background: var(--surface-2);
+  border: 0.5px solid var(--line-2);
+}
+.cta-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(70% 55% at 50% 0%, rgba(95,214,232,0.14), transparent 70%),
+    radial-gradient(38% 38% at 12% 92%, rgba(47,163,182,0.10), transparent 65%),
+    radial-gradient(38% 38% at 88% 92%, rgba(95,214,232,0.08), transparent 65%);
+}
+.cta-inner > *:not(.cta-glow) { position: relative; z-index: 1; }
+.cta-inner h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em; line-height: 1.1;
+  margin-bottom: 1.1rem;
+}
+.cta-inner > p {
+  color: var(--body); max-width: 460px;
+  margin: 0 auto 2.4rem;
+  font-size: 1.0625rem;
+}
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ============================================================
    Stats band (gradient — a signature moment)
    ============================================================ */
 .stats-band {
@@ -544,12 +658,17 @@ strong { color: var(--heading); font-weight: 600; }
   .grid-3, .posts { grid-template-columns: 1fr 1fr; }
   .feature { grid-template-columns: 1fr; gap: 32px; }
   .feature-visual { min-height: 240px; }
+  .services-intro { grid-template-columns: 1fr; gap: 24px; }
+  .about-layout { grid-template-columns: 1fr; gap: 40px; }
+  .feature-tiles { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .section { padding: 64px 0; }
   .grid-3, .grid-2, .posts, .stats-band { grid-template-columns: 1fr; }
   .nav-menu { display: none; }
   .stats-band { gap: 32px; padding: 40px 28px; }
+  .service-item__tag { display: none; }
+  .service-item__num { display: none; }
 
   /* Hero mobile: matches JS tier (90% width, 20px radius). */
   .hero { height: 160vh; }
