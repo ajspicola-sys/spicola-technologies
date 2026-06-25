@@ -1,0 +1,21 @@
+{
+  "name": "Spicola Technologies",
+  "short_name": "Spicola",
+  "description": "Practical software for growing businesses — including Limitless, an all-in-one B2B platform.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0D",
+  "theme_color": "#0A0A0D",
+  "icons": [
+    {
+      "src": "/wp-content/themes/spicola-technologies-theme/assets/favicons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/wp-content/themes/spicola-technologies-theme/assets/favicons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
