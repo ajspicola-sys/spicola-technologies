@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 require get_template_directory() . '/inc/site-data.php';
 require get_template_directory() . '/inc/seo.php';
 require get_template_directory() . '/inc/form.php';
+require get_template_directory() . '/inc/routing.php';
 
 if ( ! function_exists( 'spicola_setup' ) ) :
 	function spicola_setup() {
@@ -222,7 +223,9 @@ function spicola_default_menu() {
 	echo '<ul class="nav-menu">';
 	echo '<li><a href="' . esc_url( home_url( '/#products' ) ) . '">Products</a></li>';
 	echo '<li><a href="' . esc_url( home_url( '/#about' ) ) . '">About</a></li>';
-	echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
+	if ( spicola_blog_enabled() ) {
+		echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
+	}
 	echo '<li><a href="' . esc_url( home_url( '/#contact' ) ) . '">Contact</a></li>';
 	echo '</ul>';
 }

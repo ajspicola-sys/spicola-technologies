@@ -200,6 +200,41 @@ add_action( 'wp_ajax_nopriv_spicola_demo_request', 'spicola_handle_lead_ajax' );
 add_action( 'wp_ajax_spicola_demo_request', 'spicola_handle_lead_ajax' );
 
 /**
+ * Email-signup (blog empty-state) — no-JS submission. Validates a single email
+ * + honeypot, notifies the owner, and redirects back with a status flag.
+ */
+function spicola_handle_subscribe() {
+	$back = wp_get_referer() ? wp_get_referer() : home_url( '/' );
+	$back = remove_query_arg( 'subscribed', $back );
+
+	$ok = isset( $_POST['spicola_sub_nonce'] )
+		&& wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['spicola_sub_nonce'] ) ), 'spicola_subscribe' );
+
+	// Honeypot.
+	if ( ! empty( $_POST['company_url'] ) ) {
+		wp_safe_redirect( add_query_arg( 'subscribed', '1', $back ) );
+		exit;
+	}
+
+	$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+	if ( ! $ok || ! is_email( $email ) ) {
+		wp_safe_redirect( add_query_arg( 'subscribed', '0', $back ) );
+		exit;
+	}
+
+	wp_mail(
+		spicola_lead_recipient(),
+		'New blog subscriber',
+		'A visitor asked to be notified about new posts: ' . $email,
+		array( 'Reply-To: ' . $email )
+	);
+	wp_safe_redirect( add_query_arg( 'subscribed', '1', $back ) );
+	exit;
+}
+add_action( 'admin_post_nopriv_spicola_subscribe', 'spicola_handle_subscribe' );
+add_action( 'admin_post_spicola_subscribe', 'spicola_handle_subscribe' );
+
+/**
  * Customizer: lead-form configuration.
  */
 function spicola_form_customize( $wp_customize ) {

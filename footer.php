@@ -42,7 +42,9 @@
 				<h4>Company</h4>
 				<ul>
 					<li><a href="<?php echo esc_url( home_url( '/#about' ) ); ?>">About</a></li>
+					<?php if ( spicola_blog_enabled() ) : ?>
 					<li><a href="<?php echo esc_url( home_url( '/blog' ) ); ?>">Blog</a></li>
+					<?php endif; ?>
 					<li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Contact</a></li>
 				</ul>
 			</div>
