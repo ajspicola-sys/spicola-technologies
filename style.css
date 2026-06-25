@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.9.3
+Version: 3.9.4
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -238,18 +238,10 @@ strong { color: var(--heading); font-weight: 600; }
      which is pinned to the bottom. Guarantees they never collide. */
   display: flex; flex-direction: column; align-items: center;
 }
-/* Base gradient — kept, but now slowly drifting so the whole glow flows like
-   the night sky. The aurora curtains (::before/::after) layer on top. */
 .hero-bg {
-  position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
-  background:
-    radial-gradient(60% 55% at 35% 45%, rgba(95, 214, 232, 0.20), transparent 70%),
-    radial-gradient(55% 50% at 70% 62%, rgba(47, 163, 182, 0.16), transparent 70%);
-  background-size: 180% 180%, 200% 200%;
-  background-position: 0% 0%, 100% 100%;
-  animation: auroraDrift 20s var(--ease) infinite alternate;
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(65% 60% at 50% 65%, rgba(95, 214, 232, 0.22), transparent 72%);
 }
-@keyframes auroraDrift { to { background-position: 65% 45%, 25% 70%; } }
 
 /* Headline block: takes the space above the mockup and centers its text in
    it. Padding (incl. bottom) keeps text off the card edges and the mockup.
@@ -617,31 +609,23 @@ body::after {
 }
 
 
-/* Aurora curtains behind the hero headline — two big soft blooms that drift,
-   swell and rotate, blended with `screen` so they glow brighter where they
-   overlap (the classic aurora-borealis shimmer). One leans cyan, one green. */
+/* Aurora bloom behind the hero headline — two slow-drifting soft blobs. */
 .hero-bg::before, .hero-bg::after {
   content: ""; position: absolute; border-radius: 50%;
-  filter: blur(58px); pointer-events: none; mix-blend-mode: screen;
+  filter: blur(64px); pointer-events: none;
 }
 .hero-bg::before {
-  width: 62%; height: 80%; left: 0; top: -15%;
-  background: radial-gradient(circle, rgba(95,214,232,0.50), transparent 62%);
-  animation: auroraA 13s var(--ease) infinite alternate;
+  width: 580px; height: 440px; left: 10%; top: 2%;
+  background: radial-gradient(circle, rgba(95,214,232,0.32), transparent 60%);
+  animation: auroraA 16s var(--ease) infinite alternate;
 }
 .hero-bg::after {
-  width: 58%; height: 74%; right: -4%; top: 0;
-  background: radial-gradient(circle, rgba(72,214,176,0.42), transparent 62%);
-  animation: auroraB 17s var(--ease) infinite alternate;
+  width: 520px; height: 400px; right: 6%; top: 12%;
+  background: radial-gradient(circle, rgba(47,163,182,0.28), transparent 60%);
+  animation: auroraB 21s var(--ease) infinite alternate;
 }
-@keyframes auroraA {
-  0%   { transform: translate3d(-10%, -6%, 0) scale(1)    rotate(-6deg); opacity: 0.7; }
-  100% { transform: translate3d(22%, 16%, 0)  scale(1.25) rotate(10deg); opacity: 1; }
-}
-@keyframes auroraB {
-  0%   { transform: translate3d(10%, 4%, 0)   scale(1.1)  rotate(6deg);   opacity: 0.65; }
-  100% { transform: translate3d(-22%, 14%, 0) scale(1.28) rotate(-12deg); opacity: 1; }
-}
+@keyframes auroraA { to { transform: translate3d(46px, 28px, 0) scale(1.12); } }
+@keyframes auroraB { to { transform: translate3d(-52px, 22px, 0) scale(1.08); } }
 
 /* Hairline gradient border — light catching the top edge of cards on hover. */
 .card { position: relative; }
