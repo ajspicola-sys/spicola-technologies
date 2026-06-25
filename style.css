@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.9.2
+Version: 3.9.3
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -245,11 +245,11 @@ strong { color: var(--heading); font-weight: 600; }
   background:
     radial-gradient(60% 55% at 35% 45%, rgba(95, 214, 232, 0.20), transparent 70%),
     radial-gradient(55% 50% at 70% 62%, rgba(47, 163, 182, 0.16), transparent 70%);
-  background-size: 160% 160%, 170% 170%;
+  background-size: 180% 180%, 200% 200%;
   background-position: 0% 0%, 100% 100%;
-  animation: auroraDrift 26s var(--ease) infinite alternate;
+  animation: auroraDrift 20s var(--ease) infinite alternate;
 }
-@keyframes auroraDrift { to { background-position: 35% 25%, 65% 78%; } }
+@keyframes auroraDrift { to { background-position: 65% 45%, 25% 70%; } }
 
 /* Headline block: takes the space above the mockup and centers its text in
    it. Padding (incl. bottom) keeps text off the card edges and the mockup.
@@ -622,25 +622,25 @@ body::after {
    overlap (the classic aurora-borealis shimmer). One leans cyan, one green. */
 .hero-bg::before, .hero-bg::after {
   content: ""; position: absolute; border-radius: 50%;
-  filter: blur(70px); pointer-events: none; mix-blend-mode: screen;
+  filter: blur(58px); pointer-events: none; mix-blend-mode: screen;
 }
 .hero-bg::before {
-  width: 65%; height: 75%; left: 2%; top: -12%;
-  background: radial-gradient(circle, rgba(95,214,232,0.42), transparent 62%);
-  animation: auroraA 19s var(--ease) infinite alternate;
+  width: 62%; height: 80%; left: 0; top: -15%;
+  background: radial-gradient(circle, rgba(95,214,232,0.50), transparent 62%);
+  animation: auroraA 13s var(--ease) infinite alternate;
 }
 .hero-bg::after {
-  width: 60%; height: 70%; right: 0; top: 4%;
-  background: radial-gradient(circle, rgba(64,206,168,0.34), transparent 62%);
-  animation: auroraB 25s var(--ease) infinite alternate;
+  width: 58%; height: 74%; right: -4%; top: 0;
+  background: radial-gradient(circle, rgba(72,214,176,0.42), transparent 62%);
+  animation: auroraB 17s var(--ease) infinite alternate;
 }
 @keyframes auroraA {
-  0%   { transform: translate3d(-4%, -2%, 0) scale(1)    rotate(0deg);  opacity: 0.8; }
-  100% { transform: translate3d(12%, 10%, 0) scale(1.18) rotate(7deg);  opacity: 1; }
+  0%   { transform: translate3d(-10%, -6%, 0) scale(1)    rotate(-6deg); opacity: 0.7; }
+  100% { transform: translate3d(22%, 16%, 0)  scale(1.25) rotate(10deg); opacity: 1; }
 }
 @keyframes auroraB {
-  0%   { transform: translate3d(4%, 2%, 0)   scale(1.05) rotate(0deg);  opacity: 0.75; }
-  100% { transform: translate3d(-12%, 8%, 0) scale(1.22) rotate(-7deg); opacity: 1; }
+  0%   { transform: translate3d(10%, 4%, 0)   scale(1.1)  rotate(6deg);   opacity: 0.65; }
+  100% { transform: translate3d(-22%, 14%, 0) scale(1.28) rotate(-12deg); opacity: 1; }
 }
 
 /* Hairline gradient border — light catching the top edge of cards on hover. */
