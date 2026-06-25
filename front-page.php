@@ -205,7 +205,12 @@ get_header();
 			</div>
 		</div>
 		<div class="steps-cta">
+			<?php $spicola_calendar = spicola_scheduling_url(); ?>
+			<?php if ( $spicola_calendar ) : ?>
+			<a class="btn btn--primary" href="<?php echo esc_url( $spicola_calendar ); ?>" target="_blank" rel="noopener">Book your free call</a>
+			<?php else : ?>
 			<a class="btn btn--primary" href="#contact">Book your free call</a>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
@@ -323,17 +328,18 @@ get_header();
      exist. See template-parts/testimonials.php and inc/site-data.php. -->
 <?php get_template_part( 'template-parts/testimonials' ); ?>
 
-<!-- ===================== CTA / CONTACT ===================== -->
+<!-- ===================== CTA / CONTACT (demo request form) ===================== -->
 <section class="section cta-section" id="contact">
 	<div class="container">
-		<div class="cta-inner">
+		<div class="cta-inner cta-inner--form">
 			<div class="cta-glow" aria-hidden="true"></div>
-			<p class="eyebrow">Get started</p>
-			<h2>Ready to run your business<br><span class="grad-word">without limits?</span></h2>
-			<p>Whether you're exploring Limitless or need a custom build, we'd love to hear about your business and what's slowing it down.</p>
-			<div class="cta-actions">
-				<a class="btn btn--primary" href="mailto:joseph@spicolatechnologies.com">Request a demo</a>
-				<a class="btn btn--secondary" href="mailto:joseph@spicolatechnologies.com">joseph@spicolatechnologies.com</a>
+			<div class="cta-copy">
+				<p class="eyebrow">Get started</p>
+				<h2>Ready to run your business<br><span class="grad-word">without limits?</span></h2>
+				<p>Whether you're exploring Limitless or need a custom build, tell us a little about your business and we'll be in touch.</p>
+			</div>
+			<div class="cta-form">
+				<?php get_template_part( 'template-parts/demo-form' ); ?>
 			</div>
 		</div>
 	</div>

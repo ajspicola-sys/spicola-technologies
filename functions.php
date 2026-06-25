@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  */
 require get_template_directory() . '/inc/site-data.php';
 require get_template_directory() . '/inc/seo.php';
+require get_template_directory() . '/inc/form.php';
 
 if ( ! function_exists( 'spicola_setup' ) ) :
 	function spicola_setup() {
@@ -89,6 +90,14 @@ function spicola_assets() {
 		wp_enqueue_script(
 			'spicola-personas',
 			get_template_directory_uri() . '/assets/personas.js',
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+		// Demo request form: progressive enhancement (inline states, no reload).
+		wp_enqueue_script(
+			'spicola-demo-form',
+			get_template_directory_uri() . '/assets/demo-form.js',
 			array(),
 			wp_get_theme()->get( 'Version' ),
 			true
