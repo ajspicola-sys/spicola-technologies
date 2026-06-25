@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.9.11
+Version: 3.9.12
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -126,6 +126,19 @@ strong { color: var(--heading); font-weight: 600; }
   --line-3:   #D4D4E0;
   --surface-2:#F5F6F8;
 }
+/* Light gray section — sits between white and dark-soft for visual rhythm */
+.section--gray {
+  background: #F5F6F8;
+  --heading: #14141A; --body: #4A4A5A; --muted: #6B6B7C;
+  --card: #FFFFFF; --card-hover: #FBFCFD;
+  --line: #E4E4EE; --line-2: #DCDCE8; --line-3: #D0D0DC;
+  --surface-2: #EEEEF4;
+}
+.section--gray h1, .section--gray h2, .section--gray h3, .section--gray h4 { color: #14141A; }
+.section--gray p { color: #4A4A5A; }
+.section--gray .lead { color: #4A4A5A; }
+.section--gray .card p { color: #6B6B7C; }
+
 .section--light h1, .section--light h2, .section--light h3, .section--light h4 { color: #14141A; }
 .section--light p { color: #4A4A5A; }
 .section--light .lead { color: #4A4A5A; }
@@ -461,6 +474,58 @@ strong { color: var(--heading); font-weight: 600; }
 }
 
 /* ============================================================
+   How it works — 3-step process
+   ============================================================ */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+.step__num {
+  display: block;
+  font-family: var(--font-head); font-weight: 700; line-height: 1;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent-br);
+  margin-bottom: 22px;
+}
+.step h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+.step p  { font-size: 0.9375rem; margin: 0; }
+.steps-cta { text-align: center; margin-top: 52px; }
+
+/* ============================================================
+   Testimonials
+   ============================================================ */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.testimonial {
+  background: #fff;
+  border: 0.5px solid #E0E0EA;
+  border-radius: 14px;
+  padding: 28px;
+  display: flex; flex-direction: column;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.testimonial:hover { border-color: var(--accent-line); box-shadow: 0 8px 32px rgba(95,214,232,0.08); }
+.testimonial__stars {
+  display: flex; gap: 3px;
+  color: var(--accent-br);
+  margin-bottom: 18px;
+}
+.testimonial__stars svg { width: 14px; height: 14px; }
+.testimonial__quote {
+  font-size: 0.9375rem; line-height: 1.7;
+  color: #2A2A3A; font-style: italic;
+  margin: 0 0 24px; flex: 1;
+}
+.testimonial__author { display: flex; flex-direction: column; gap: 3px; }
+.testimonial__name { font-weight: 600; font-size: 0.9rem; color: #14141A; }
+.testimonial__role { font-size: 0.8125rem; color: #6B6B7C; }
+
+/* ============================================================
    What We Do — horizontal numbered service rows
    ============================================================ */
 .services-intro {
@@ -662,6 +727,8 @@ strong { color: var(--heading); font-weight: 600; }
   .services-intro { grid-template-columns: 1fr; gap: 24px; }
   .about-layout { grid-template-columns: 1fr; gap: 40px; }
   .feature-tiles { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 40px; }
+  .testimonials { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
   .section { padding: 64px 0; }
@@ -670,6 +737,7 @@ strong { color: var(--heading); font-weight: 600; }
   .stats-band { gap: 32px; padding: 40px 28px; }
   .service-item__tag { display: none; }
   .service-item__num { display: none; }
+  .testimonials { grid-template-columns: 1fr; }
 
   /* Hero mobile: matches JS tier (90% width, 20px radius). */
   .hero { height: 160vh; }
