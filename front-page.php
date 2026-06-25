@@ -223,28 +223,8 @@ get_header();
 	</div>
 </section>
 
-<!-- ===================== STATS BAND ===================== -->
-<section class="section" id="stats">
-	<div class="container">
-		<div class="stats-band">
-			<div class="stat">
-				<div class="num">All-in-one</div>
-				<div class="label">One platform, no patchwork of tools</div>
-			</div>
-			<div class="stat">
-				<div class="num">Grows with you</div>
-				<div class="label">From your first hire to your hundredth</div>
-			</div>
-			<div class="stat">
-				<div class="num">No limits</div>
-				<div class="label">Built to scale as fast as you do</div>
-			</div>
-		</div>
-	</div>
-</section>
-
 <!-- ===================== ABOUT ===================== -->
-<section class="section section--light" id="about">
+<section class="section section--soft" id="about">
 	<div class="container">
 		<div class="grid grid-2" style="align-items:center; gap:56px;">
 			<div>
