@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.9.6
+Version: 3.9.7
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -731,16 +731,24 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
 }
 .personas-card > *:not(.personas-glow) { position: relative; z-index: 1; }
 
-/* One persona panel: info left, photo right. Only the active one shows. */
-.persona { display: none; }
-.persona.is-active {
+/* One persona panel: info left, photo right. All panels live in the DOM;
+   inactive ones are absolute + opacity-0 so they crossfade without popping. */
+.personas-stage { position: relative; }
+.persona {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
   gap: clamp(28px, 5vw, 64px);
   align-items: center;
-  animation: personaIn 0.5s var(--ease) both;
+  position: absolute; top: 0; left: 0; right: 0;
+  opacity: 0; pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.36s var(--ease), transform 0.36s var(--ease);
 }
-@keyframes personaIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.persona.is-active {
+  position: relative;
+  opacity: 1; pointer-events: auto;
+  transform: none;
+}
 
 .persona-dots { display: flex; gap: 7px; margin-bottom: 20px; }
 .persona-dots span {
@@ -774,7 +782,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
 }
 .persona-photo img {
-  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
 }
 
 /* Footer row: tabs left, prev/next arrows right. */
@@ -813,7 +821,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
 .persona-arrow:active { transform: translateY(0); }
 
 @media (max-width: 760px) {
-  .persona.is-active { grid-template-columns: 1fr; gap: 24px; }
+  .persona { grid-template-columns: 1fr; gap: 24px; }
   .persona-photo { order: -1; }            /* photo on top when stacked */
   .personas .persona-desc { max-width: none; }
   .personas-foot { flex-direction: column; align-items: stretch; gap: 16px; }

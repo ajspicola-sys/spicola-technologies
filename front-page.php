@@ -71,15 +71,16 @@ get_header();
 		<div class="personas-card" data-personas>
 			<div class="personas-glow" aria-hidden="true"></div>
 
+			<div class="persona-dots" aria-hidden="true">
+				<?php foreach ( $spicola_personas as $j => $unused ) : ?>
+				<span class="<?php echo 0 === $j ? 'is-on' : ''; ?>"></span>
+				<?php endforeach; ?>
+			</div>
+
 			<div class="personas-stage">
 				<?php foreach ( $spicola_personas as $i => $persona ) : ?>
-				<article class="persona<?php echo 0 === $i ? ' is-active' : ''; ?>" id="persona-<?php echo (int) $i; ?>" role="tabpanel"<?php echo 0 === $i ? '' : ' hidden'; ?>>
+				<article class="persona<?php echo 0 === $i ? ' is-active' : ''; ?>" id="persona-<?php echo (int) $i; ?>" role="tabpanel" aria-hidden="<?php echo 0 === $i ? 'false' : 'true'; ?>">
 					<div class="persona-info">
-						<div class="persona-dots" aria-hidden="true">
-							<?php foreach ( $spicola_personas as $j => $unused ) : ?>
-							<span class="<?php echo $i === $j ? 'is-on' : ''; ?>"></span>
-							<?php endforeach; ?>
-						</div>
 						<h3 class="persona-name"><?php echo wp_kses_post( $persona['name'] ); ?></h3>
 						<p class="persona-desc"><?php echo esc_html( $persona['desc'] ); ?></p>
 						<a class="persona-link" href="<?php echo esc_url( $persona['link'] ); ?>">Learn more

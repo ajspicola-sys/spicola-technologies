@@ -10,6 +10,7 @@
 		var panels = Array.prototype.slice.call(root.querySelectorAll('.persona'));
 		var tabs   = Array.prototype.slice.call(root.querySelectorAll('.persona-tab'));
 		var arrows = Array.prototype.slice.call(root.querySelectorAll('.persona-arrow'));
+		var dots   = Array.prototype.slice.call(root.querySelectorAll('.persona-dots span'));
 		if (!panels.length) { return; }
 
 		var current = 0;
@@ -19,12 +20,15 @@
 			panels.forEach(function (p, idx) {
 				var on = idx === i;
 				p.classList.toggle('is-active', on);
-				if (on) { p.removeAttribute('hidden'); } else { p.setAttribute('hidden', ''); }
+				p.setAttribute('aria-hidden', on ? 'false' : 'true');
 			});
 			tabs.forEach(function (t, idx) {
 				var on = idx === i;
 				t.classList.toggle('is-active', on);
 				t.setAttribute('aria-selected', on ? 'true' : 'false');
+			});
+			dots.forEach(function (d, idx) {
+				d.classList.toggle('is-on', idx === i);
 			});
 			current = i;
 		}
