@@ -53,8 +53,36 @@
   .hh-cta { background: linear-gradient(110deg, #5FD6E8 0%, #2FA3B6 100%); color: #06181C; border-color: transparent; }
 
   .hero-bg {
-    position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background: radial-gradient(65% 60% at 50% 65%, rgba(95,214,232,0.22), transparent 72%);
+    position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    background:
+      radial-gradient(60% 55% at 35% 45%, rgba(95,214,232,0.20), transparent 70%),
+      radial-gradient(55% 50% at 70% 62%, rgba(47,163,182,0.16), transparent 70%);
+    background-size: 160% 160%, 170% 170%;
+    background-position: 0% 0%, 100% 100%;
+    animation: auroraDrift 26s ease-in-out infinite alternate;
+  }
+  @keyframes auroraDrift { to { background-position: 35% 25%, 65% 78%; } }
+  .hero-bg::before, .hero-bg::after {
+    content: ""; position: absolute; border-radius: 50%;
+    filter: blur(70px); pointer-events: none; mix-blend-mode: screen;
+  }
+  .hero-bg::before {
+    width: 65%; height: 75%; left: 2%; top: -12%;
+    background: radial-gradient(circle, rgba(95,214,232,0.42), transparent 62%);
+    animation: auroraA 19s ease-in-out infinite alternate;
+  }
+  .hero-bg::after {
+    width: 60%; height: 70%; right: 0; top: 4%;
+    background: radial-gradient(circle, rgba(64,206,168,0.34), transparent 62%);
+    animation: auroraB 25s ease-in-out infinite alternate;
+  }
+  @keyframes auroraA {
+    0%   { transform: translate3d(-4%, -2%, 0) scale(1)    rotate(0deg);  opacity: 0.8; }
+    100% { transform: translate3d(12%, 10%, 0) scale(1.18) rotate(7deg);  opacity: 1; }
+  }
+  @keyframes auroraB {
+    0%   { transform: translate3d(4%, 2%, 0)   scale(1.05) rotate(0deg);  opacity: 0.75; }
+    100% { transform: translate3d(-12%, 8%, 0) scale(1.22) rotate(-7deg); opacity: 1; }
   }
 
   /* Headline block: takes the space above the mockup and centers its text in
