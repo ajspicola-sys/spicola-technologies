@@ -69,11 +69,18 @@ function spicola_assets() {
 		true
 	);
 
-	// Scroll-driven hero reveal — front page only.
+	// Scroll-driven hero reveal + who-we-serve switcher — front page only.
 	if ( is_front_page() ) {
 		wp_enqueue_script(
 			'spicola-hero-scroll',
 			get_template_directory_uri() . '/assets/hero-scroll.js',
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+		wp_enqueue_script(
+			'spicola-personas',
+			get_template_directory_uri() . '/assets/personas.js',
 			array(),
 			wp_get_theme()->get( 'Version' ),
 			true

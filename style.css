@@ -4,7 +4,7 @@ Theme URI: https://spicolatechnologies.com
 Author: Spicola Technologies
 Author URI: https://spicolatechnologies.com
 Description: Custom corporate theme for Spicola Technologies — a software company building Limitless, an all-in-one B2B platform. Dark, near-black design with a single cyan accent and a quiet Spica constellation motif.
-Version: 3.9.4
+Version: 3.9.5
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -701,6 +701,125 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
 .footer-brand p { margin-bottom: 8px; }
 .footer-brand p a { color: var(--accent); }
 .footer-brand p a:hover { color: var(--accent-br); }
+
+/* ============================================================
+   Who we serve — glass persona switcher on a white section.
+   A dark frosted card (gray glass) holding: info on the LEFT
+   (dots, name, description, learn-more) and a photo on the RIGHT.
+   Tabs + arrows switch personas (assets/personas.js).
+   ============================================================ */
+.personas-card {
+  position: relative; overflow: hidden;
+  border-radius: 28px;
+  padding: clamp(26px, 4vw, 56px);
+  /* Smoked-gray glass */
+  background: rgba(22, 24, 32, 0.66);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    0 30px 80px rgba(20, 24, 40, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  color: rgba(226, 229, 238, 0.82);
+}
+/* Soft cyan light inside the glass for depth (static). */
+.personas-glow {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(42% 60% at 16% 12%, rgba(95, 214, 232, 0.20), transparent 70%),
+    radial-gradient(46% 56% at 88% 88%, rgba(47, 163, 182, 0.16), transparent 72%);
+}
+.personas-card > *:not(.personas-glow) { position: relative; z-index: 1; }
+
+/* One persona panel: info left, photo right. Only the active one shows. */
+.persona { display: none; }
+.persona.is-active {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  animation: personaIn 0.5s var(--ease) both;
+}
+@keyframes personaIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.persona-dots { display: flex; gap: 7px; margin-bottom: 20px; }
+.persona-dots span {
+  width: 7px; height: 7px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22); transition: all 0.35s var(--ease);
+}
+.persona-dots span.is-on { width: 22px; background: var(--accent-br); }
+
+.personas .persona-name {
+  color: #F6F7F9;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 1rem;
+}
+.personas .persona-desc {
+  color: rgba(208, 213, 226, 0.82);
+  font-size: 1.0625rem; line-height: 1.6; max-width: 30ch; margin: 0 0 1.75rem;
+}
+.persona-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-head); font-weight: 600; font-size: 0.95rem;
+  color: #fff;
+}
+.persona-link svg { width: 16px; height: 16px; transition: transform 0.25s var(--ease); }
+.persona-link:hover { color: var(--accent-br); }
+.persona-link:hover svg { transform: translate(2px, -2px); }
+
+.persona-photo {
+  border-radius: 18px; overflow: hidden; line-height: 0;
+  background: linear-gradient(135deg, #1b2330, #0f1620); /* fallback if image fails */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+}
+.persona-photo img {
+  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+}
+
+/* Footer row: tabs left, prev/next arrows right. */
+.personas-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+  margin-top: clamp(26px, 3.4vw, 42px); padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.personas-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.persona-tab {
+  font-family: var(--font-head); font-weight: 500; font-size: 0.9rem;
+  padding: 9px 16px; border-radius: 999px; cursor: pointer;
+  background: transparent; border: 1px solid transparent;
+  color: rgba(220, 224, 235, 0.58);
+  transition: color 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.persona-tab:hover { color: #fff; }
+.persona-tab.is-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.personas-nav { display: flex; gap: 10px; }
+.persona-arrow {
+  width: 48px; height: 48px; border-radius: 14px; cursor: pointer;
+  display: grid; place-items: center; color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: transform 0.2s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+.persona-arrow svg { width: 20px; height: 20px; }
+.persona-arrow:hover { background: var(--grad); color: #06181C; border-color: transparent; transform: translateY(-1px); }
+.persona-arrow:active { transform: translateY(0); }
+
+@media (max-width: 760px) {
+  .persona.is-active { grid-template-columns: 1fr; gap: 24px; }
+  .persona-photo { order: -1; }            /* photo on top when stacked */
+  .personas .persona-desc { max-width: none; }
+  .personas-foot { flex-direction: column; align-items: stretch; gap: 16px; }
+  .personas-tabs { justify-content: center; }
+  .personas-nav { align-self: center; }
+}
 
 /* ============================================================
    Lenis smooth scroll (required styles)
