@@ -318,53 +318,10 @@ get_header();
 	</div>
 </section>
 
-<!-- ===================== TESTIMONIALS ===================== -->
-<section class="section section--gray" id="testimonials">
-	<div class="container">
-		<div class="center" style="margin-bottom:56px;">
-			<p class="eyebrow">Client stories</p>
-			<h2>Trusted by growing businesses</h2>
-		</div>
-		<div class="testimonials">
-			<div class="testimonial">
-				<div class="testimonial__stars" aria-label="5 out of 5 stars">
-					<?php for ( $s = 0; $s < 5; $s++ ) : ?>
-					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-					<?php endfor; ?>
-				</div>
-				<p class="testimonial__quote">Limitless brought everything into one place. We stopped juggling five different tools and our whole team finally knows what's going on.</p>
-				<div class="testimonial__author">
-					<strong class="testimonial__name">— Replace with real name</strong>
-					<span class="testimonial__role">Owner, Your Client Business</span>
-				</div>
-			</div>
-			<div class="testimonial">
-				<div class="testimonial__stars" aria-label="5 out of 5 stars">
-					<?php for ( $s = 0; $s < 5; $s++ ) : ?>
-					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-					<?php endfor; ?>
-				</div>
-				<p class="testimonial__quote">The onboarding was the smoothest we've ever experienced. They had everything set up for our workflow before we even logged in for the first time.</p>
-				<div class="testimonial__author">
-					<strong class="testimonial__name">— Replace with real name</strong>
-					<span class="testimonial__role">Operations Manager, Your Client Business</span>
-				</div>
-			</div>
-			<div class="testimonial">
-				<div class="testimonial__stars" aria-label="5 out of 5 stars">
-					<?php for ( $s = 0; $s < 5; $s++ ) : ?>
-					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-					<?php endfor; ?>
-				</div>
-				<p class="testimonial__quote">We close the books in half the time now. The job costing and reporting alone paid for itself in the first month.</p>
-				<div class="testimonial__author">
-					<strong class="testimonial__name">— Replace with real name</strong>
-					<span class="testimonial__role">Accountant, Your Client Business</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<!-- ===================== TESTIMONIALS (client stories) =====================
+     Data-driven + conditionally rendered: hidden entirely until real quotes
+     exist. See template-parts/testimonials.php and inc/site-data.php. -->
+<?php get_template_part( 'template-parts/testimonials' ); ?>
 
 <!-- ===================== CTA / CONTACT ===================== -->
 <section class="section cta-section" id="contact">

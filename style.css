@@ -536,9 +536,12 @@ strong { color: var(--heading); font-weight: 600; }
   color: #2A2A3A; font-style: italic;
   margin: 0 0 24px; flex: 1;
 }
-.testimonial__author { display: flex; flex-direction: column; gap: 3px; }
-.testimonial__name { font-weight: 600; font-size: 0.9rem; color: #14141A; }
+.testimonial__author { display: flex; align-items: center; gap: 12px; margin: 0; }
+.testimonial__avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.testimonial__author-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.testimonial__name { font-weight: 600; font-size: 0.9rem; color: #14141A; font-style: normal; }
 .testimonial__role { font-size: 0.8125rem; color: #6B6B7C; }
+.testimonial__quote { font-style: italic; }
 
 /* ============================================================
    What We Do — horizontal numbered service rows

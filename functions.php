@@ -7,6 +7,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+/**
+ * Load split-out theme modules. Keeps functions.php focused on setup while
+ * editable content (inc/site-data.php) and feature logic live in their own
+ * files. Markup lives in template-parts/.
+ */
+require get_template_directory() . '/inc/site-data.php';
+
 if ( ! function_exists( 'spicola_setup' ) ) :
 	function spicola_setup() {
 		// Let WordPress manage the document title.
