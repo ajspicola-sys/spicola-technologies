@@ -18,12 +18,7 @@
 
 <header class="site-header">
 	<div class="container nav">
-		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<?php if ( has_custom_logo() ) : the_custom_logo(); else : ?>
-				<img class="site-logo site-logo--light" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/Spicola-tech-White-scaled.png" alt="<?php bloginfo( 'name' ); ?>" height="48">
-				<img class="site-logo site-logo--dark" src="https://spicolatechnologies.com/wp-content/uploads/2026/06/image_2026-06-24_144638294.png" alt="<?php bloginfo( 'name' ); ?>" height="48">
-			<?php endif; ?>
-		</a>
+		<a class="brand brand--wordmark" href="<?php echo esc_url( home_url( '/' ) ); ?>">SPICOLA TECHNOLOGIES</a>
 
 		<?php
 		if ( has_nav_menu( 'primary' ) ) {
