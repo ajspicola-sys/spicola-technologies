@@ -51,8 +51,12 @@ function spicola_legacy_redirects() {
  * blog index out of reach by sending it home.
  */
 function spicola_handle_redirects() {
-	// Blog disabled: don't let the post index / single posts render.
-	if ( ! spicola_blog_enabled() && ( is_home() || is_singular( 'post' ) || is_post_type_archive( 'post' ) || is_category() || is_tag() ) ) {
+	// Blog disabled: keep the post index / single posts out of reach.
+	// IMPORTANT: never redirect the front page itself. If the site's front page
+	// is set to "Your latest posts", the home page is also is_home(), and
+	// redirecting it home would loop forever (ERR_TOO_MANY_REDIRECTS). The
+	// is_front_page() guard prevents that — the landing page renders normally.
+	if ( ! spicola_blog_enabled() && ! is_front_page() && ( is_home() || is_singular( 'post' ) || is_post_type_archive( 'post' ) || is_category() || is_tag() ) ) {
 		wp_safe_redirect( home_url( '/' ), 302 );
 		exit;
 	}
