@@ -15,7 +15,7 @@
 			<h2>Let&rsquo;s build something.<br><span class="grad-word">Start the conversation today.</span></h2>
 			<div class="footer-cta__actions">
 				<a class="btn btn--primary" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">
-					Book a demo
+					Get in touch
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
 				</a>
 				<a class="btn btn--secondary" href="<?php echo esc_url( home_url( '/#products' ) ); ?>">Explore Limitless</a>

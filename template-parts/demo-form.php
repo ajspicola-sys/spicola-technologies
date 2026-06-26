@@ -65,6 +65,24 @@ $spicola_status = isset( $_GET['demo'] ) ? sanitize_key( wp_unslash( $_GET['demo
 			<span class="field__error" id="demo-email-error" role="alert"></span>
 		</div>
 
+		<div class="field">
+			<label for="demo-company">Company name <span class="req" aria-hidden="true">*</span></label>
+			<input type="text" id="demo-company" name="company" autocomplete="organization" required
+				aria-required="true" aria-describedby="demo-company-error">
+			<span class="field__error" id="demo-company-error" role="alert"></span>
+		</div>
+
+		<div class="field">
+			<label for="demo-team">Team size</label>
+			<select id="demo-team" name="team_size" aria-describedby="demo-team-error">
+				<option value="">Select…</option>
+				<?php foreach ( spicola_team_sizes() as $value => $label ) : ?>
+				<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
+				<?php endforeach; ?>
+			</select>
+			<span class="field__error" id="demo-team-error" role="alert"></span>
+		</div>
+
 		<div class="field field--full">
 			<label for="demo-message">Anything we should know? <span class="field__opt">(optional)</span></label>
 			<textarea id="demo-message" name="message" rows="4"
@@ -80,7 +98,7 @@ $spicola_status = isset( $_GET['demo'] ) ? sanitize_key( wp_unslash( $_GET['demo
 
 	<div class="demo-form__actions">
 		<button type="submit" class="btn btn--primary" data-submit>
-			<span data-submit-label>Book a demo</span>
+			<span data-submit-label>Request a demo</span>
 			<span class="demo-form__spinner" data-spinner aria-hidden="true"></span>
 		</button>
 		<p class="demo-form__alt">or email us at

@@ -43,7 +43,7 @@ function spicola_form_endpoint() {
 }
 
 /**
- * Optional scheduling link (e.g. Cal.com / Calendly) for the "Book a demo" CTA.
+ * Optional scheduling link (e.g. Cal.com / Calendly) for "Book your free call".
  * Empty => fall back to scrolling to the form (#contact).
  *
  * @return string
@@ -73,11 +73,12 @@ function spicola_validate_lead( $raw ) {
 	// Honeypot: a field hidden from humans. If a bot fills it, silently drop.
 	$spam = ! empty( $raw['company_url'] );
 
-	// Trimmed lead form: name + work email required, message optional.
 	$data = array(
-		'name'    => isset( $raw['name'] ) ? sanitize_text_field( wp_unslash( $raw['name'] ) ) : '',
-		'email'   => isset( $raw['email'] ) ? sanitize_email( wp_unslash( $raw['email'] ) ) : '',
-		'message' => isset( $raw['message'] ) ? sanitize_textarea_field( wp_unslash( $raw['message'] ) ) : '',
+		'name'      => isset( $raw['name'] ) ? sanitize_text_field( wp_unslash( $raw['name'] ) ) : '',
+		'email'     => isset( $raw['email'] ) ? sanitize_email( wp_unslash( $raw['email'] ) ) : '',
+		'company'   => isset( $raw['company'] ) ? sanitize_text_field( wp_unslash( $raw['company'] ) ) : '',
+		'team_size' => isset( $raw['team_size'] ) ? sanitize_text_field( wp_unslash( $raw['team_size'] ) ) : '',
+		'message'   => isset( $raw['message'] ) ? sanitize_textarea_field( wp_unslash( $raw['message'] ) ) : '',
 	);
 
 	$errors = array();
@@ -86,6 +87,12 @@ function spicola_validate_lead( $raw ) {
 	}
 	if ( '' === $data['email'] || ! is_email( $data['email'] ) ) {
 		$errors['email'] = 'Please enter a valid work email.';
+	}
+	if ( '' === $data['company'] ) {
+		$errors['company'] = 'Please enter your company name.';
+	}
+	if ( $data['team_size'] && ! array_key_exists( $data['team_size'], spicola_team_sizes() ) ) {
+		$errors['team_size'] = 'Please choose a valid team size.';
 	}
 
 	return array(
@@ -102,13 +109,17 @@ function spicola_validate_lead( $raw ) {
  * @return bool
  */
 function spicola_send_lead( $data ) {
-	$subject = sprintf( 'New demo request — %s', $data['name'] );
+	$sizes   = spicola_team_sizes();
+	$size    = isset( $sizes[ $data['team_size'] ] ) ? $sizes[ $data['team_size'] ] : '—';
+	$subject = sprintf( 'New demo request — %s', $data['company'] ? $data['company'] : $data['name'] );
 
 	$lines = array(
 		'New Limitless demo request from the website:',
 		'',
-		'Name:    ' . $data['name'],
-		'Email:   ' . $data['email'],
+		'Name:      ' . $data['name'],
+		'Email:     ' . $data['email'],
+		'Company:   ' . $data['company'],
+		'Team size: ' . $size,
 		'',
 		'Message:',
 		$data['message'] ? $data['message'] : '(none)',
@@ -263,7 +274,7 @@ function spicola_form_customize( $wp_customize ) {
 	) );
 	$wp_customize->add_control( 'spicola_scheduling_url', array(
 		'label'       => __( 'Scheduling link (optional)', 'spicola' ),
-		'description' => __( 'A Calendly/Cal.com link for the "Book a demo" buttons. Leave empty to scroll to the form instead.', 'spicola' ),
+		'description' => __( 'A Calendly/Cal.com link for "Book your free call". Leave empty to scroll to the form instead.', 'spicola' ),
 		'section'     => 'spicola_lead_form',
 		'type'        => 'url',
 	) );

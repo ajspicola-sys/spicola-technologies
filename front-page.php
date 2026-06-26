@@ -15,21 +15,19 @@ get_header();
 		<div class="hero-card">
 			<div class="hero-bg" aria-hidden="true"></div>
 			<div class="hero-content">
-				<p class="eyebrow">Built for salons, spas, studios &amp; clinics</p>
-				<h1>One app to book clients, take payment, and <span class="grad-word">keep them coming back.</span></h1>
-				<p class="lead">Limitless replaces your booking tool, card reader, reminder texts, and review chasing with one system built for appointment-based businesses.</p>
+				<p class="eyebrow">Software company</p>
+				<h1>Software that helps your business run <span class="grad-word">without limits.</span></h1>
+				<p class="lead">Spicola Technologies builds practical, modern software for growing businesses — including <strong>Limitless</strong>, our all-in-one B2B platform that brings your operations into a single place.</p>
 				<div class="hero-actions">
-					<a class="btn btn--primary" href="#contact">Book a demo</a>
-					<a class="btn btn--secondary" href="#products">See how it works</a>
+					<a class="btn btn--primary" href="#products">Explore Limitless</a>
+					<a class="btn btn--secondary" href="#contact">Talk to us</a>
 				</div>
 			</div>
 			<!-- Product mockup hugging the bottom of the card.
-			     Default is the clean HTML/CSS Limitless dashboard below (no "DEMO"
-			     watermark). To show a REAL product screenshot instead, set its URL at
-			     Appearance → Customize → Front Page Media → "Hero mockup image".
-			     SCREENSHOT SPEC: a Limitless dashboard, 1600×1000px (16:10), PNG,
-			     dark UI to match the card. It sits flush to the card's bottom edge. -->
-			<?php $spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', '' ); ?>
+			     Default: the bundled demo PNG. Override at Appearance → Customize →
+			     Front Page Media → "Hero mockup image". (The HTML/CSS dashboard
+			     fallback below only shows if the image URL is cleared.) -->
+			<?php $spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', 'https://spicolatechnologies.com/wp-content/uploads/2026/06/hero-mockup-scaled.png' ); ?>
 			<?php if ( $spicola_hero_mockup ) : ?>
 			<div class="hero-placeholder is-loading">
 				<img
@@ -150,7 +148,7 @@ get_header();
 				<div class="section-num" aria-hidden="true">02</div>
 				<p class="eyebrow">Our flagship product</p>
 				<h2>Everything your business needs, <span class="grad-word">in one place.</span></h2>
-				<p class="lead">Limitless is the all-in-one platform for appointment-based businesses — online booking, payments, reviews, and client messaging in one connected system your front desk runs from a single screen.</p>
+				<p class="lead">Limitless is the all-in-one B2B platform built for growing businesses — replacing the patchwork of tools with a single, connected system your whole team can actually use.</p>
 				<!-- Each capability is paired with a concrete benefit line.
 				     TODO (owner): for an even stronger showcase, add a small real
 				     Limitless UI screenshot per capability (a __shot slot) once
@@ -159,115 +157,104 @@ get_header();
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 						<span class="feature-tile__text">
-							<span class="feature-tile__title">24/7 self-service booking</span>
-							<span class="feature-tile__benefit">Clients book and reschedule themselves around the clock — ending phone tag and double-bookings.</span>
+							<span class="feature-tile__title">Online booking &amp; scheduling</span>
+							<span class="feature-tile__benefit">Clients book themselves around the clock — no phone tag, no double-bookings.</span>
 						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
 						<span class="feature-tile__text">
-							<span class="feature-tile__title">Payments &amp; memberships</span>
-							<span class="feature-tile__benefit">Take cards at checkout, auto-bill memberships, and stop chasing unpaid invoices.</span>
+							<span class="feature-tile__title">Payments, invoices &amp; memberships</span>
+							<span class="feature-tile__benefit">Get paid faster with cards, recurring billing and memberships in one flow.</span>
 						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
 						<span class="feature-tile__text">
-							<span class="feature-tile__title">Reviews on autopilot</span>
-							<span class="feature-tile__benefit">Pull every Google and Facebook review into one inbox and reply in a tap with AI-drafted responses.</span>
+							<span class="feature-tile__title">Review aggregation &amp; AI replies</span>
+							<span class="feature-tile__benefit">See every review in one place and respond in seconds with AI-drafted replies.</span>
 						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
 						<span class="feature-tile__text">
-							<span class="feature-tile__title">Automatic reminders</span>
-							<span class="feature-tile__benefit">Fire off text and email reminders on their own — cutting no-shows without you lifting a finger.</span>
+							<span class="feature-tile__title">SMS, email &amp; AI messaging</span>
+							<span class="feature-tile__benefit">Reach customers where they are — and let AI handle the routine back-and-forth.</span>
 						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
 						<span class="feature-tile__text">
-							<span class="feature-tile__title">Rebooking &amp; loyalty</span>
-							<span class="feature-tile__benefit">Win back lapsed clients and reward your regulars with built-in campaigns and points.</span>
+							<span class="feature-tile__title">Marketing &amp; customer loyalty</span>
+							<span class="feature-tile__benefit">Turn one-time buyers into regulars with built-in campaigns and loyalty.</span>
 						</span>
 					</div>
 					<div class="feature-tile">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
 						<span class="feature-tile__text">
-							<span class="feature-tile__title">Live reporting</span>
-							<span class="feature-tile__benefit">Watch today's revenue, bookings, and ratings update on one dashboard — no spreadsheets.</span>
+							<span class="feature-tile__title">Real-time reporting &amp; analytics</span>
+							<span class="feature-tile__benefit">Know exactly how the business is doing with live numbers, not month-old guesses.</span>
 						</span>
 					</div>
 				</div>
-				<a class="btn btn--primary" href="#contact">Book a demo</a>
+				<a class="btn btn--primary" href="#contact">Request a demo</a>
 			</div>
 			<?php
-			$spicola_video        = get_theme_mod( 'spicola_product_video', '' );
-			$spicola_poster       = get_theme_mod( 'spicola_product_poster', '' );
-			$spicola_product_shot = get_theme_mod( 'spicola_product_shot', '' );
+			$spicola_video  = get_theme_mod( 'spicola_product_video', '' );
+			$spicola_poster = get_theme_mod( 'spicola_product_poster', '' );
+			if ( $spicola_video ) :
 			?>
-			<!-- PRODUCT SHOWCASE — the real Limitless dashboard inside a clean browser frame.
-			     Add your media one of these ways (no code edit needed):
-			       • Screenshot: Appearance → Customize → Front Page Media → "Product screenshot"
-			       • Or a short screen-recording loop via "Product video"
-			     SCREENSHOT SPEC: 2000×1250px (16:10), PNG or JPG, the main Limitless
-			     dashboard (calendar + today's bookings + revenue). Displays ~up to 560px wide. -->
-			<div class="browser-frame">
-				<div class="browser-frame__bar" aria-hidden="true">
-					<span class="browser-frame__dots"><i></i><i></i><i></i></span>
-					<span class="browser-frame__url">app.limitless.app/dashboard</span>
-				</div>
-				<div class="browser-frame__screen">
-					<?php if ( $spicola_video ) : ?>
-					<video
-						class="browser-frame__media"
-						autoplay muted loop playsinline preload="metadata"
-						<?php if ( $spicola_poster ) : ?>poster="<?php echo esc_url( $spicola_poster ); ?>"<?php endif; ?>>
-						<source src="<?php echo esc_url( $spicola_video ); ?>" type="video/mp4">
-					</video>
-					<?php elseif ( $spicola_product_shot ) : ?>
-					<img
-						class="browser-frame__media"
-						src="<?php echo esc_url( $spicola_product_shot ); ?>"
-						alt="The Limitless dashboard showing the day's bookings, revenue and reviews"
-						width="2000" height="1250" loading="lazy" decoding="async">
-					<?php else : ?>
-					<!-- Placeholder shown until a real screenshot is added. Safe to ship. -->
-					<div class="browser-frame__placeholder">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-						<p class="browser-frame__ph-title">Limitless dashboard screenshot</p>
-						<p class="browser-frame__ph-spec">Add a 2000&times;1250px image (16:10)</p>
+			<div class="product-video">
+				<video
+					class="product-video__el"
+					autoplay muted loop playsinline
+					preload="metadata"
+					<?php if ( $spicola_poster ) : ?>poster="<?php echo esc_url( $spicola_poster ); ?>"<?php endif; ?>>
+					<source src="<?php echo esc_url( $spicola_video ); ?>" type="video/mp4">
+				</video>
+			</div>
+			<?php else : ?>
+			<div class="laptop-stage laptop-stage--fallback" aria-hidden="true">
+				<div class="laptop">
+					<div class="laptop__lid">
+						<div class="laptop__screen">
+							<div class="ui">
+								<div class="ui__top">
+									<span class="ui__dot"></span>
+									<span class="ui__brand">Limitless</span>
+									<span class="ui__spacer"></span>
+									<span class="ui__pill"></span>
+								</div>
+								<div class="ui__body">
+									<div class="ui__side">
+										<span></span><span></span><span></span><span></span><span></span>
+									</div>
+									<div class="ui__main">
+										<div class="ui__cards">
+											<div class="ui__card"><b>248</b><i>Bookings</i></div>
+											<div class="ui__card"><b>$31k</b><i>Revenue</i></div>
+											<div class="ui__card"><b>4.9★</b><i>Reviews</i></div>
+										</div>
+										<div class="ui__chart">
+											<span style="height:38%"></span><span style="height:62%"></span>
+											<span style="height:48%"></span><span style="height:80%"></span>
+											<span style="height:58%"></span><span style="height:92%"></span>
+											<span style="height:70%"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="laptop__glare"></div>
+						</div>
 					</div>
-					<?php endif; ?>
+					<div class="laptop__deck">
+						<div class="laptop__keyboard"></div>
+						<div class="laptop__trackpad"></div>
+					</div>
 				</div>
 			</div>
+			<?php endif; ?>
 		</div>
-	</div>
-</section>
-
-<!-- ===================== INTEGRATES WITH =====================
-     A slim logo strip showing the tools Limitless connects to.
-     The logos below are clean text wordmarks so the section is correct and
-     premium out of the box. To use the OFFICIAL brand logos instead, drop an
-     inline <svg> (or an <img> ~24px tall, white/monochrome) in place of each
-     .integration__name span. Keep them all one visual weight. -->
-<section class="section integrations" id="integrations">
-	<div class="container">
-		<p class="integrations__eyebrow">Works with the tools you already use</p>
-		<ul class="integrations__list">
-			<li class="integration" aria-label="Stripe">
-				<svg class="integration__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-				<span class="integration__name">Stripe</span>
-			</li>
-			<li class="integration" aria-label="Twilio">
-				<svg class="integration__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-				<span class="integration__name">Twilio</span>
-			</li>
-			<li class="integration" aria-label="Google Calendar">
-				<svg class="integration__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-				<span class="integration__name">Google Calendar</span>
-			</li>
-		</ul>
 	</div>
 </section>
 
@@ -299,9 +286,9 @@ get_header();
 		<div class="steps-cta">
 			<?php $spicola_calendar = spicola_scheduling_url(); ?>
 			<?php if ( $spicola_calendar ) : ?>
-			<a class="btn btn--primary" href="<?php echo esc_url( $spicola_calendar ); ?>" target="_blank" rel="noopener">Book a demo</a>
+			<a class="btn btn--primary" href="<?php echo esc_url( $spicola_calendar ); ?>" target="_blank" rel="noopener">Book your free call</a>
 			<?php else : ?>
-			<a class="btn btn--primary" href="#contact">Book a demo</a>
+			<a class="btn btn--primary" href="#contact">Book your free call</a>
 			<?php endif; ?>
 		</div>
 	</div>
@@ -384,96 +371,32 @@ get_header();
 	</div>
 </section>
 
-<!-- ===================== HOW WE WORK (founder-led) =====================
-     This section carries the trust load that client logos normally would.
-     It is built around the founder. TWO things to personalise:
-       1. The bio paragraph marked [Your background goes here] below.
-       2. The founder headshot — swap the JS initials avatar for a real photo
-          (square, 160×160px min, shown at 56px). See the comment inline. -->
+<!-- ===================== ABOUT ===================== -->
 <section class="section section--soft" id="about">
 	<div class="container">
 		<div class="about-layout">
 			<div class="about-text">
 				<div class="section-num" aria-hidden="true">03</div>
-				<p class="eyebrow">How we work</p>
-				<h2>You work directly with the <span class="grad-word">person who builds it.</span></h2>
-				<p>I'm Joseph Spicola, the founder and engineer behind Limitless. I write the code, run your demo, and answer your emails myself — there's no sales layer or support queue between you and the person shipping the product.</p>
-				<!-- TODO (founder bio): replace the bracketed line below with 1–2 sentences
-				     of your REAL background — previous roles and things you've shipped.
-				     Be specific (companies, products, years, scale); this is the copy that
-				     earns trust in place of testimonials. Then delete the .is-todo class. -->
-				<p class="about-bio is-todo"><strong>[Your background goes here]</strong> — a sentence or two on your previous roles and what you've shipped, e.g. &ldquo;Before Spicola I spent six years building scheduling software at Acme and shipped it to 400+ businesses.&rdquo;</p>
-
-				<!-- Founder identity row. Swap the initials avatar for a real headshot:
-				     <img class="founder__avatar" src="…" width="56" height="56" alt="Joseph Spicola"> -->
-				<div class="founder">
-					<span class="founder__avatar" aria-hidden="true">JS</span>
-					<span class="founder__id">
-						<span class="founder__name">Joseph Spicola</span>
-						<span class="founder__role">Founder &amp; Engineer, Spicola Technologies</span>
-					</span>
-				</div>
+				<p class="eyebrow">About us</p>
+				<h2>A focused software company</h2>
+				<p>Spicola Technologies builds tools that remove friction for growing businesses. We believe good software should feel obvious — fast, reliable, and completely out of the way.</p>
+				<p>We build our own products, like Limitless, and partner with businesses who want software that actually fits how they work — not the other way around.</p>
 			</div>
 			<div class="about-cards">
 				<div class="card">
 					<div class="chip chip--cyan">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c.4 4.6 2.4 6.6 7 7-4.6.4-6.6 2.4-7 7-.4-4.6-2.4-6.6-7-7 4.6-.4 6.6-2.4 7-7z"/></svg>
 					</div>
-					<h3>Built on a modern stack</h3>
-					<p>Limitless runs on React and Next.js — the same battle-tested foundation behind the web apps you use every day. It's fast, secure, and built to grow with you, not patched together from plugins.</p>
+					<h3>Why we exist</h3>
+					<p>Too many businesses are held back by clunky, disconnected tools. We bring those pieces together so owners can spend less time fighting their software and more time growing.</p>
 				</div>
 				<div class="card">
 					<div class="chip chip--peri">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 9v6"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><circle cx="18" cy="18" r="3"/></svg>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
 					</div>
-					<h3>A deliberate process</h3>
-					<p>We start with a discovery call, I configure Limitless to your exact services and pricing, then walk your team through go-live. You're never handed a login and left to figure it out alone.</p>
+					<h3>How we build</h3>
+					<p>Every decision is deliberate. Good software should feel invisible — fast when you need it, quiet when you don't, and built to last as your business scales.</p>
 				</div>
-				<div class="card">
-					<div class="chip chip--cyan">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-					</div>
-					<h3>A direct line, not a ticket queue</h3>
-					<p>Found a bug or need a change? You message me, not a call center — and early features get shaped by what real businesses actually ask for.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- ===================== FOUNDING CLIENTS (honest early-customer offer) =====================
-     Replaces fake testimonials with a real invitation. Adjust the number of
-     spots / terms to whatever you'll genuinely honour. -->
-<section class="section section--gray founding" id="founding">
-	<div class="container">
-		<div class="founding-card">
-			<div class="founding-glow" aria-hidden="true"></div>
-			<div class="founding-copy">
-				<p class="eyebrow">Founding clients</p>
-				<h2>Be one of our first ten clients.</h2>
-				<p class="lead">Limitless is new, and I'm hand-picking a small group of appointment-based businesses to build it around. Founding clients get my hands-on help and a founding rate locked in for good — in exchange for honest feedback as we grow. No fake reviews here; just a real offer.</p>
-			</div>
-			<ul class="founding-list">
-				<li>
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-					<span>A reduced founding rate, locked in for as long as you stay.</span>
-				</li>
-				<li>
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-					<span>I personally set up Limitless and migrate your existing data.</span>
-				</li>
-				<li>
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-					<span>A direct line to me for support, training, and requests.</span>
-				</li>
-				<li>
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-					<span>Real influence over what we build next.</span>
-				</li>
-			</ul>
-			<div class="founding-cta">
-				<a class="btn btn--primary" href="#contact">Book a demo</a>
-				<p class="founding-note">No contracts, no pressure — just a conversation.</p>
 			</div>
 		</div>
 	</div>
