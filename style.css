@@ -29,11 +29,13 @@ Text Domain: spicola
   --line-2:       #2C2C3A;
   --line-3:       #383848;
 
-  /* Text */
+  /* Text — tuned for AA contrast on the near-black surfaces above.
+     muted/hint were lifted (from #84869A / #5C5E70) so secondary copy
+     reads clearly and never looks like a disabled placeholder. */
   --heading:      #F6F7F9;
-  --body:         #B7B9C4;
-  --muted:        #84869A;
-  --hint:         #5C5E70;
+  --body:         #C3C5D0;
+  --muted:        #9CA0B3;
+  --hint:         #7F8398;
 
   /* Accent — cyan/teal (the only color) */
   --accent:       #6FC9D8;
@@ -1281,7 +1283,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-3) transparent; }
   font-family: var(--font-head); font-weight: 500; font-size: 0.9rem;
   padding: 9px 16px; border-radius: 999px; cursor: pointer;
   background: transparent; border: 1px solid transparent;
-  color: rgba(220, 224, 235, 0.58);
+  color: rgba(224, 228, 238, 0.74);
   transition: color 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 .persona-tab:hover { color: #fff; }
@@ -1381,4 +1383,179 @@ html.lenis, html.lenis body { height: auto; }
   * { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; filter: none; transform: none; }
   .hero-bg::before, .hero-bg::after { animation: none !important; }
+}
+
+/* ============================================================
+   Browser frame — holds a real product screenshot/video.
+   Used in the Limitless product section. Dark, premium chrome.
+   ============================================================ */
+.browser-frame {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0E0F14;
+  border: 1px solid var(--line-2);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.browser-frame__bar {
+  display: flex; align-items: center; gap: 14px;
+  height: 38px; padding: 0 14px;
+  background: #15161C;
+  border-bottom: 1px solid var(--line);
+}
+.browser-frame__dots { display: inline-flex; gap: 7px; flex-shrink: 0; }
+.browser-frame__dots i {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--line-3);
+}
+.browser-frame__url {
+  flex: 1; min-width: 0;
+  font-family: var(--font-body); font-size: 0.75rem; color: var(--muted);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 7px; padding: 5px 12px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 320px; margin: 0 auto;
+}
+.browser-frame__screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(95, 214, 232, 0.06), transparent 60%),
+    #0B0C10;
+}
+.browser-frame__media {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+}
+/* Labelled placeholder shown until a real screenshot is dropped in. */
+.browser-frame__placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; text-align: center; padding: 24px;
+  color: var(--muted);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.browser-frame__placeholder svg { width: 34px; height: 34px; color: var(--accent); opacity: 0.7; margin-bottom: 4px; }
+.browser-frame__ph-title { margin: 0; font-family: var(--font-head); font-weight: 600; font-size: 0.95rem; color: var(--body); }
+.browser-frame__ph-spec { margin: 0; font-size: 0.8125rem; color: var(--muted); }
+
+/* ============================================================
+   Integrates with — slim logo strip
+   ============================================================ */
+.integrations {
+  background: var(--bg);
+  padding: clamp(48px, 6vw, 72px) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.integrations__eyebrow {
+  text-align: center; margin: 0 0 30px;
+  font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted);
+}
+.integrations__list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: clamp(28px, 6vw, 72px);
+}
+.integration {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--body);
+  transition: color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.integration:hover { color: var(--heading); transform: translateY(-2px); }
+.integration__glyph { width: 22px; height: 22px; color: var(--accent); flex-shrink: 0; }
+.integration__name {
+  font-family: var(--font-head); font-weight: 600;
+  font-size: clamp(1.05rem, 2vw, 1.35rem); letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   How we work — founder identity row
+   ============================================================ */
+.about-bio.is-todo {
+  /* Visibly a placeholder so it can't be mistaken for final copy. */
+  font-size: 0.9375rem; color: var(--muted);
+  border-left: 2px solid var(--accent-line);
+  padding: 10px 0 10px 16px;
+  background: var(--accent-tint);
+  border-radius: 0 8px 8px 0;
+}
+.about-bio.is-todo strong { color: var(--accent-br); }
+.founder {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 28px; padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.founder__avatar {
+  width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center; object-fit: cover;
+  background: var(--grad); color: #06181C;
+  font-family: var(--font-head); font-weight: 700; font-size: 1.05rem;
+}
+.founder__id { display: flex; flex-direction: column; gap: 2px; }
+.founder__name { font-family: var(--font-head); font-weight: 600; color: var(--heading); font-size: 1rem; }
+.founder__role { font-size: 0.875rem; color: var(--muted); }
+
+/* ============================================================
+   Founding clients — honest early-customer offer card
+   ============================================================ */
+.founding-card {
+  position: relative; overflow: hidden;
+  border-radius: 22px;
+  padding: clamp(32px, 5vw, 64px);
+  background: var(--card);
+  border: 0.5px solid var(--line-2);
+  box-shadow: 0 24px 60px rgba(20, 24, 40, 0.10);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  grid-template-areas: "copy list" "cta list";
+  gap: clamp(28px, 4vw, 56px) clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+.founding-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(60% 60% at 8% 0%, rgba(95, 214, 232, 0.12), transparent 65%),
+    radial-gradient(50% 60% at 100% 100%, rgba(47, 163, 182, 0.10), transparent 70%);
+}
+.founding-card > *:not(.founding-glow) { position: relative; z-index: 1; }
+.founding-copy { grid-area: copy; }
+.founding-copy h2 { margin-bottom: 0.9rem; }
+.founding-copy .lead { margin: 0; max-width: 46ch; }
+.founding-list {
+  grid-area: list;
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 16px;
+  align-self: center;
+}
+.founding-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.9375rem; color: var(--body); line-height: 1.5;
+}
+.founding-list svg {
+  width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px;
+  color: var(--accent-br);
+  background: var(--accent-tint); border: 0.5px solid var(--accent-line);
+  border-radius: 6px; padding: 2px;
+}
+.founding-cta {
+  grid-area: cta;
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+}
+.founding-note { margin: 0; font-size: 0.875rem; color: var(--muted); }
+
+/* ----- New sections: responsive ----- */
+@media (max-width: 760px) {
+  .founding-card {
+    grid-template-columns: 1fr;
+    grid-template-areas: "copy" "list" "cta";
+    gap: 28px;
+  }
+  .founding-list { align-self: start; }
+  .integrations__list { gap: 28px 36px; }
 }

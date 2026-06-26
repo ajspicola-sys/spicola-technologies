@@ -184,7 +184,20 @@ function spicola_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'spicola_hero_mockup', array(
 		'label'       => __( 'Hero mockup image', 'spicola' ),
-		'description' => __( 'Upload the product image shown at the bottom of the hero. Falls back to the bundled image if empty.', 'spicola' ),
+		'description' => __( 'Optional. A real Limitless screenshot (1600×1000px / 16:10) shown at the bottom of the hero. Leave empty to show the built-in CSS dashboard mockup.', 'spicola' ),
+		'section'     => 'spicola_media',
+	) ) );
+
+	// Product screenshot — shown inside the browser frame in the Limitless section.
+	$wp_customize->add_setting( 'spicola_product_shot', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'spicola_product_shot', array(
+		'label'       => __( 'Product screenshot', 'spicola' ),
+		'description' => __( 'A real Limitless dashboard screenshot (2000×1250px / 16:10) shown in the browser frame. Leave empty to show a labelled placeholder.', 'spicola' ),
 		'section'     => 'spicola_media',
 	) ) );
 

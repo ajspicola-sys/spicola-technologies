@@ -33,7 +33,7 @@
 		}
 		?>
 
-		<a class="btn btn--primary nav-cta" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Get in touch</a>
+		<a class="btn btn--primary nav-cta" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Book a demo</a>
 	</div>
 </header>
 

@@ -43,7 +43,7 @@
 	function validate() {
 		clearErrors();
 		var ok = true;
-		var required = { name: 'Please enter your name.', email: 'Please enter a valid work email.', company: 'Please enter your company name.' };
+		var required = { name: 'Please enter your name.', email: 'Please enter a valid work email.' };
 		Object.keys(required).forEach(function (key) {
 			var input = form.querySelector('[name="' + key + '"]');
 			if (!input) { return; }
@@ -58,7 +58,7 @@
 		if (!submitBtn) { return; }
 		submitBtn.disabled = on;
 		form.setAttribute('data-loading', on ? 'true' : 'false');
-		if (submitLabel) { submitLabel.textContent = on ? 'Sending…' : 'Request a demo'; }
+		if (submitLabel) { submitLabel.textContent = on ? 'Sending…' : 'Book a demo'; }
 	}
 
 	form.addEventListener('submit', function (e) {
