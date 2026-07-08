@@ -1,28 +1,30 @@
 /**
- * Blur fade-in on scroll.
- * Adds a reveal class to key elements, then unblurs/fades them in as they
- * enter the viewport. Respects prefers-reduced-motion (shows everything,
- * no animation).
+ * Fast fade/slide-in on scroll.
+ * Content is fully present in the DOM at all times — this only toggles a
+ * visual reveal class, quickly (≈300ms) and almost as soon as an element
+ * enters the viewport, so text is never left ghosted mid-scroll.
+ * Respects prefers-reduced-motion (everything shown, no animation).
  */
 (function () {
 	var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-	// Elements to animate. Direct children of sections + common blocks.
 	var selectors = [
 		'.hero .container > *',
-		'.section .center > *',
-		'.card',
-		'.feature > div',
-		'.feature-visual',
-		'.cta-inner > *:not(.cta-glow)',
-		'.post-card',
-		'.section .grid-2 > *',
-		'.services-intro > *',
+		'.logo-cloud .container > *',
+		'.metric',
+		'.section-head > *',
 		'.service-item',
+		'.feature-card',
+		'.flagship__visual',
 		'.step',
+		'.personas-card',
+		'.about-text',
+		'.about-cards .card',
 		'.testimonial',
-		'.about-layout > *',
-		'.persona-info',
+		'.cta-copy',
+		'.cta-form',
+		'.footer-cta > *',
+		'.post-card',
 	];
 
 	var nodes = [];
@@ -32,15 +34,12 @@
 		});
 	});
 
-	if (reduce || !('IntersectionObserver' in window)) {
-		nodes.forEach(function (el) { el.classList.add('is-visible'); });
-		return;
-	}
+	if (reduce || !('IntersectionObserver' in window)) { return; }
 
 	nodes.forEach(function (el, i) {
 		el.classList.add('reveal');
-		// Small stagger within a group for a nicer cascade.
-		el.style.transitionDelay = (Math.min(i % 6, 5) * 60) + 'ms';
+		// Tiny stagger within a group; capped so nothing waits long.
+		el.style.transitionDelay = (Math.min(i % 4, 3) * 45) + 'ms';
 	});
 
 	var io = new IntersectionObserver(function (entries) {
@@ -50,7 +49,15 @@
 				io.unobserve(entry.target);
 			}
 		});
-	}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+	}, { threshold: 0.05, rootMargin: '0px 0px -4% 0px' });
 
-	nodes.forEach(function (el) { io.observe(el); });
+	nodes.forEach(function (el) {
+		// Anything already in view on load shows immediately, no animation lag.
+		var rect = el.getBoundingClientRect();
+		if (rect.top < window.innerHeight * 0.9) {
+			el.classList.add('is-visible');
+		} else {
+			io.observe(el);
+		}
+	});
 })();

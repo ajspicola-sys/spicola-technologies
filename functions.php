@@ -61,7 +61,16 @@ function spicola_assets() {
 
 	wp_enqueue_style( 'spicola-style', get_stylesheet_uri(), array( 'spicola-fonts' ), wp_get_theme()->get( 'Version' ) );
 
-	// Scroll reveal (blur fade-in). Loaded in the footer, deferred.
+	// Sticky nav: transparent → solid on scroll.
+	wp_enqueue_script(
+		'spicola-nav',
+		get_template_directory_uri() . '/assets/nav.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+
+	// Scroll reveal (fast fade/slide-in). Loaded in the footer, deferred.
 	wp_enqueue_script(
 		'spicola-reveal',
 		get_template_directory_uri() . '/assets/reveal.js',
@@ -70,24 +79,8 @@ function spicola_assets() {
 		true
 	);
 
-	// 3D laptop scroll rotation.
-	wp_enqueue_script(
-		'spicola-laptop',
-		get_template_directory_uri() . '/assets/laptop.js',
-		array(),
-		wp_get_theme()->get( 'Version' ),
-		true
-	);
-
-	// Scroll-driven hero reveal + who-we-serve switcher — front page only.
+	// Front page only: persona tab switcher + demo request form enhancement.
 	if ( is_front_page() ) {
-		wp_enqueue_script(
-			'spicola-hero-scroll',
-			get_template_directory_uri() . '/assets/hero-scroll.js',
-			array(),
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
 		wp_enqueue_script(
 			'spicola-personas',
 			get_template_directory_uri() . '/assets/personas.js',
@@ -95,7 +88,6 @@ function spicola_assets() {
 			wp_get_theme()->get( 'Version' ),
 			true
 		);
-		// Demo request form: progressive enhancement (inline states, no reload).
 		wp_enqueue_script(
 			'spicola-demo-form',
 			get_template_directory_uri() . '/assets/demo-form.js',
@@ -104,31 +96,6 @@ function spicola_assets() {
 			true
 		);
 	}
-
-	// Premium micro-interactions (cursor spotlight + magnetic buttons).
-	wp_enqueue_script(
-		'spicola-premium',
-		get_template_directory_uri() . '/assets/premium.js',
-		array(),
-		wp_get_theme()->get( 'Version' ),
-		true
-	);
-
-	// Lenis smooth/momentum scrolling (CDN global), then our init script.
-	wp_enqueue_script(
-		'lenis',
-		'https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js',
-		array(),
-		'1.1.14',
-		true
-	);
-	wp_enqueue_script(
-		'spicola-smooth-scroll',
-		get_template_directory_uri() . '/assets/smooth-scroll.js',
-		array( 'lenis' ),
-		wp_get_theme()->get( 'Version' ),
-		true
-	);
 }
 
 /**
@@ -163,58 +130,6 @@ add_filter( 'excerpt_length', 'spicola_excerpt_length' );
 
 function spicola_excerpt_more( $more ) { return '…'; }
 add_filter( 'excerpt_more', 'spicola_excerpt_more' );
-
-/**
- * Customizer: a setting for the product/Limitless showcase video URL.
- * Paste a Media Library video URL in Appearance → Customize → Limitless Video.
- * When set, it replaces the CSS 3D laptop in the product section.
- */
-function spicola_customize_register( $wp_customize ) {
-	$wp_customize->add_section( 'spicola_media', array(
-		'title'    => __( 'Front Page Media', 'spicola' ),
-		'priority' => 30,
-	) );
-
-	// Hero mockup image — shown hugging the bottom of the hero card.
-	$wp_customize->add_setting( 'spicola_hero_mockup', array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_url_raw',
-		'transport'         => 'refresh',
-	) );
-
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'spicola_hero_mockup', array(
-		'label'       => __( 'Hero mockup image', 'spicola' ),
-		'description' => __( 'Upload the product image shown at the bottom of the hero. Falls back to the bundled image if empty.', 'spicola' ),
-		'section'     => 'spicola_media',
-	) ) );
-
-	$wp_customize->add_setting( 'spicola_product_video', array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_url_raw',
-		'transport'         => 'refresh',
-	) );
-
-	$wp_customize->add_control( 'spicola_product_video', array(
-		'label'       => __( 'Product video URL (.mp4)', 'spicola' ),
-		'description' => __( 'Upload a video to the Media Library, copy its URL, and paste it here. Replaces the 3D laptop on the front page.', 'spicola' ),
-		'section'     => 'spicola_media',
-		'type'        => 'url',
-	) );
-
-	$wp_customize->add_setting( 'spicola_product_poster', array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_url_raw',
-		'transport'         => 'refresh',
-	) );
-
-	$wp_customize->add_control( 'spicola_product_poster', array(
-		'label'       => __( 'Video poster image URL (optional)', 'spicola' ),
-		'description' => __( 'Shown before the video loads / on reduced-motion.', 'spicola' ),
-		'section'     => 'spicola_media',
-		'type'        => 'url',
-	) );
-}
-add_action( 'customize_register', 'spicola_customize_register' );
 
 /**
  * Fallback menu when no primary menu is assigned, so the nav is never empty.
