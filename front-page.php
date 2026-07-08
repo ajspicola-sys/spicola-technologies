@@ -13,24 +13,80 @@
 get_header();
 ?>
 
-<!-- ===================== 1. HERO (white — the only light section) ===================== -->
+<!-- ===================== 1. HERO (kept from v3: dark card on white, scroll-driven) ===================== -->
 <section class="hero">
-	<div class="container">
-		<p class="pill-label">Software Company</p>
-		<h1>Software that helps your business run <span class="accent-line">without limits.</span></h1>
-		<p class="lead">Spicola Technologies builds custom software for growing businesses — including <strong>Limitless</strong>, our all-in-one B2B platform that runs your bookings, payments, messaging and reporting in one place.</p>
-		<div class="hero-actions">
-			<a class="btn btn--primary" href="#contact">Request a demo</a>
-			<a class="btn btn--secondary" href="#contact">Talk to us</a>
-		</div>
-
-		<!-- Product mockup slot: browser-framed DEMO box. Replace the
-		     .browser-frame__body contents with a real screenshot later. -->
-		<div class="hero-mockup">
-			<div class="browser-frame">
-				<div class="browser-frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
-				<div class="demo-box browser-frame__body"><span>Demo</span></div>
+	<div class="hero-stage">
+		<div class="hero-card">
+			<div class="hero-bg" aria-hidden="true"></div>
+			<div class="hero-content">
+				<p class="eyebrow">Software company</p>
+				<h1>Software that helps your business run <span class="grad-word">without limits.</span></h1>
+				<p class="lead">Spicola Technologies builds practical, modern software for growing businesses — including <strong>Limitless</strong>, our all-in-one B2B platform that brings your operations into a single place.</p>
+				<div class="hero-actions">
+					<a class="btn btn--primary" href="#products">Explore Limitless</a>
+					<a class="btn btn--secondary" href="#contact">Talk to us</a>
+				</div>
 			</div>
+			<!-- Product mockup hugging the bottom of the card.
+			     Default: the bundled demo PNG. Override at Appearance → Customize →
+			     Front Page Media → "Hero mockup image". (The HTML/CSS dashboard
+			     fallback below only shows if the image URL is cleared.) -->
+			<?php $spicola_hero_mockup = get_theme_mod( 'spicola_hero_mockup', 'https://spicolatechnologies.com/wp-content/uploads/2026/06/hero-mockup-scaled.png' ); ?>
+			<?php if ( $spicola_hero_mockup ) : ?>
+			<div class="hero-placeholder is-loading">
+				<img
+					src="<?php echo esc_url( $spicola_hero_mockup ); ?>"
+					alt="Limitless dashboard showing bookings, invoicing and reporting"
+					width="1600" height="1000"
+					loading="lazy" decoding="async"
+					onload="this.parentNode.classList.remove('is-loading')">
+			</div>
+			<?php else : ?>
+			<div class="hero-placeholder hero-placeholder--app" role="img" aria-label="Limitless dashboard showing today's bookings, a payment received, and a new five-star review">
+				<div class="app" aria-hidden="true">
+					<aside class="app__side">
+						<div class="app__brand"><span class="app__brand-dot"></span>Limitless</div>
+						<nav class="app__nav">
+							<span class="app__nav-item is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></span>
+							<span class="app__nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Bookings</span></span>
+							<span class="app__nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg><span>Payments</span></span>
+							<span class="app__nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg><span>Reviews</span></span>
+							<span class="app__nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Messages</span></span>
+							<span class="app__nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Reports</span></span>
+						</nav>
+					</aside>
+					<section class="app__main">
+						<header class="app__bar">
+							<div class="app__hello">Good morning, Joseph</div>
+							<div class="app__bar-right"><span class="app__search"></span><span class="app__avatar">JS</span></div>
+						</header>
+						<div class="app__kpis">
+							<div class="app__kpi"><span class="app__kpi-label">Today's bookings</span><span class="app__kpi-value">24</span><span class="app__kpi-trend">+12%</span></div>
+							<div class="app__kpi"><span class="app__kpi-label">Revenue</span><span class="app__kpi-value">$3,180</span><span class="app__kpi-trend">+8%</span></div>
+							<div class="app__kpi"><span class="app__kpi-label">Avg. rating</span><span class="app__kpi-value">4.9</span><span class="app__kpi-trend">★</span></div>
+						</div>
+						<div class="app__grid">
+							<article class="app__card app__card--booking">
+								<div class="app__card-head"><span class="app__tag">Next booking</span><span class="app__time">2:30 PM</span></div>
+								<div class="app__card-title">Consultation — Acme Studio</div>
+								<div class="app__card-meta">45 min · In person</div>
+								<div class="app__status"><span class="app__dot"></span>Confirmed</div>
+							</article>
+							<article class="app__card app__card--pay">
+								<div class="app__card-head"><span class="app__tag">Payment received</span></div>
+								<div class="app__amount">$1,240<span>.00</span></div>
+								<div class="app__chart"><span style="height:42%"></span><span style="height:66%"></span><span style="height:50%"></span><span style="height:82%"></span><span style="height:60%"></span><span style="height:94%"></span><span style="height:74%"></span></div>
+							</article>
+							<article class="app__card app__card--review">
+								<div class="app__card-head"><span class="app__tag">New review</span><span class="app__stars">★★★★★</span></div>
+								<p class="app__quote">“Booking was effortless and the reminders were spot on.”</p>
+								<span class="app__ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg>AI reply drafted</span>
+							</article>
+						</div>
+					</section>
+				</div>
+			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

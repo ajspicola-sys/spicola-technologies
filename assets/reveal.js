@@ -8,8 +8,8 @@
 (function () {
 	var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+	// Note: the hero is deliberately excluded — hero-scroll.js owns it.
 	var selectors = [
-		'.hero .container > *',
 		'.logo-cloud .container > *',
 		'.metric',
 		'.section-head > *',

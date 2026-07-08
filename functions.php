@@ -61,15 +61,6 @@ function spicola_assets() {
 
 	wp_enqueue_style( 'spicola-style', get_stylesheet_uri(), array( 'spicola-fonts' ), wp_get_theme()->get( 'Version' ) );
 
-	// Sticky nav: transparent → solid on scroll.
-	wp_enqueue_script(
-		'spicola-nav',
-		get_template_directory_uri() . '/assets/nav.js',
-		array(),
-		wp_get_theme()->get( 'Version' ),
-		true
-	);
-
 	// Scroll reveal (fast fade/slide-in). Loaded in the footer, deferred.
 	wp_enqueue_script(
 		'spicola-reveal',
@@ -79,8 +70,16 @@ function spicola_assets() {
 		true
 	);
 
-	// Front page only: persona tab switcher + demo request form enhancement.
+	// Front page only: scroll-driven hero reveal, persona tab switcher,
+	// and demo request form enhancement.
 	if ( is_front_page() ) {
+		wp_enqueue_script(
+			'spicola-hero-scroll',
+			get_template_directory_uri() . '/assets/hero-scroll.js',
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
 		wp_enqueue_script(
 			'spicola-personas',
 			get_template_directory_uri() . '/assets/personas.js',
@@ -130,6 +129,31 @@ add_filter( 'excerpt_length', 'spicola_excerpt_length' );
 
 function spicola_excerpt_more( $more ) { return '…'; }
 add_filter( 'excerpt_more', 'spicola_excerpt_more' );
+
+/**
+ * Customizer: the hero mockup image shown at the bottom of the hero card.
+ * Appearance → Customize → Front Page Media. Clearing the URL falls back to
+ * the HTML/CSS Limitless dashboard mockup in front-page.php.
+ */
+function spicola_customize_register( $wp_customize ) {
+	$wp_customize->add_section( 'spicola_media', array(
+		'title'    => __( 'Front Page Media', 'spicola' ),
+		'priority' => 30,
+	) );
+
+	$wp_customize->add_setting( 'spicola_hero_mockup', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'spicola_hero_mockup', array(
+		'label'       => __( 'Hero mockup image', 'spicola' ),
+		'description' => __( 'Upload the product image shown at the bottom of the hero. Falls back to the bundled image if empty.', 'spicola' ),
+		'section'     => 'spicola_media',
+	) ) );
+}
+add_action( 'customize_register', 'spicola_customize_register' );
 
 /**
  * Fallback menu when no primary menu is assigned, so the nav is never empty.
